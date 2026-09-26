@@ -3,6 +3,65 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Contact | Ahmad Rasti Barzoki';
 const description = 'Contact Ahmad Rasti Barzoki for research, collaboration and professional opportunities.';
+
+const contacts = [
+  {
+    title: 'Email',
+    value: 'ahmadrasti11@gmail.com',
+    href: 'mailto:ahmadrasti11@gmail.com',
+    icon: '/contact-icons/email.svg',
+    note: 'Preferred for professional communication'
+  },
+  {
+    title: 'Telegram',
+    value: '@ahmadrastibarzoki',
+    href: 'https://t.me/ahmadrastibarzoki',
+    icon: '/contact-icons/telegram.svg',
+    note: 'Fast direct messaging'
+  },
+  {
+    title: 'Phone',
+    value: '+98 913 656 4211',
+    href: 'tel:+989136564211',
+    icon: '/contact-icons/phone.svg',
+    note: 'For important direct contact'
+  },
+  {
+    title: 'Twitter / X',
+    value: '@ahmadrasti75',
+    href: 'https://x.com/ahmadrasti75',
+    icon: '/contact-icons/x.svg',
+    note: 'Updates and short posts'
+  },
+  {
+    title: 'LinkedIn',
+    value: 'ahmad-rasti-barzoki',
+    href: 'https://www.linkedin.com/in/ahmad-rasti-barzoki',
+    icon: '/contact-icons/linkedin.svg',
+    note: 'Professional profile'
+  },
+  {
+    title: 'GitHub',
+    value: 'ahmadrastibarzoki',
+    href: 'https://github.com/ahmadrastibarzoki',
+    icon: '/contact-icons/github.svg',
+    note: 'Code, projects and repositories'
+  },
+  {
+    title: 'Google Scholar',
+    value: 'Scholar profile',
+    href: 'https://scholar.google.com/citations?user=oDTmVngAAAAJ&hl=en',
+    icon: '/contact-icons/scholar.svg',
+    note: 'Publications and citations'
+  },
+  {
+    title: 'ORCID',
+    value: '0009-0002-7820-1497',
+    href: 'https://orcid.org/0009-0002-7820-1497',
+    icon: '/contact-icons/orcid.svg',
+    note: 'Research identifier'
+  }
+];
 ---
 
 <BaseLayout title={title} description={description}>
@@ -18,39 +77,17 @@ const description = 'Contact Ahmad Rasti Barzoki for research, collaboration and
 
   <section class="section">
     <div class="container">
-      <div class="contact-grid">
-        <div class="contact-item">
-          <strong>Email</strong>
-          <p><a class="inline-link" href="mailto:ahmadrasti11@gmail.com">ahmadrasti11@gmail.com</a></p>
-        </div>
-        <div class="contact-item">
-          <strong>Telegram</strong>
-          <p><a class="inline-link" href="https://t.me/ahmadrastibarzoki" target="_blank" rel="noreferrer">@ahmadrastibarzoki</a></p>
-        </div>
-        <div class="contact-item">
-          <strong>Phone</strong>
-          <p><a class="inline-link" href="tel:+989136564211">+98 913 656 4211</a></p>
-        </div>
-        <div class="contact-item">
-          <strong>Twitter / X</strong>
-          <p><a class="inline-link" href="https://x.com/ahmadrasti75" target="_blank" rel="noreferrer">@ahmadrasti75</a></p>
-        </div>
-        <div class="contact-item">
-          <strong>LinkedIn</strong>
-          <p><a class="inline-link" href="https://www.linkedin.com/in/ahmad-rasti-barzoki" target="_blank" rel="noreferrer">ahmad-rasti-barzoki</a></p>
-        </div>
-        <div class="contact-item">
-          <strong>GitHub</strong>
-          <p><a class="inline-link" href="https://github.com/ahmadrastibarzoki" target="_blank" rel="noreferrer">ahmadrastibarzoki</a></p>
-        </div>
-        <div class="contact-item">
-          <strong>Google Scholar</strong>
-          <p><a class="inline-link" href="https://scholar.google.com/citations?user=oDTmVngAAAAJ&hl=en" target="_blank" rel="noreferrer">Scholar profile</a></p>
-        </div>
-        <div class="contact-item">
-          <strong>ORCID</strong>
-          <p><a class="inline-link" href="https://orcid.org/0009-0002-7820-1497" target="_blank" rel="noreferrer">0009-0002-7820-1497</a></p>
-        </div>
+      <div class="contact-grid enhanced-contact-grid">
+        {contacts.map((item) => (
+          <a class="contact-item contact-item-rich" href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noreferrer' : undefined}>
+            <img class="contact-icon" src={item.icon} alt="" width="56" height="56" />
+            <div>
+              <strong>{item.title}</strong>
+              <p>{item.value}</p>
+              <span class="contact-note">{item.note}</span>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>

@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'CV | Ahmad Rasti Barzoki';
+const description = 'Curriculum vitae of Ahmad Rasti Barzoki — technology leader, data scientist and AI/ML researcher.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Curriculum Vitae</p>
+      <h1>Professional profile in one canonical page.</h1>
+      <p class="lead">
+        A concise public CV covering professional experience, education, research, teaching and selected work.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="mailto:ahmadrasti11@gmail.com">Email me</a>
+        <button class="button" type="button" onclick="window.print()">Print / Save as PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cv-page">
+    <div class="container two-col cv-layout">
+      <aside class="profile-card cv-sidebar print-card">
+        <img class="profile-photo" src="/images/about-portrait.png" alt="Portrait of Ahmad Rasti Barzoki" />
+        <div class="profile-body">
+          <h3>Ahmad Rasti Barzoki</h3>
+          <p class="section-copy">Technology Leader · Data Scientist · AI/ML Researcher</p>
+          <div class="mini-list">
+            <div><span>Email</span><a class="inline-link" href="mailto:ahmadrasti11@gmail.com">ahmadrasti11@gmail.com</a></div>
+            <div><span>LinkedIn</span><a class="inline-link" href="https://www.linkedin.com/in/ahmad-rasti-barzoki" target="_blank" rel="noreferrer">Profile</a></div>
+            <div><span>GitHub</span><a class="inline-link" href="https://github.com/ahmadrastibarzoki" target="_blank" rel="noreferrer">Repositories</a></div>
+            <div><span>Scholar</span><a class="inline-link" href="https://scholar.google.com/citations?user=oDTmVngAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a></div>
+            <div><span>ORCID</span><a class="inline-link" href="https://orcid.org/0009-0002-7820-1497" target="_blank" rel="noreferrer">0009-0002-7820-1497</a></div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="cv-content">
+        <section class="cv-section">
+          <span class="meta">Profile</span>
+          <h2>Summary</h2>
+          <p class="prose">
+            Ahmad Rasti Barzoki is a technology leader, Data Scientist and AI/ML researcher with a background in applied mathematics,
+            analytics engineering, enterprise systems and applied AI. His work spans graph machine learning, anomaly detection,
+            data engineering, decision support and responsible generative AI.
+          </p>
+        </section>
+
+        <section class="cv-section">
+          <span class="meta">Experience</span>
+          <h2>Professional experience</h2>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-head">
+                <h3>Technology Leadership, Data & AI — Gantoum / Bonzad</h3>
+                <span>2023 – Present</span>
+              </div>
+              <p>Leading technology, data and AI initiatives across business operations, analytics, systems integration, automation and digital transformation.</p>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-head">
+                <h3>Instructor — Deep Neural Networks</h3>
+                <span>Part-time</span>
+              </div>
+              <p>Designed and taught practical material on neural networks and modern deep learning concepts.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="cv-section">
+          <span class="meta">Education</span>
+          <h2>Education</h2>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-head">
+                <h3>M.Sc. in Applied Mathematics — Data Science</h3>
+                <span>Isfahan University of Technology</span>
+              </div>
+              <p>GPA 18.63/20 · Ranked 1st in incoming cohort. Research focus on unsupervised anomaly detection using graph neural networks.</p>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-head">
+                <h3>B.Sc. in Mathematics</h3>
+                <span>University degree</span>
+              </div>
+              <p>Strong mathematical foundation supporting later work in data science, machine learning and modeling.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="cv-section">
+          <span class="meta">Research</span>
+          <h2>Research interests</h2>
+          <div class="chip-wrap">
+            <span class="chip">Graph Machine Learning</span>
+            <span class="chip">Graph Neural Networks</span>
+            <span class="chip">Anomaly Detection</span>
+            <span class="chip">Representation Learning</span>
+            <span class="chip">Applied AI</span>
+            <span class="chip">AI for Healthcare</span>
+            <span class="chip">Time-Series</span>
+            <span class="chip">Responsible Generative AI</span>
+            <span class="chip">AI in Education</span>
+          </div>
+        </section>
+
+        <section class="cv-section">
+          <span class="meta">Teaching</span>
+          <h2>Teaching and academic roles</h2>
+          <ul class="clean-list">
+            <li>Teaching Assistant — General Mathematics 1 & 2</li>
+            <li>Teaching Assistant — Algebra</li>
+            <li>Teaching Assistant — Differential Equations</li>
+            <li>Teaching Assistant — Mathematical Foundations of Data Science</li>
+            <li>Teaching Assistant — Deep Learning</li>
+            <li>Instructor — Deep Neural Networks</li>
+          </ul>
+        </section>
+
+        <section class="cv-section">
+          <span class="meta">Publications</span>
+          <h2>Selected publication</h2>
+          <div class="publication-inline">
+            <img class="publication-inline-cover" src="/images/publication-egenai-dbr.png" alt="EGenAI-DBR publication cover" />
+            <div>
+              <h3>EGenAI-DBR: A Design-Based Framework for Responsible Generative AI Integration in Higher Education</h3>
+              <p>Peer-reviewed publication focused on responsible integration of generative AI in higher education.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="cv-section">
+          <span class="meta">Projects</span>
+          <h2>Selected public projects</h2>
+          <ul class="clean-list">
+            <li>Graph Anomaly Detection</li>
+            <li>Retail Analytics Engineering</li>
+            <li>Rahkaran ERP–MySQL Integration</li>
+          </ul>
+        </section>
+
+        <section class="cv-section">
+          <span class="meta">Skills</span>
+          <h2>Technical strengths</h2>
+          <div class="chip-wrap">
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Machine Learning</span>
+            <span class="chip">Deep Learning</span>
+            <span class="chip">Analytics Engineering</span>
+            <span class="chip">Data Engineering</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Git & GitHub</span>
+            <span class="chip">ERP / Enterprise Systems</span>
+            <span class="chip">Process Automation</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
