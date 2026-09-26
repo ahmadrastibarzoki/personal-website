@@ -1,37 +1,35 @@
 # Ahmad Rasti Barzoki — Personal Website
 
-Personal website for Ahmad Rasti Barzoki, built with Astro and designed for fast static deployment.
+This repository contains the source for my personal website and professional portfolio.
 
-## Local development
+The site brings together my work across artificial intelligence, data science, machine learning research, data engineering, and technology leadership.
 
-```bash
-npm install
-npm run dev
-```
+## Website
 
-## Production build
+**ahmadrastibarzoki.ir**
 
-```bash
-npm run build
-```
+## Sections
 
-The generated site is written to `dist/`.
+- About
+- Research
+- Projects
+- Publications
+- Contact
 
-## Cloudflare Pages
+## Featured work
 
-Use:
+- Graph Anomaly Detection
+- Retail Analytics Engineering
+- Rahkaran ERP–MySQL Integration
+- EGenAI-DBR research
 
-- Production branch: `main`
-- Build command: `npm run build`
-- Build output directory: `dist`
+## Profiles
 
-The current canonical domain is configured as:
+- LinkedIn: https://www.linkedin.com/in/ahmad-rasti-barzoki
+- GitHub: https://github.com/ahmadrastibarzoki
+- Google Scholar: https://scholar.google.com/citations?user=oDTmVngAAAAJ&hl=en
+- ORCID: https://orcid.org/0009-0002-7820-1497
 
-`https://ahmadrastibarzoki.ir`
+---
 
-When migrating to `.com`, update:
-
-- `astro.config.mjs`
-- `src/layouts/BaseLayout.astro`
-- `public/robots.txt`
-- `public/sitemap.xml`
+© Ahmad Rasti Barzoki

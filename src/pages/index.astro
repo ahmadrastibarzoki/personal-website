@@ -6,8 +6,9 @@ const description = 'Personal website of Ahmad Rasti Barzoki — technology lead
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="hero">
-    <div class="container">
+  <section class="hero-media">
+    <img class="hero-image" src="/images/hero-presenting.png" alt="Ahmad Rasti Barzoki presenting on stage" />
+    <div class="container hero-content">
       <p class="eyebrow">AI · Data Science · Research · Technology</p>
       <h1>Ahmad Rasti Barzoki</h1>
       <p class="lead">
@@ -16,8 +17,8 @@ const description = 'Personal website of Ahmad Rasti Barzoki — technology lead
       </p>
       <div class="hero-actions">
         <a class="button primary" href="/projects">View projects</a>
-        <a class="button" href="/research">Research profile</a>
-        <a class="button" href="https://www.linkedin.com/in/ahmad-rasti-barzoki/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="button on-dark" href="/research">Research profile</a>
+        <a class="button on-dark" href="/contact">Contact</a>
       </div>
     </div>
   </section>
@@ -70,16 +71,19 @@ const description = 'Personal website of Ahmad Rasti Barzoki — technology lead
 
       <div class="grid">
         <a class="card" href="https://github.com/ahmadrastibarzoki/graph-anomaly-detection" target="_blank" rel="noreferrer">
+          <img class="project-image" src="/images/project-graph-anomaly.png" alt="Graph Anomaly Detection project cover" loading="lazy" />
           <span class="tag">Python · Graph ML</span>
           <h3>Graph Anomaly Detection</h3>
           <p>Research implementation of graph autoencoder anomaly detection with GAT and MST-geodesic regularization.</p>
         </a>
         <a class="card" href="https://github.com/ahmadrastibarzoki/retail-analytics-engineering" target="_blank" rel="noreferrer">
+          <img class="project-image" src="/images/project-retail-analytics.png" alt="Retail Analytics Engineering project cover" loading="lazy" />
           <span class="tag">Python · Analytics</span>
           <h3>Retail Analytics Engineering</h3>
           <p>Clean-room analytics engineering project with synthetic data, validation, dimensional analysis, testing and CI.</p>
         </a>
         <a class="card" href="https://github.com/ahmadrastibarzoki/rahkaran-erp-mysql-integration" target="_blank" rel="noreferrer">
+          <img class="project-image" src="/images/project-erp-mysql.png" alt="ERP to MySQL Data Integration project cover" loading="lazy" />
           <span class="tag">Python · Data Engineering</span>
           <h3>ERP–MySQL Integration</h3>
           <p>Clean-room reference implementation of a synthetic ERP-to-MySQL integration pipeline.</p>

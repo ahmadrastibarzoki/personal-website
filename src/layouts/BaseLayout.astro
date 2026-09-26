@@ -14,9 +14,15 @@ const personSchema = {
   '@type': 'Person',
   name: 'Ahmad Rasti Barzoki',
   url: 'https://ahmadrastibarzoki.ir',
+  email: 'mailto:ahmadrasti11@gmail.com',
+  telephone: '+989136564211',
   sameAs: [
     'https://www.linkedin.com/in/ahmad-rasti-barzoki/',
-    'https://github.com/ahmadrastibarzoki'
+    'https://github.com/ahmadrastibarzoki',
+    'https://scholar.google.com/citations?user=oDTmVngAAAAJ&hl=en',
+    'https://orcid.org/0009-0002-7820-1497',
+    'https://x.com/ahmadrasti75',
+    'https://t.me/ahmadrastibarzoki'
   ],
   jobTitle: 'Technology Leader, Data Scientist and AI/ML Researcher',
   knowsAbout: [
@@ -42,31 +48,48 @@ const personSchema = {
     <meta name="author" content="Ahmad Rasti Barzoki" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="Ahmad Rasti Barzoki" />
+    <meta property="og:image" content={new URL('/images/hero-presenting.png', Astro.site)} />
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/images/hero-presenting.png', Astro.site)} />
 
+    <script is:inline>
+      const storedTheme = localStorage.getItem('theme');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initialTheme = storedTheme || (systemDark ? 'dark' : 'light');
+      document.documentElement.dataset.theme = initialTheme;
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
     <title>{title}</title>
   </head>
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="/" aria-label="Ahmad Rasti Barzoki home">ARB</a>
+        <a class="brand" href="/" aria-label="Ahmad Rasti Barzoki home">
+          <img src="/brand/arb-logo.png" alt="" width="44" height="44" />
+        </a>
         <nav aria-label="Primary navigation">
           <a href="/about">About</a>
           <a href="/research">Research</a>
           <a href="/projects">Projects</a>
           <a href="/publications">Publications</a>
+          <a href="/contact">Contact</a>
         </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color mode">
+          <span class="theme-toggle-dark">🌙</span>
+          <span class="theme-toggle-light">☀️</span>
+        </button>
       </div>
     </header>
 
@@ -80,8 +103,21 @@ const personSchema = {
         <div class="footer-links">
           <a href="https://github.com/ahmadrastibarzoki" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://www.linkedin.com/in/ahmad-rasti-barzoki/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="/contact">Contact</a>
         </div>
       </div>
     </footer>
+
+    <script is:inline>
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          root.dataset.theme = nextTheme;
+          localStorage.setItem('theme', nextTheme);
+        });
+      }
+    </script>
   </body>
 </html>
