@@ -20,9 +20,7 @@ jobs:
 
       - name: Build and upload Astro site
         uses: withastro/action@v6
-        with:
-          build-cmd: npm run build -- --site https://ahmadrastibarzoki.github.io --base /personal-website
-
+        
   deploy:
     needs: build
     runs-on: ubuntu-latest
