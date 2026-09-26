@@ -14,6 +14,7 @@ The site brings together my work across artificial intelligence, data science, m
 - Research
 - Projects
 - Publications
+- CV
 - Contact
 
 ## Featured work
