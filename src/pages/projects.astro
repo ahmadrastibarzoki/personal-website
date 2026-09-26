@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Projects | Ahmad Rasti Barzoki';
+const description = 'Selected open-source projects by Ahmad Rasti Barzoki in graph machine learning, analytics engineering and data integration.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Projects</p>
+      <h1>Open, reproducible technical work.</h1>
+      <p class="lead">
+        Selected projects spanning research implementation, analytics engineering and enterprise data integration.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container list">
+      <article class="list-item">
+        <span class="meta">Graph ML · Python</span>
+        <h3>Graph Anomaly Detection</h3>
+        <p>Reconstructed research implementation of graph autoencoder anomaly detection with GAT and MST-geodesic regularization.</p>
+        <p><a class="inline-link" href="https://github.com/ahmadrastibarzoki/graph-anomaly-detection" target="_blank" rel="noreferrer">View repository →</a></p>
+      </article>
+
+      <article class="list-item">
+        <span class="meta">Analytics Engineering · Python</span>
+        <h3>Retail Analytics Engineering</h3>
+        <p>Reproducible clean-room retail analytics engineering project with synthetic data, validation, dimensional analysis, testing and CI.</p>
+        <p><a class="inline-link" href="https://github.com/ahmadrastibarzoki/retail-analytics-engineering" target="_blank" rel="noreferrer">View repository →</a></p>
+      </article>
+
+      <article class="list-item">
+        <span class="meta">Data Engineering · Python</span>
+        <h3>Rahkaran ERP–MySQL Integration</h3>
+        <p>Clean-room reference implementation of a synthetic ERP-to-MySQL integration pipeline.</p>
+        <p><a class="inline-link" href="https://github.com/ahmadrastibarzoki/rahkaran-erp-mysql-integration" target="_blank" rel="noreferrer">View repository →</a></p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

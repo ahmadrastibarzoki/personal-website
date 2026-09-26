@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Ahmad Rasti Barzoki | AI, Data Science & Research';
+const description = 'Personal website of Ahmad Rasti Barzoki — technology leader, data scientist and AI/ML researcher focused on graph machine learning, anomaly detection, applied AI and data engineering.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">AI · Data Science · Research · Technology</p>
+      <h1>Ahmad Rasti Barzoki</h1>
+      <p class="lead">
+        Technology leader, Data Scientist and AI/ML researcher working across
+        Graph Machine Learning, Anomaly Detection, Applied AI and Data Engineering.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="/projects">View projects</a>
+        <a class="button" href="/research">Research profile</a>
+        <a class="button" href="https://www.linkedin.com/in/ahmad-rasti-barzoki/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Focus</p>
+          <h2>Building at the intersection of research and real-world systems.</h2>
+        </div>
+        <p class="section-copy">
+          My work spans machine learning research, production analytics, data engineering,
+          enterprise systems and responsible applications of AI. I am especially interested
+          in methods that are technically rigorous and useful in practice.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Research</span>
+          <h3>Graph Machine Learning</h3>
+          <p>Graph neural networks, representation learning, graph autoencoders and unsupervised anomaly detection.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Applied AI</span>
+          <h3>Machine Learning Systems</h3>
+          <p>Practical AI and analytics systems for decision support, forecasting and data-driven operations.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Engineering</span>
+          <h3>Data & Enterprise Integration</h3>
+          <p>Reliable data pipelines, analytics engineering and clean integration patterns for enterprise systems.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2>Open projects.</h2>
+        </div>
+        <p class="section-copy">
+          Public, reproducible projects that reflect my research and engineering interests.
+        </p>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="https://github.com/ahmadrastibarzoki/graph-anomaly-detection" target="_blank" rel="noreferrer">
+          <span class="tag">Python · Graph ML</span>
+          <h3>Graph Anomaly Detection</h3>
+          <p>Research implementation of graph autoencoder anomaly detection with GAT and MST-geodesic regularization.</p>
+        </a>
+        <a class="card" href="https://github.com/ahmadrastibarzoki/retail-analytics-engineering" target="_blank" rel="noreferrer">
+          <span class="tag">Python · Analytics</span>
+          <h3>Retail Analytics Engineering</h3>
+          <p>Clean-room analytics engineering project with synthetic data, validation, dimensional analysis, testing and CI.</p>
+        </a>
+        <a class="card" href="https://github.com/ahmadrastibarzoki/rahkaran-erp-mysql-integration" target="_blank" rel="noreferrer">
+          <span class="tag">Python · Data Engineering</span>
+          <h3>ERP–MySQL Integration</h3>
+          <p>Clean-room reference implementation of a synthetic ERP-to-MySQL integration pipeline.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

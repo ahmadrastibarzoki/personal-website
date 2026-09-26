@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ahmad Rasti Barzoki',
+  url: 'https://ahmadrastibarzoki.ir',
+  sameAs: [
+    'https://www.linkedin.com/in/ahmad-rasti-barzoki/',
+    'https://github.com/ahmadrastibarzoki'
+  ],
+  jobTitle: 'Technology Leader, Data Scientist and AI/ML Researcher',
+  knowsAbout: [
+    'Artificial Intelligence',
+    'Machine Learning',
+    'Data Science',
+    'Graph Machine Learning',
+    'Graph Neural Networks',
+    'Anomaly Detection',
+    'Data Engineering',
+    'Applied AI'
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Ahmad Rasti Barzoki" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Ahmad Rasti Barzoki" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="/" aria-label="Ahmad Rasti Barzoki home">ARB</a>
+        <nav aria-label="Primary navigation">
+          <a href="/about">About</a>
+          <a href="/research">Research</a>
+          <a href="/projects">Projects</a>
+          <a href="/publications">Publications</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© {new Date().getFullYear()} Ahmad Rasti Barzoki</p>
+        <div class="footer-links">
+          <a href="https://github.com/ahmadrastibarzoki" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/ahmad-rasti-barzoki/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
