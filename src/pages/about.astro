@@ -19,7 +19,14 @@ const profilePageSchema = {
 };
 ---
 
-<BaseLayout title={title} description={description} schema={profilePageSchema}>
+<BaseLayout
+  title={title}
+  description={description}
+  schema={profilePageSchema}
+  image="/images/about-portrait.png"
+  imageAlt="Portrait of Ahmad Rasti Barzoki"
+  ogType="profile"
+>
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">About</p>
