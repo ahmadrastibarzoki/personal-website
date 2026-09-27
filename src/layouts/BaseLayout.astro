@@ -69,13 +69,51 @@ const structuredData = {
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9WR3LHVXHC"></script>
+    <!-- Google Analytics: Basic Consent Mode -->
     <script is:inline>
+      const GA_MEASUREMENT_ID = 'G-9WR3LHVXHC';
+      const ANALYTICS_CONSENT_KEY = 'analytics_consent_v1';
+
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-9WR3LHVXHC');
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+
+      // Nothing is sent to Google until the Google tag itself is loaded.
+      window.gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
+
+      window.loadGoogleAnalytics = function () {
+        if (window.__ga4Loaded) return;
+        window.__ga4Loaded = true;
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+        document.head.appendChild(script);
+
+        window.gtag('js', new Date());
+        window.gtag('config', GA_MEASUREMENT_ID);
+      };
+
+      let storedAnalyticsConsent = null;
+      try {
+        storedAnalyticsConsent = localStorage.getItem(ANALYTICS_CONSENT_KEY);
+      } catch {}
+
+      if (storedAnalyticsConsent === 'granted') {
+        window.gtag('consent', 'update', {
+          analytics_storage: 'granted',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+        window.loadGoogleAnalytics();
+      }
     </script>
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
@@ -125,6 +163,7 @@ const structuredData = {
           <a href="/publications">Publications</a>
           <a href="/cv">CV</a>
           <a href="/contact">Contact</a>
+          <button class="footer-consent-button" id="cookie-settings" type="button">Cookie settings</button>
         </nav>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color mode">
           <span class="theme-toggle-dark">🌙</span>
@@ -149,6 +188,29 @@ const structuredData = {
       </div>
     </footer>
 
+    <div
+      class="consent-banner"
+      id="analytics-consent-banner"
+      role="dialog"
+      aria-labelledby="analytics-consent-title"
+      aria-describedby="analytics-consent-description"
+      hidden
+    >
+      <div class="consent-banner-inner">
+        <div class="consent-copy">
+          <strong id="analytics-consent-title">Analytics cookies</strong>
+          <p id="analytics-consent-description">
+            This website uses optional Google Analytics cookies to understand how visitors use the site.
+            Analytics stays off until you choose to allow it. You can change your choice anytime from Cookie settings.
+          </p>
+        </div>
+        <div class="consent-actions">
+          <button class="button primary" id="accept-analytics" type="button">Accept analytics</button>
+          <button class="button" id="reject-analytics" type="button">Reject</button>
+        </div>
+      </div>
+    </div>
+
     <script is:inline>
       const root = document.documentElement;
       const toggle = document.getElementById('theme-toggle');
@@ -159,6 +221,73 @@ const structuredData = {
           localStorage.setItem('theme', nextTheme);
         });
       }
+    </script>
+    <script is:inline>
+      const consentBanner = document.getElementById('analytics-consent-banner');
+      const acceptAnalytics = document.getElementById('accept-analytics');
+      const rejectAnalytics = document.getElementById('reject-analytics');
+      const cookieSettings = document.getElementById('cookie-settings');
+
+      const readAnalyticsConsent = () => {
+        try {
+          return localStorage.getItem(ANALYTICS_CONSENT_KEY);
+        } catch {
+          return null;
+        }
+      };
+
+      const saveAnalyticsConsent = (value) => {
+        try {
+          localStorage.setItem(ANALYTICS_CONSENT_KEY, value);
+        } catch {}
+      };
+
+      const showConsentBanner = () => {
+        if (consentBanner) consentBanner.hidden = false;
+      };
+
+      const hideConsentBanner = () => {
+        if (consentBanner) consentBanner.hidden = true;
+      };
+
+      if (!readAnalyticsConsent()) {
+        showConsentBanner();
+      }
+
+      acceptAnalytics?.addEventListener('click', () => {
+        saveAnalyticsConsent('granted');
+
+        window.gtag?.('consent', 'update', {
+          analytics_storage: 'granted',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+
+        window.loadGoogleAnalytics?.();
+        hideConsentBanner();
+      });
+
+      rejectAnalytics?.addEventListener('click', () => {
+        const wasGranted = readAnalyticsConsent() === 'granted';
+        saveAnalyticsConsent('denied');
+
+        window.gtag?.('consent', 'update', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+
+        hideConsentBanner();
+
+        // If Analytics was already loaded in this tab, reload so it remains blocked.
+        if (wasGranted) window.location.reload();
+      });
+
+      cookieSettings?.addEventListener('click', () => {
+        showConsentBanner();
+      });
     </script>
   </body>
 </html>
