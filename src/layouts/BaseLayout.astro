@@ -163,7 +163,6 @@ const structuredData = {
           <a href="/publications">Publications</a>
           <a href="/cv">CV</a>
           <a href="/contact">Contact</a>
-          <button class="footer-consent-button" id="cookie-settings" type="button">Cookie settings</button>
         </nav>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color mode">
           <span class="theme-toggle-dark">🌙</span>
@@ -184,6 +183,7 @@ const structuredData = {
           <a href="https://www.linkedin.com/in/ahmad-rasti-barzoki/" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="/cv">CV</a>
           <a href="/contact">Contact</a>
+          <button class="footer-consent-button" id="cookie-settings" type="button">Cookie settings</button>
         </div>
       </div>
     </footer>
@@ -287,6 +287,107 @@ const structuredData = {
 
       cookieSettings?.addEventListener('click', () => {
         showConsentBanner();
+      });
+    </script>
+    <script is:inline>
+      // High-value analytics events. These are only sent after analytics consent is granted.
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+
+        const link = target.closest('a[href]');
+        if (!link) return;
+
+        let analyticsConsent = null;
+        try {
+          analyticsConsent = localStorage.getItem(ANALYTICS_CONSENT_KEY);
+        } catch {}
+
+        if (
+          analyticsConsent !== 'granted' ||
+          !window.__ga4Loaded ||
+          typeof window.gtag !== 'function'
+        ) {
+          return;
+        }
+
+        const href = link.getAttribute('href') || '';
+        const pagePath = window.location.pathname;
+
+        let eventName = null;
+        const parameters = {
+          page_path: pagePath
+        };
+
+        // CV PDF download
+        if (href.includes('/cv/Ahmad_Rasti_Barzoki_CV.pdf')) {
+          eventName = 'cv_download';
+          parameters.asset = 'public_cv';
+        }
+
+        // Direct contact actions
+        else if (href.startsWith('mailto:')) {
+          eventName = 'contact_click';
+          parameters.channel = 'email';
+        }
+        else if (href.startsWith('tel:')) {
+          eventName = 'contact_click';
+          parameters.channel = 'phone';
+        }
+        else if (href.includes('t.me/')) {
+          eventName = 'contact_click';
+          parameters.channel = 'telegram';
+        }
+
+        // Publication actions
+        else if (href.includes('doi.org/')) {
+          eventName = 'publication_click';
+          parameters.destination = 'doi';
+        }
+        else if (href.includes('emerald.com/')) {
+          eventName = 'publication_click';
+          parameters.destination = 'publisher';
+        }
+
+        // Public project repository actions
+        else if (href.includes('github.com/ahmadrastibarzoki/graph-anomaly-detection')) {
+          eventName = 'project_click';
+          parameters.project = 'graph_anomaly_detection';
+        }
+        else if (href.includes('github.com/ahmadrastibarzoki/retail-analytics-engineering')) {
+          eventName = 'project_click';
+          parameters.project = 'retail_analytics_engineering';
+        }
+        else if (href.includes('github.com/ahmadrastibarzoki/rahkaran-erp-mysql-integration')) {
+          eventName = 'project_click';
+          parameters.project = 'rahkaran_erp_mysql_integration';
+        }
+
+        // Professional / academic profiles
+        else if (href.includes('linkedin.com/')) {
+          eventName = 'profile_click';
+          parameters.platform = 'linkedin';
+        }
+        else if (href.includes('github.com/ahmadrastibarzoki')) {
+          eventName = 'profile_click';
+          parameters.platform = 'github';
+        }
+        else if (href.includes('scholar.google.com/')) {
+          eventName = 'profile_click';
+          parameters.platform = 'google_scholar';
+        }
+        else if (href.includes('orcid.org/')) {
+          eventName = 'profile_click';
+          parameters.platform = 'orcid';
+        }
+        else if (href.includes('x.com/ahmadrasti75')) {
+          eventName = 'profile_click';
+          parameters.platform = 'x';
+        }
+
+        if (eventName) {
+          window.gtag('event', eventName, parameters);
+        }
       });
     </script>
   </body>
