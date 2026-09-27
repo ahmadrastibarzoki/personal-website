@@ -3,9 +3,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'About | Ahmad Rasti Barzoki';
 const description = 'About Ahmad Rasti Barzoki, a technology leader, data scientist and AI/ML researcher with a background in applied mathematics and data science.';
+
+const profilePageSchema = {
+  '@type': 'ProfilePage',
+  '@id': 'https://ahmadrastibarzoki.ir/about#profile-page',
+  url: 'https://ahmadrastibarzoki.ir/about',
+  name: 'About Ahmad Rasti Barzoki',
+  mainEntity: {
+    '@id': 'https://ahmadrastibarzoki.ir/#person'
+  },
+  isPartOf: {
+    '@id': 'https://ahmadrastibarzoki.ir/#website'
+  },
+  inLanguage: 'en'
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} schema={profilePageSchema}>
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">About</p>

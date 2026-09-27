@@ -3,9 +3,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Ahmad Rasti Barzoki | AI, Data Science & Research';
 const description = 'Personal website of Ahmad Rasti Barzoki — technology leader, data scientist and AI/ML researcher focused on graph machine learning, anomaly detection, applied AI and data engineering.';
+
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': 'https://ahmadrastibarzoki.ir/#website',
+  url: 'https://ahmadrastibarzoki.ir/',
+  name: 'Ahmad Rasti Barzoki',
+  alternateName: 'Ahmad Rasti',
+  creator: {
+    '@id': 'https://ahmadrastibarzoki.ir/#person'
+  },
+  inLanguage: 'en'
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} schema={websiteSchema}>
   <section class="hero-media">
     <img class="hero-image" src="/images/hero-presenting.png" alt="Ahmad Rasti Barzoki presenting on stage" />
     <div class="container hero-content">
