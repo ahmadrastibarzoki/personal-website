@@ -10,6 +10,8 @@ interface Props {
   ogType?: 'website' | 'profile' | 'article';
   publishedTime?: string;
   modifiedTime?: string;
+  articleSection?: string;
+  articleTags?: string[];
 }
 
 const {
@@ -20,7 +22,9 @@ const {
   imageAlt = 'Ahmad Rasti Barzoki - AI, Data Science & Research',
   ogType = 'website',
   publishedTime,
-  modifiedTime
+  modifiedTime,
+  articleSection,
+  articleTags = []
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -125,6 +129,8 @@ const structuredData = {
     <meta name="author" content="Ahmad Rasti Barzoki" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Insights by Ahmad Rasti Barzoki" href="/rss.xml" />
     <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
@@ -139,6 +145,9 @@ const structuredData = {
     <meta property="og:image:alt" content={imageAlt} />
     {publishedTime && <meta property="article:published_time" content={publishedTime} />}
     {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    {ogType === 'article' && <meta property="article:author" content="https://ahmadrastibarzoki.ir/about" />}
+    {articleSection && <meta property="article:section" content={articleSection} />}
+    {articleTags.map((tag) => <meta property="article:tag" content={tag} />)}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@ahmadrasti75" />

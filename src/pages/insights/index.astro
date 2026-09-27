@@ -1,28 +1,33 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { insights } from '../../data/insights';
+import {
+  estimateReadingTime,
+  formatInsightDate,
+  getPublishedInsights
+} from '../../utils/insights';
 
 const title = 'Insights | Ahmad Rasti Barzoki';
 const description = 'Technical and research insights by Ahmad Rasti Barzoki on graph machine learning, anomaly detection, analytics engineering, data systems and responsible AI.';
 
+const posts = await getPublishedInsights();
+const cards = posts.map((post) => ({
+  post,
+  readingTime: estimateReadingTime(post.body)
+}));
+
+if (!Astro.site) {
+  throw new Error('Astro site URL is required for structured data.');
+}
+
 const blogSchema = {
   '@type': 'Blog',
-  '@id': 'https://ahmadrastibarzoki.ir/insights#blog',
-  url: 'https://ahmadrastibarzoki.ir/insights',
+  '@id': new URL('/insights#blog', Astro.site).href,
+  url: new URL('/insights', Astro.site).href,
   name: 'Insights by Ahmad Rasti Barzoki',
   description,
   author: {
-    '@id': 'https://ahmadrastibarzoki.ir/#person'
+    '@id': new URL('/#person', Astro.site).href
   },
-  blogPost: insights.map((item) => ({
-    '@type': 'BlogPosting',
-    headline: item.title,
-    url: `https://ahmadrastibarzoki.ir/insights/${item.slug}`,
-    datePublished: item.datePublished,
-    author: {
-      '@id': 'https://ahmadrastibarzoki.ir/#person'
-    }
-  })),
   inLanguage: 'en'
 };
 ---
@@ -47,17 +52,23 @@ const blogSchema = {
 
   <section class="section">
     <div class="container insights-list">
-      {insights.map((item) => (
+      {cards.map(({ post, readingTime }) => (
         <article class="insight-card">
           <div class="insight-card-meta">
-            <span class="tag">{item.category}</span>
-            <span>{item.readingTime}</span>
+            <span class="tag">{post.data.category}</span>
+            <span>
+              <time datetime={post.data.datePublished.toISOString()}>
+                {formatInsightDate(post.data.datePublished)}
+              </time>
+              {' · '}
+              {readingTime}
+            </span>
           </div>
           <h2>
-            <a href={`/insights/${item.slug}`}>{item.title}</a>
+            <a href={`/insights/${post.id}`}>{post.data.title}</a>
           </h2>
-          <p>{item.description}</p>
-          <a class="inline-link" href={`/insights/${item.slug}`}>Read article →</a>
+          <p>{post.data.description}</p>
+          <a class="inline-link" href={`/insights/${post.id}`}>Read article →</a>
         </article>
       ))}
     </div>

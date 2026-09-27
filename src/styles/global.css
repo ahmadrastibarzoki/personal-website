@@ -1017,3 +1017,38 @@ h3 { font-size: 1.24rem; }
     flex-direction: column;
   }
 }
+
+
+/* Content Collection article refinements */
+.article-body > p a,
+.article-body > ul a,
+.article-body > ol a {
+  color: var(--accent-soft);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--accent-soft) 35%, transparent);
+  text-underline-offset: .2em;
+}
+
+.article-meta a:hover {
+  color: var(--accent-soft);
+}
+
+.article-sources {
+  margin-top: 3.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.article-sources h2 {
+  margin-top: 0;
+}
+
+.article-sources ul {
+  margin-bottom: 0;
+}
+
+.article-sources a {
+  color: var(--accent-soft);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}

@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPublishedInsights } from '../utils/insights';
 
 const title = 'Ahmad Rasti Barzoki | AI, Data Science & Research';
 const description = 'Personal website of Ahmad Rasti Barzoki — technology leader, data scientist and AI/ML researcher focused on graph machine learning, anomaly detection, applied AI and data engineering.';
+
+const latestInsights = (await getPublishedInsights()).slice(0, 3);
 
 const websiteSchema = {
   '@type': 'WebSite',
@@ -164,21 +167,13 @@ const websiteSchema = {
       </div>
 
       <div class="grid">
-        <a class="card insight-home-card" href="/insights/graph-anomaly-detection-autoencoders">
-          <span class="tag">Graph Machine Learning</span>
-          <h3>Graph Anomaly Detection with Graph Autoencoders</h3>
-          <p>A practical guide to representations, anomaly scoring, evaluation pitfalls and structure-aware regularization.</p>
-        </a>
-        <a class="card insight-home-card" href="/insights/retail-analytics-engineering">
-          <span class="tag">Analytics Engineering</span>
-          <h3>Designing Reliable Retail Analytics Pipelines</h3>
-          <p>From raw transactions to tested, decision-ready data with explicit definitions and reproducible transformations.</p>
-        </a>
-        <a class="card insight-home-card" href="/insights/responsible-generative-ai-higher-education">
-          <span class="tag">Responsible AI</span>
-          <h3>Responsible Generative AI in Higher Education</h3>
-          <p>Moving beyond generic AI policies toward course design, assessment, integrity and continuous evaluation.</p>
-        </a>
+        {latestInsights.map((post) => (
+          <a class="card insight-home-card" href={`/insights/${post.id}`}>
+            <span class="tag">{post.data.category}</span>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+          </a>
+        ))}
       </div>
 
       <div class="actions">
