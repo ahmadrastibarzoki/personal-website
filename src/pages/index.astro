@@ -25,7 +25,17 @@ const websiteSchema = {
   imageAlt="Ahmad Rasti Barzoki presenting on stage"
 >
   <section class="hero-media">
-    <img class="hero-image" src="/images/hero-presenting.png" alt="Ahmad Rasti Barzoki presenting on stage" />
+    <img
+      class="hero-image"
+      src="/images/hero-presenting-1800.webp"
+      srcset="/images/hero-presenting-720.webp 720w, /images/hero-presenting-1200.webp 1200w, /images/hero-presenting-1800.webp 1800w"
+      sizes="100vw"
+      width="1672"
+      height="941"
+      alt="Ahmad Rasti Barzoki presenting on stage"
+      fetchpriority="high"
+      decoding="async"
+    />
     <div class="container hero-content">
       <p class="eyebrow">AI · Data Science · Research · Technology</p>
       <h1>Ahmad Rasti Barzoki</h1>
@@ -90,19 +100,49 @@ const websiteSchema = {
 
       <div class="grid">
         <a class="card" href="https://github.com/ahmadrastibarzoki/graph-anomaly-detection" target="_blank" rel="noreferrer">
-          <img class="project-image" src="/images/project-graph-anomaly.png" alt="Graph Anomaly Detection project cover" loading="lazy" />
+          <img
+            class="project-image"
+            src="/images/project-graph-anomaly-960.webp"
+            srcset="/images/project-graph-anomaly-480.webp 480w, /images/project-graph-anomaly-960.webp 960w"
+            sizes="(max-width: 920px) calc(100vw - 2rem), 33vw"
+            width="834"
+            height="464"
+            alt="Graph Anomaly Detection project cover"
+            loading="lazy"
+            decoding="async"
+          />
           <span class="tag">Python · Graph ML</span>
           <h3>Graph Anomaly Detection</h3>
           <p>Research implementation of graph autoencoder anomaly detection with GAT and MST-geodesic regularization.</p>
         </a>
         <a class="card" href="https://github.com/ahmadrastibarzoki/retail-analytics-engineering" target="_blank" rel="noreferrer">
-          <img class="project-image" src="/images/project-retail-analytics.png" alt="Retail Analytics Engineering project cover" loading="lazy" />
+          <img
+            class="project-image"
+            src="/images/project-retail-analytics-960.webp"
+            srcset="/images/project-retail-analytics-480.webp 480w, /images/project-retail-analytics-960.webp 960w"
+            sizes="(max-width: 920px) calc(100vw - 2rem), 33vw"
+            width="838"
+            height="478"
+            alt="Retail Analytics Engineering project cover"
+            loading="lazy"
+            decoding="async"
+          />
           <span class="tag">Python · Analytics</span>
           <h3>Retail Analytics Engineering</h3>
           <p>Clean-room analytics engineering project with synthetic data, validation, dimensional analysis, testing and CI.</p>
         </a>
         <a class="card" href="https://github.com/ahmadrastibarzoki/rahkaran-erp-mysql-integration" target="_blank" rel="noreferrer">
-          <img class="project-image" src="/images/project-erp-mysql.png" alt="ERP to MySQL Data Integration project cover" loading="lazy" />
+          <img
+            class="project-image"
+            src="/images/project-erp-mysql-960.webp"
+            srcset="/images/project-erp-mysql-480.webp 480w, /images/project-erp-mysql-960.webp 960w"
+            sizes="(max-width: 920px) calc(100vw - 2rem), 33vw"
+            width="837"
+            height="474"
+            alt="ERP to MySQL Data Integration project cover"
+            loading="lazy"
+            decoding="async"
+          />
           <span class="tag">Python · Data Engineering</span>
           <h3>ERP–MySQL Integration</h3>
           <p>Clean-room reference implementation of a synthetic ERP-to-MySQL integration pipeline.</p>

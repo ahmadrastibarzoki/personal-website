@@ -84,7 +84,17 @@ const articleSchema = {
 
   <section class="section">
     <div class="container publication-grid">
-      <img class="publication-cover" src="/images/publication-egenai-dbr.png" alt="EGenAI-DBR publication cover" />
+      <img
+        class="publication-cover"
+        src="/images/publication-egenai-dbr-1000.webp"
+        srcset="/images/publication-egenai-dbr-480.webp 480w, /images/publication-egenai-dbr-1000.webp 1000w"
+        sizes="(max-width: 920px) calc(100vw - 2rem), 45vw"
+        width="838"
+        height="468"
+        alt="EGenAI-DBR publication cover"
+        loading="lazy"
+        decoding="async"
+      />
       <article class="list-item">
         <span class="meta">2026 · Peer-reviewed · Open access</span>
         <h3>EGenAI-DBR: A Design-Based Framework for Responsible Generative AI Integration in Higher Education</h3>

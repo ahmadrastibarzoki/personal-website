@@ -41,7 +41,17 @@ const profilePageSchema = {
   <section class="section">
     <div class="container two-col">
       <aside class="profile-card">
-        <img class="profile-photo" src="/images/about-portrait.png" alt="Portrait of Ahmad Rasti Barzoki" />
+        <img
+          class="profile-photo"
+          src="/images/about-portrait-900.webp"
+          srcset="/images/about-portrait-480.webp 480w, /images/about-portrait-900.webp 900w"
+          sizes="(max-width: 920px) calc(100vw - 2rem), 360px"
+          width="900"
+          height="1125"
+          alt="Portrait of Ahmad Rasti Barzoki"
+          loading="lazy"
+          decoding="async"
+        />
         <div class="profile-body">
           <h3>Ahmad Rasti Barzoki</h3>
           <p class="section-copy">Technology Leader · Data Scientist · AI/ML Researcher</p>
