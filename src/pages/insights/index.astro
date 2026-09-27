@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { insights } from '../../data/insights';
+
+const title = 'Insights | Ahmad Rasti Barzoki';
+const description = 'Technical and research insights by Ahmad Rasti Barzoki on graph machine learning, anomaly detection, analytics engineering, data systems and responsible AI.';
+
+const blogSchema = {
+  '@type': 'Blog',
+  '@id': 'https://ahmadrastibarzoki.ir/insights#blog',
+  url: 'https://ahmadrastibarzoki.ir/insights',
+  name: 'Insights by Ahmad Rasti Barzoki',
+  description,
+  author: {
+    '@id': 'https://ahmadrastibarzoki.ir/#person'
+  },
+  blogPost: insights.map((item) => ({
+    '@type': 'BlogPosting',
+    headline: item.title,
+    url: `https://ahmadrastibarzoki.ir/insights/${item.slug}`,
+    datePublished: item.datePublished,
+    author: {
+      '@id': 'https://ahmadrastibarzoki.ir/#person'
+    }
+  })),
+  inLanguage: 'en'
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={blogSchema}
+  image="/images/hero-presenting.png"
+  imageAlt="Insights by Ahmad Rasti Barzoki on AI, data science and research"
+>
+  <section class="page-hero insights-hero">
+    <div class="container">
+      <p class="eyebrow">Insights</p>
+      <h1>Technical notes, research ideas and lessons from real systems.</h1>
+      <p class="lead">
+        Long-form writing on graph machine learning, anomaly detection, analytics engineering,
+        data systems and responsible AI — focused on methods, trade-offs and practical reasoning.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container insights-list">
+      {insights.map((item) => (
+        <article class="insight-card">
+          <div class="insight-card-meta">
+            <span class="tag">{item.category}</span>
+            <span>{item.readingTime}</span>
+          </div>
+          <h2>
+            <a href={`/insights/${item.slug}`}>{item.title}</a>
+          </h2>
+          <p>{item.description}</p>
+          <a class="inline-link" href={`/insights/${item.slug}`}>Read article →</a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

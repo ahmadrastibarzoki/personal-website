@@ -8,6 +8,8 @@ interface Props {
   image?: string;
   imageAlt?: string;
   ogType?: 'website' | 'profile' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 const {
@@ -16,7 +18,9 @@ const {
   schema,
   image = '/images/hero-presenting.png',
   imageAlt = 'Ahmad Rasti Barzoki - AI, Data Science & Research',
-  ogType = 'website'
+  ogType = 'website',
+  publishedTime,
+  modifiedTime
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -133,6 +137,8 @@ const structuredData = {
     <meta property="og:locale" content="en_US" />
     <meta property="og:image" content={socialImageURL} />
     <meta property="og:image:alt" content={imageAlt} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@ahmadrasti75" />
@@ -161,6 +167,7 @@ const structuredData = {
           <a href="/research">Research</a>
           <a href="/projects">Projects</a>
           <a href="/publications">Publications</a>
+          <a href="/insights">Insights</a>
           <a href="/cv">CV</a>
           <a href="/contact">Contact</a>
         </nav>

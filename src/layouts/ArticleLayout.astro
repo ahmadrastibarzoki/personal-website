@@ -1,0 +1,105 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Insight } from '../data/insights';
+
+interface Props {
+  insight: Insight;
+}
+
+const { insight } = Astro.props;
+const canonical = `https://ahmadrastibarzoki.ir/insights/${insight.slug}`;
+
+const articleSchema = {
+  '@type': 'BlogPosting',
+  '@id': `${canonical}#article`,
+  headline: insight.title,
+  description: insight.description,
+  url: canonical,
+  mainEntityOfPage: canonical,
+  image: `https://ahmadrastibarzoki.ir${insight.image}`,
+  datePublished: insight.datePublished,
+  dateModified: insight.dateModified,
+  author: {
+    '@id': 'https://ahmadrastibarzoki.ir/#person'
+  },
+  isPartOf: {
+    '@id': 'https://ahmadrastibarzoki.ir/insights#blog'
+  },
+  articleSection: insight.category,
+  keywords: insight.keywords,
+  inLanguage: 'en'
+};
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://ahmadrastibarzoki.ir/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Insights',
+      item: 'https://ahmadrastibarzoki.ir/insights'
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: insight.title,
+      item: canonical
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={`${insight.title} | Ahmad Rasti Barzoki`}
+  description={insight.description}
+  schema={[articleSchema, breadcrumbSchema]}
+  image={insight.image}
+  imageAlt={insight.imageAlt}
+  ogType="article"
+  publishedTime={insight.datePublished}
+  modifiedTime={insight.dateModified}
+>
+  <article class="article-page">
+    <header class="article-header">
+      <div class="container article-container">
+        <a class="article-back" href="/insights">← All insights</a>
+        <p class="eyebrow">{insight.category}</p>
+        <h1>{insight.title}</h1>
+        <p class="article-deck">{insight.description}</p>
+        <div class="article-meta">
+          <span>Ahmad Rasti Barzoki</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={insight.datePublished}>September 27, 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>{insight.readingTime}</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="container article-container article-body">
+      <slot />
+
+      <aside class="article-author">
+        <div>
+          <span class="meta">Author</span>
+          <h3>Ahmad Rasti Barzoki</h3>
+          <p>
+            Technology leader, Data Scientist and AI/ML researcher working across graph machine learning,
+            anomaly detection, analytics engineering, data engineering and responsible AI.
+          </p>
+        </div>
+        <div class="actions">
+          <a class="button" href="/about">About</a>
+          <a class="button" href="/research">Research</a>
+          <a class="button" href="/contact">Contact</a>
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>
