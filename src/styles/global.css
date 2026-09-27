@@ -690,6 +690,9 @@ h3 { font-size: 1.24rem; }
   .hero-content h1 {
     font-size: clamp(2.45rem, 12vw, 4rem);
   }
+  .hero-content .eyebrow {
+    color: #60a5fa;
+  }
   .hero-content .lead {
     font-size: 1rem;
     line-height: 1.65;
