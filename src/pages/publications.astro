@@ -2,16 +2,76 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Publications | Ahmad Rasti Barzoki';
-const description = 'Research publications and scholarly work by Ahmad Rasti Barzoki in artificial intelligence, machine learning and responsible generative AI.';
+const description = 'Peer-reviewed publications by Ahmad Rasti Barzoki, including EGenAI-DBR on responsible generative AI integration in higher education.';
+
+const articleSchema = {
+  '@type': 'ScholarlyArticle',
+  '@id': 'https://ahmadrastibarzoki.ir/publications#egenai-dbr',
+  headline: 'EGenAI-DBR: a design-based framework for responsible generative AI integration in higher education',
+  url: 'https://doi.org/10.1108/EISFL-04-2026-0057',
+  sameAs: [
+    'https://doi.org/10.1108/EISFL-04-2026-0057',
+    'https://www.emerald.com/eisfl/article/1/1/341/1387788/EGenAI-DBR-a-design-based-framework-for'
+  ],
+  image: 'https://ahmadrastibarzoki.ir/images/publication-egenai-dbr.png',
+  author: [
+    { '@type': 'Person', name: 'Shahrzad Saremi' },
+    { '@type': 'Person', name: 'Mansooreh Mirzaei' },
+    { '@id': 'https://ahmadrastibarzoki.ir/#person' },
+    { '@type': 'Person', name: 'Maryam Nooraei Abadeh' },
+    { '@type': 'Person', name: 'Marzieh Varposhti' },
+    { '@type': 'Person', name: 'Rania Shibl' },
+    { '@type': 'Person', name: 'Hassan Ahmed' },
+    { '@type': 'Person', name: 'Shaden Al Dkheel' },
+    { '@type': 'Person', name: 'Katie Wang' },
+    { '@type': 'Person', name: 'Declan Humphreys' }
+  ],
+  publisher: {
+    '@type': 'Organization',
+    name: 'Emerald Publishing Limited'
+  },
+  isPartOf: {
+    '@type': 'PublicationIssue',
+    issueNumber: '1',
+    isPartOf: {
+      '@type': 'PublicationVolume',
+      volumeNumber: '1',
+      isPartOf: {
+        '@type': 'Periodical',
+        name: 'Education Innovations: Systems and Future Learning',
+        issn: '2978-3151'
+      }
+    }
+  },
+  pagination: '341-373',
+  datePublished: '2026',
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'DOI',
+    value: '10.1108/EISFL-04-2026-0057'
+  },
+  keywords: [
+    'Generative artificial intelligence',
+    'Design-based research',
+    'Academic integrity',
+    'Ethical integration framework',
+    'Higher education',
+    'Writing pedagogy'
+  ],
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/'
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} schema={articleSchema}>
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Publications</p>
       <h1>Research and scholarly work.</h1>
       <p class="lead">
-        Publications and selected research outputs across machine learning, applied AI and responsible generative AI.
+        Peer-reviewed publications and selected research outputs across machine learning,
+        applied AI and responsible generative AI.
       </p>
     </div>
   </section>
@@ -20,10 +80,34 @@ const description = 'Research publications and scholarly work by Ahmad Rasti Bar
     <div class="container publication-grid">
       <img class="publication-cover" src="/images/publication-egenai-dbr.png" alt="EGenAI-DBR publication cover" />
       <article class="list-item">
-        <span class="meta">2026 · Peer-reviewed</span>
+        <span class="meta">2026 · Peer-reviewed · Open access</span>
         <h3>EGenAI-DBR: A Design-Based Framework for Responsible Generative AI Integration in Higher Education</h3>
-        <p>Research on responsible and structured integration of generative AI in higher-education settings.</p>
+
+        <p>
+          Published in <strong>Education Innovations: Systems and Future Learning</strong>,
+          Volume 1, Issue 1, pages 341–373, by Emerald Publishing Limited.
+        </p>
+
+        <p>
+          The study presents the EGenAI-DBR framework for responsible generative AI integration
+          in higher education, combining design-based research, academic integrity and practical
+          course-level implementation.
+        </p>
+
+        <p>
+          <strong>DOI:</strong>
+          <a class="inline-link" href="https://doi.org/10.1108/EISFL-04-2026-0057" target="_blank" rel="noreferrer">
+            10.1108/EISFL-04-2026-0057
+          </a>
+          <br />
+          <strong>Published author name:</strong> Ahmad Rasti
+          <br />
+          <strong>License:</strong> CC BY 4.0
+        </p>
+
         <div class="actions">
+          <a class="button primary" href="https://www.emerald.com/eisfl/article/1/1/341/1387788/EGenAI-DBR-a-design-based-framework-for" target="_blank" rel="noreferrer">Publisher</a>
+          <a class="button" href="https://doi.org/10.1108/EISFL-04-2026-0057" target="_blank" rel="noreferrer">DOI</a>
           <a class="button" href="https://scholar.google.com/citations?user=oDTmVngAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
           <a class="button" href="https://orcid.org/0009-0002-7820-1497" target="_blank" rel="noreferrer">ORCID</a>
         </div>
