@@ -12,7 +12,13 @@ const websiteSchema = {
   '@id': 'https://ahmadrastibarzoki.ir/#website',
   url: 'https://ahmadrastibarzoki.ir/',
   name: 'Ahmad Rasti Barzoki',
-  alternateName: 'Ahmad Rasti',
+  alternateName: [
+    'Ahmad Rasti',
+    'Rasti Barzoki',
+    'احمد راستی برزکی',
+    'احمد راستی',
+    'راستی برزکی'
+  ],
   creator: {
     '@id': 'https://ahmadrastibarzoki.ir/#person'
   },
@@ -42,6 +48,9 @@ const websiteSchema = {
     <div class="container hero-content">
       <p class="eyebrow">AI · Data Science · Research · Technology</p>
       <h1>Ahmad Rasti Barzoki</h1>
+      <p class="hero-alias">
+        Also published as <strong>Ahmad Rasti</strong>.
+      </p>
       <p class="lead">
         Technology leader, Data Scientist and AI/ML researcher working across
         Graph Machine Learning, Anomaly Detection, Applied AI and Data Engineering.

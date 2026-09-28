@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import type { CollectionEntry } from 'astro:content';
+import { getEntry, type CollectionEntry } from 'astro:content';
 import {
   estimateReadingTime,
   formatInsightDate,
@@ -13,6 +13,8 @@ interface Props {
 
 const { post } = Astro.props;
 const { data } = post;
+const persianTranslation = await getEntry('insightsFa', post.id);
+const articleAlternatePath = persianTranslation ? `/fa/insights/${post.id}` : null;
 
 if (!Astro.site) {
   throw new Error('Astro site URL is required for canonical and structured data.');
@@ -86,6 +88,7 @@ const breadcrumbSchema = {
   modifiedTime={modifiedISO}
   articleSection={data.category}
   articleTags={data.keywords}
+  alternatePath={articleAlternatePath}
 >
   <article class="article-page">
     <header class="article-header">
@@ -135,6 +138,7 @@ const breadcrumbSchema = {
         <div>
           <span class="meta">Author</span>
           <h3><a href="/about" rel="author">Ahmad Rasti Barzoki</a></h3>
+          <p class="author-alias">Also published as Ahmad Rasti · احمد راستی برزکی</p>
           <p>
             Technology leader, Data Scientist and AI/ML researcher working across graph machine learning,
             anomaly detection, analytics engineering, data engineering and responsible AI.

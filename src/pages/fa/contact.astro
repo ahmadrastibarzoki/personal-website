@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title='تماس با احمد راستی برزکی';
+const description='راه‌های ارتباط با احمد راستی برزکی برای همکاری پژوهشی، حرفه‌ای و پروژه‌های مرتبط با هوش مصنوعی و علم داده.';
+const contacts=[
+  ['ایمیل','ahmadrasti11@gmail.com','mailto:ahmadrasti11@gmail.com','/contact-icons/email.svg','راه ترجیحی برای ارتباط حرفه‌ای'],
+  ['تلگرام','@ahmadrastibarzoki','https://t.me/ahmadrastibarzoki','/contact-icons/telegram.svg','پیام مستقیم'],
+  ['تلفن','+98 913 656 4211','tel:+989136564211','/contact-icons/phone.svg','برای ارتباط مستقیم مهم'],
+  ['X / Twitter','@ahmadrasti75','https://x.com/ahmadrasti75','/contact-icons/x.svg','یادداشت‌ها و به‌روزرسانی‌های کوتاه'],
+  ['LinkedIn','ahmad-rasti-barzoki','https://www.linkedin.com/in/ahmad-rasti-barzoki','/contact-icons/linkedin.svg','پروفایل حرفه‌ای'],
+  ['GitHub','ahmadrastibarzoki','https://github.com/ahmadrastibarzoki','/contact-icons/github.svg','کد و پروژه‌ها'],
+  ['Google Scholar','Scholar profile','https://scholar.google.com/citations?user=oDTmVngAAAAJ&hl=en','/contact-icons/scholar.svg','مقالات و استنادها'],
+  ['ORCID','0009-0002-7820-1497','https://orcid.org/0009-0002-7820-1497','/contact-icons/orcid.svg','شناسه پژوهشی']
+];
+---
+<BaseLayout title={title} description={description} image="/images/about-portrait.png" imageAlt="احمد راستی برزکی" ogType="profile" lang="fa">
+  <section class="page-hero"><div class="container"><p class="eyebrow">تماس</p><h1>در ارتباط باشیم.</h1><p class="lead">برای همکاری پژوهشی، مشاوره، پروژه‌های فنی یا فرصت‌های حرفه‌ای می‌توانید از راه‌های زیر با من در ارتباط باشید.</p></div></section>
+  <section class="section"><div class="container"><div class="contact-grid enhanced-contact-grid">
+    {contacts.map(([title,value,href,icon,note])=><a class="contact-item contact-item-rich" href={href} target={href.startsWith('http')?'_blank':undefined} rel={href.startsWith('http')?'noreferrer':undefined}><img class="contact-icon" src={icon} alt="" width="56" height="56"/><div><strong>{title}</strong><p>{value}</p><span class="contact-note">{note}</span></div></a>)}
+  </div></div></section>
+</BaseLayout>

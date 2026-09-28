@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title='مقالات علمی | احمد راستی برزکی';
+const description='مقالات علمی و پژوهشی احمد راستی برزکی، از جمله مقاله EGenAI-DBR درباره ادغام مسئولانه هوش مصنوعی مولد در آموزش عالی.';
+const articleSchema={
+  '@type':'ScholarlyArticle','@id':'https://ahmadrastibarzoki.ir/publications#egenai-dbr',
+  headline:'EGenAI-DBR: a design-based framework for responsible generative AI integration in higher education',
+  url:'https://doi.org/10.1108/EISFL-04-2026-0057',
+  sameAs:['https://doi.org/10.1108/EISFL-04-2026-0057','https://www.emerald.com/eisfl/article/1/1/341/1387788/EGenAI-DBR-a-design-based-framework-for'],
+  image:'https://ahmadrastibarzoki.ir/images/publication-egenai-dbr.png',
+  author:[
+    {'@type':'Person',name:'Shahrzad Saremi'},{'@type':'Person',name:'Mansooreh Mirzaei'},
+    {'@id':'https://ahmadrastibarzoki.ir/#person'},{'@type':'Person',name:'Maryam Nooraei Abadeh'},
+    {'@type':'Person',name:'Marzieh Varposhti'},{'@type':'Person',name:'Rania Shibl'},
+    {'@type':'Person',name:'Hassan Ahmed'},{'@type':'Person',name:'Shaden Al Dkheel'},
+    {'@type':'Person',name:'Katie Wang'},{'@type':'Person',name:'Declan Humphreys'}
+  ],
+  publisher:{'@type':'Organization',name:'Emerald Publishing Limited'},
+  datePublished:'2026',identifier:{'@type':'PropertyValue',propertyID:'DOI',value:'10.1108/EISFL-04-2026-0057'},
+  inLanguage:'en',isAccessibleForFree:true,license:'https://creativecommons.org/licenses/by/4.0/'
+};
+---
+<BaseLayout title={title} description={description} schema={articleSchema} image="/images/publication-egenai-dbr.png" imageAlt="مقاله EGenAI-DBR با مشارکت احمد راستی برزکی" lang="fa">
+  <section class="page-hero"><div class="container"><p class="eyebrow">مقالات علمی</p><h1>پژوهش و آثار علمی.</h1><p class="lead">مقالات peer-reviewed و خروجی‌های پژوهشی منتخب در یادگیری ماشین، هوش مصنوعی کاربردی و هوش مصنوعی مولد مسئولانه.</p></div></section>
+  <section class="section"><div class="container publication-grid">
+    <img class="publication-cover" src="/images/publication-egenai-dbr-1000.webp" srcset="/images/publication-egenai-dbr-480.webp 480w, /images/publication-egenai-dbr-1000.webp 1000w" sizes="(max-width: 920px) calc(100vw - 2rem), 45vw" width="838" height="468" alt="کاور مقاله EGenAI-DBR" loading="lazy" decoding="async" />
+    <article class="list-item">
+      <span class="meta">۲۰۲۶ · Peer-reviewed · Open Access</span>
+      <h3>EGenAI-DBR: A Design-Based Framework for Responsible Generative AI Integration in Higher Education</h3>
+      <p>منتشرشده در <strong>Education Innovations: Systems and Future Learning</strong>، جلد ۱، شماره ۱، صفحات ۳۴۱ تا ۳۷۳، توسط Emerald Publishing Limited.</p>
+      <p>این پژوهش چارچوب EGenAI-DBR را برای ادغام مسئولانه هوش مصنوعی مولد در آموزش عالی ارائه می‌کند و design-based research، صداقت علمی و پیاده‌سازی عملی در سطح درس را به هم متصل می‌کند.</p>
+      <p><strong>DOI:</strong> <a class="inline-link" href="https://doi.org/10.1108/EISFL-04-2026-0057" target="_blank" rel="noreferrer">10.1108/EISFL-04-2026-0057</a><br/><strong>نام منتشرشده نویسنده:</strong> Ahmad Rasti<br/><strong>مجوز:</strong> CC BY 4.0</p>
+      <div class="actions">
+        <a class="button primary" href="https://www.emerald.com/eisfl/article/1/1/341/1387788/EGenAI-DBR-a-design-based-framework-for" target="_blank" rel="noreferrer">صفحه ناشر</a>
+        <a class="button" href="https://doi.org/10.1108/EISFL-04-2026-0057" target="_blank" rel="noreferrer">DOI</a>
+        <a class="button" href="https://scholar.google.com/citations?user=oDTmVngAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+        <a class="button" href="https://orcid.org/0009-0002-7820-1497" target="_blank" rel="noreferrer">ORCID</a>
+      </div>
+    </article>
+  </div></section>
+</BaseLayout>

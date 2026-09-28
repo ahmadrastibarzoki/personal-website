@@ -1,0 +1,90 @@
+---
+import { getEntry, type CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import { estimateReadingMinutes, formatPersianInsightDate, insightModifiedDate } from '../utils/insights';
+
+interface Props { post: CollectionEntry<'insightsFa'>; }
+const { post } = Astro.props;
+const { data } = post;
+const englishTranslation = await getEntry('insights', post.id);
+const alternatePath = englishTranslation ? `/insights/${post.id}` : null;
+const canonical = new URL(`/fa/insights/${post.id}`, Astro.site).href;
+const imageURL = new URL(data.image, Astro.site).href;
+const modifiedDate = insightModifiedDate(post);
+const publishedISO = data.datePublished.toISOString();
+const modifiedISO = modifiedDate.toISOString();
+const readingMinutes = estimateReadingMinutes(post.body);
+const wasModified = modifiedDate.getTime() > data.datePublished.getTime();
+
+const articleSchema = {
+  '@type':'BlogPosting','@id':`${canonical}#article`,headline:data.title,
+  description:data.description,url:canonical,mainEntityOfPage:canonical,image:imageURL,
+  datePublished:publishedISO,dateModified:modifiedISO,
+  author:{'@id':'https://ahmadrastibarzoki.ir/#person','@type':'Person',name:'احمد راستی برزکی',alternateName:'Ahmad Rasti Barzoki',url:'https://ahmadrastibarzoki.ir/fa/about'},
+  isPartOf:{'@id':'https://ahmadrastibarzoki.ir/fa/insights#blog'},
+  articleSection:data.category,keywords:data.keywords,inLanguage:'fa'
+};
+const breadcrumbSchema = {
+  '@type':'BreadcrumbList',
+  itemListElement:[
+    {'@type':'ListItem',position:1,name:'خانه',item:'https://ahmadrastibarzoki.ir/fa'},
+    {'@type':'ListItem',position:2,name:'یادداشت‌ها',item:'https://ahmadrastibarzoki.ir/fa/insights'},
+    {'@type':'ListItem',position:3,name:data.title,item:canonical}
+  ]
+};
+---
+<BaseLayout
+  title={`${data.title} | احمد راستی برزکی`}
+  description={data.description}
+  schema={[articleSchema,breadcrumbSchema]}
+  image={data.image}
+  imageAlt={data.imageAlt}
+  ogType="article"
+  publishedTime={publishedISO}
+  modifiedTime={modifiedISO}
+  articleSection={data.category}
+  articleTags={data.keywords}
+  lang="fa"
+  alternatePath={alternatePath}
+>
+  <article class="article-page">
+    <header class="article-header">
+      <div class="container article-container">
+        <a class="article-back" href="/fa/insights">همه یادداشت‌ها ←</a>
+        <p class="eyebrow">{data.category}</p>
+        <h1>{data.title}</h1>
+        <p class="article-deck">{data.description}</p>
+        <div class="article-meta">
+          <a href="/fa/about" rel="author">احمد راستی برزکی</a>
+          <span aria-hidden="true">·</span>
+          <time datetime={publishedISO}>انتشار: {formatPersianInsightDate(data.datePublished)}</time>
+          {wasModified && <><span aria-hidden="true">·</span><time datetime={modifiedISO}>به‌روزرسانی: {formatPersianInsightDate(modifiedDate)}</time></>}
+          <span aria-hidden="true">·</span><span>{readingMinutes} دقیقه مطالعه</span>
+        </div>
+      </div>
+    </header>
+    <div class="container article-container article-body">
+      <div class="article-summary"><strong>ایده اصلی</strong><p>{data.summary}</p></div>
+      <slot />
+      {data.sources.length > 0 && (
+        <section class="article-sources">
+          <h2>منابع و مطالعه بیشتر</h2>
+          <ul>{data.sources.map((source)=><li><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a></li>)}</ul>
+        </section>
+      )}
+      <aside class="article-author">
+        <div>
+          <span class="meta">نویسنده</span>
+          <h3><a href="/fa/about" rel="author">احمد راستی برزکی</a></h3>
+          <p class="author-alias" dir="auto">Ahmad Rasti Barzoki · Ahmad Rasti</p>
+          <p>مدیر فناوری، متخصص علم داده و پژوهشگر هوش مصنوعی و یادگیری ماشین با تمرکز بر یادگیری ماشین روی گراف، تشخیص ناهنجاری، مهندسی داده و هوش مصنوعی مسئولانه.</p>
+        </div>
+        <div class="actions">
+          <a class="button" href="/fa/about">درباره من</a>
+          <a class="button" href="/fa/research">پژوهش</a>
+          <a class="button" href="/fa/contact">تماس</a>
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

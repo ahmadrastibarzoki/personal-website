@@ -1052,3 +1052,79 @@ h3 { font-size: 1.24rem; }
   text-decoration: underline;
   text-underline-offset: .2em;
 }
+
+
+/* Bilingual Persian / English support */
+.header-actions{display:flex;align-items:center;gap:.55rem}
+.language-switch{display:inline-grid;place-items:center;min-width:44px;height:44px;padding:0 .7rem;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);box-shadow:var(--shadow);font-weight:800;font-size:.88rem}
+.language-switch:hover{border-color:var(--accent);color:var(--accent-soft)}
+html[dir='rtl'] body{font-family:Tahoma,"Segoe UI",Arial,sans-serif;text-align:right}
+html[dir='rtl'] h1,html[dir='rtl'] h2,html[dir='rtl'] h3{letter-spacing:0}
+html[dir='rtl'] .eyebrow,html[dir='rtl'] .tag,html[dir='rtl'] .meta{letter-spacing:0}
+html[dir='rtl'] .clean-list,html[dir='rtl'] .article-body ul,html[dir='rtl'] .article-body ol{padding-right:1.4rem;padding-left:0}
+html[dir='rtl'] .article-related,html[dir='rtl'] .article-meta,html[dir='rtl'] .actions,html[dir='rtl'] .hero-actions,html[dir='rtl'] .footer-links,html[dir='rtl'] .chip-wrap{direction:rtl}
+html[dir='rtl'] .contact-item p,html[dir='rtl'] .mini-list a{direction:ltr;text-align:right}
+html[dir='rtl'] .inline-link,html[dir='rtl'] .article-sources a{unicode-bidi:plaintext}
+@media(max-width:760px){.header-actions{align-items:flex-start}html[dir='rtl'] nav{justify-content:flex-start}}
+
+
+/* Entity identity refinements */
+.hero-alias {
+  margin: .55rem 0 0;
+  font-size: .95rem;
+  opacity: .86;
+}
+
+.identity-panel {
+  margin-top: 2rem;
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.identity-panel h2 {
+  margin-top: .25rem;
+}
+
+.identity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem 1rem;
+  margin: 1.2rem 0;
+}
+
+.identity-grid > div {
+  padding: .85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.identity-grid dt {
+  margin-bottom: .25rem;
+  font-size: .8rem;
+  font-weight: 700;
+  opacity: .68;
+}
+
+.identity-grid dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.author-alias {
+  margin: -.25rem 0 .65rem;
+  font-size: .88rem;
+  opacity: .72;
+}
+
+html[dir='rtl'] .identity-grid dd[dir='ltr'],
+html[dir='rtl'] .author-alias {
+  unicode-bidi: plaintext;
+}
+
+@media (max-width: 680px) {
+  .identity-grid {
+    grid-template-columns: 1fr;
+  }
+}

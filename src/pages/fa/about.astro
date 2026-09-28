@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title='درباره احمد راستی برزکی | احمد راستی';
+const description='درباره احمد راستی برزکی، که در برخی آثار با نام احمد راستی و Ahmad Rasti نیز شناخته می‌شود؛ مدیر فناوری، متخصص علم داده و پژوهشگر هوش مصنوعی و یادگیری ماشین.';
+const schema={'@type':'ProfilePage','@id':'https://ahmadrastibarzoki.ir/fa/about#profile-page',url:'https://ahmadrastibarzoki.ir/fa/about',name:'درباره احمد راستی برزکی',mainEntity:{'@id':'https://ahmadrastibarzoki.ir/#person'},inLanguage:'fa'};
+---
+<BaseLayout title={title} description={description} schema={schema} image="/images/about-portrait.png" imageAlt="تصویر احمد راستی برزکی" ogType="profile" lang="fa">
+  <section class="page-hero"><div class="container"><p class="eyebrow">درباره من</p><h1>نگاه پژوهشی. تجربه اجرایی.</h1><p class="lead">در مرز میان علم داده، یادگیری ماشین، پژوهش و مدیریت فناوری کار می‌کنم؛ با تمرکز بر تبدیل ایده‌های دقیق علمی به سیستم‌های کاربردی.</p></div></section>
+  <section class="section"><div class="container two-col">
+    <aside class="profile-card">
+      <img class="profile-photo" src="/images/about-portrait-900.webp" srcset="/images/about-portrait-480.webp 480w, /images/about-portrait-900.webp 900w" sizes="(max-width: 920px) calc(100vw - 2rem), 360px" width="900" height="1125" alt="تصویر احمد راستی برزکی" loading="lazy" decoding="async" />
+      <div class="profile-body"><h3>احمد راستی برزکی</h3><p class="section-copy">مدیر فناوری · متخصص علم داده · پژوهشگر هوش مصنوعی و یادگیری ماشین</p></div>
+    </aside>
+    <div class="prose">
+      <p>من <strong>احمد راستی برزکی</strong> هستم. پیش‌زمینه من ترکیبی از ریاضیات کاربردی، علم داده، پژوهش در یادگیری ماشین، مهندسی تحلیل داده و فناوری سازمانی است.</p>
+      <p>کارشناسی ارشد <strong>ریاضیات کاربردی — علم داده</strong> را از دانشگاه صنعتی اصفهان گرفته‌ام. علایق پژوهشی من شامل شبکه‌های عصبی گراف، یادگیری نمایش گراف، تشخیص ناهنجاری بدون نظارت، یادگیری عمیق، هوش مصنوعی کاربردی و هوش مصنوعی مولد مسئولانه است.</p>
+      <p>در کنار پژوهش، روی مسائل عملی داده و فناوری از جمله تحلیل داده، پیش‌بینی، سیستم‌های سازمانی، اتوماسیون و سیستم‌های تصمیم‌یار مبتنی بر هوش مصنوعی کار کرده‌ام.</p>
+      <p>این وب‌سایت مرجع اصلی پروژه‌ها، پژوهش‌ها، مقالات علمی و فعالیت حرفه‌ای من است.</p>
+
+      <section class="identity-panel" aria-labelledby="identity-fa-heading">
+        <p class="eyebrow">هویت و نام</p>
+        <h2 id="identity-fa-heading">شیوه‌های نوشتن نام من در منابع فارسی و انگلیسی</h2>
+        <dl class="identity-grid">
+          <div>
+            <dt>نام کامل فارسی</dt>
+            <dd>احمد راستی برزکی</dd>
+          </div>
+          <div>
+            <dt>نام کوتاه فارسی</dt>
+            <dd>احمد راستی</dd>
+          </div>
+          <div>
+            <dt>نام خانوادگی</dt>
+            <dd>راستی برزکی</dd>
+          </div>
+          <div>
+            <dt>نام کامل انگلیسی</dt>
+            <dd dir="ltr">Ahmad Rasti Barzoki</dd>
+          </div>
+          <div>
+            <dt>نام منتشرشده / کوتاه انگلیسی</dt>
+            <dd dir="ltr">Ahmad Rasti</dd>
+          </div>
+          <div>
+            <dt>نوشتار نام خانوادگی به انگلیسی</dt>
+            <dd dir="ltr">Rasti Barzoki</dd>
+          </div>
+        </dl>
+        <p class="section-copy">
+          همه این شیوه‌های نوشتن به یک شخص اشاره دارند. در برخی آثار علمی نام
+          <strong dir="ltr">Ahmad Rasti</strong> دیده می‌شود و در این وب‌سایت
+          <strong>احمد راستی برزکی</strong> / <strong dir="ltr">Ahmad Rasti Barzoki</strong>
+          هویت اصلی است.
+        </p>
+      </section>
+    </div>
+  </div></section>
+</BaseLayout>

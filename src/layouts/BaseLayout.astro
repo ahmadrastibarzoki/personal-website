@@ -12,6 +12,8 @@ interface Props {
   modifiedTime?: string;
   articleSection?: string;
   articleTags?: string[];
+  lang?: 'en' | 'fa';
+  alternatePath?: string | null;
 }
 
 const {
@@ -24,17 +26,50 @@ const {
   publishedTime,
   modifiedTime,
   articleSection,
-  articleTags = []
+  articleTags = [],
+  lang = 'en',
+  alternatePath
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(image, Astro.site);
+const isFa = lang === 'fa';
+const currentPath = Astro.url.pathname;
+const autoAlt = isFa
+  ? (currentPath === '/fa'
+      ? '/'
+      : currentPath.startsWith('/fa/')
+        ? currentPath.slice(3)
+        : '/')
+  : (currentPath === '/' ? '/fa' : `/fa${currentPath}`);
+const resolvedAlt = alternatePath === undefined ? autoAlt : alternatePath;
+const alternateURL = resolvedAlt === null ? null : new URL(resolvedAlt, Astro.site);
+const englishURL = isFa ? alternateURL : canonicalURL;
+const persianURL = isFa ? canonicalURL : alternateURL;
+const navItems = isFa
+ ? [['درباره من','/fa/about'],['پژوهش','/fa/research'],['پروژه‌ها','/fa/projects'],['مقالات علمی','/fa/publications'],['یادداشت‌ها','/fa/insights'],['رزومه','/fa/cv'],['تماس','/fa/contact']]
+ : [['About','/about'],['Research','/research'],['Projects','/projects'],['Publications','/publications'],['Insights','/insights'],['CV','/cv'],['Contact','/contact']];
 
 const personSchema = {
   '@type': 'Person',
   '@id': 'https://ahmadrastibarzoki.ir/#person',
   name: 'Ahmad Rasti Barzoki',
-  alternateName: 'Ahmad Rasti',
+  alternateName: [
+    'Ahmad Rasti',
+    'Rasti Barzoki',
+    'احمد راستی برزکی',
+    'احمد راستی',
+    'راستی برزکی'
+  ],
+  givenName: 'Ahmad',
+  familyName: 'Rasti Barzoki',
+  description: 'Ahmad Rasti Barzoki, also published as Ahmad Rasti, is a technology leader, data scientist and AI/ML researcher.',
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'ORCID',
+    value: '0009-0002-7820-1497',
+    url: 'https://orcid.org/0009-0002-7820-1497'
+  },
   url: 'https://ahmadrastibarzoki.ir',
   image: 'https://ahmadrastibarzoki.ir/images/about-portrait.png',
   email: 'mailto:ahmadrasti11@gmail.com',
@@ -61,7 +96,8 @@ const personSchema = {
     'Anomaly Detection',
     'Data Engineering',
     'Applied AI',
-    'Responsible Generative AI'
+    'Responsible Generative AI',
+    'هوش مصنوعی','علم داده','شبکه‌های عصبی گراف','تشخیص ناهنجاری'
   ]
 };
 
@@ -73,7 +109,7 @@ const structuredData = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} dir={isFa ? 'rtl' : 'ltr'}>
   <head>
     <meta charset="UTF-8" />
 
@@ -129,8 +165,13 @@ const structuredData = {
     <meta name="author" content="Ahmad Rasti Barzoki" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
+    {englishURL && persianURL && <>
+      <link rel="alternate" hreflang="en" href={englishURL} />
+      <link rel="alternate" hreflang="fa" href={persianURL} />
+      <link rel="alternate" hreflang="x-default" href={englishURL} />
+    </>}
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-    <link rel="alternate" type="application/rss+xml" title="Insights by Ahmad Rasti Barzoki" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title={isFa ? 'یادداشت‌های احمد راستی برزکی' : 'Insights by Ahmad Rasti Barzoki'} href={isFa ? '/fa/rss.xml' : '/rss.xml'} />
     <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
@@ -140,7 +181,8 @@ const structuredData = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="Ahmad Rasti Barzoki" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={isFa ? 'fa_IR' : 'en_US'} />
+    <meta property="og:locale:alternate" content={isFa ? 'en_US' : 'fa_IR'} />
     <meta property="og:image" content={socialImageURL} />
     <meta property="og:image:alt" content={imageAlt} />
     {publishedTime && <meta property="article:published_time" content={publishedTime} />}
@@ -168,22 +210,18 @@ const structuredData = {
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="/" aria-label="Ahmad Rasti Barzoki home">
+        <a class="brand" href={isFa ? '/fa' : '/'} aria-label={isFa ? 'صفحه اصلی احمد راستی برزکی' : 'Ahmad Rasti Barzoki home'}>
           <img src="/brand/arb-logo-96.webp" alt="" width="44" height="44" decoding="async" />
         </a>
-        <nav aria-label="Primary navigation">
-          <a href="/about">About</a>
-          <a href="/research">Research</a>
-          <a href="/projects">Projects</a>
-          <a href="/publications">Publications</a>
-          <a href="/insights">Insights</a>
-          <a href="/cv">CV</a>
-          <a href="/contact">Contact</a>
+        <nav aria-label={isFa ? 'ناوبری اصلی' : 'Primary navigation'}>
+          {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
         </nav>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color mode">
-          <span class="theme-toggle-dark">🌙</span>
-          <span class="theme-toggle-light">☀️</span>
-        </button>
+        <div class="header-actions">
+          {alternateURL && <a class="language-switch" href={alternateURL.pathname} hreflang={isFa?'en':'fa'} lang={isFa?'en':'fa'}>{isFa?'EN':'فا'}</a>}
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label={isFa?'تغییر حالت رنگ':'Toggle color mode'}>
+            <span class="theme-toggle-dark">🌙</span><span class="theme-toggle-light">☀️</span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -193,13 +231,13 @@ const structuredData = {
 
     <footer class="site-footer">
       <div class="container footer-wrap">
-        <p>© {new Date().getFullYear()} Ahmad Rasti Barzoki</p>
+        <p>© {new Date().getFullYear()} {isFa ? 'احمد راستی برزکی' : 'Ahmad Rasti Barzoki'}</p>
         <div class="footer-links">
           <a href="https://github.com/ahmadrastibarzoki" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://www.linkedin.com/in/ahmad-rasti-barzoki/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="/cv">CV</a>
-          <a href="/contact">Contact</a>
-          <button class="footer-consent-button" id="cookie-settings" type="button">Cookie settings</button>
+          <a href={isFa?'/fa/cv':'/cv'}>{isFa?'رزومه':'CV'}</a>
+          <a href={isFa?'/fa/contact':'/contact'}>{isFa?'تماس':'Contact'}</a>
+          <button class="footer-consent-button" id="cookie-settings" type="button">{isFa?'تنظیمات کوکی':'Cookie settings'}</button>
         </div>
       </div>
     </footer>
@@ -214,15 +252,16 @@ const structuredData = {
     >
       <div class="consent-banner-inner">
         <div class="consent-copy">
-          <strong id="analytics-consent-title">Analytics cookies</strong>
+          <strong id="analytics-consent-title">{isFa?'کوکی‌های آماری':'Analytics cookies'}</strong>
           <p id="analytics-consent-description">
-            This website uses optional Google Analytics cookies to understand how visitors use the site.
-            Analytics stays off until you choose to allow it. You can change your choice anytime from Cookie settings.
+            {isFa
+              ? 'این وب‌سایت فقط با اجازه شما از Google Analytics برای تحلیل استفاده بازدیدکنندگان استفاده می‌کند. تا زمانی که اجازه ندهید Analytics غیرفعال می‌ماند.'
+              : 'This website uses optional Google Analytics cookies to understand how visitors use the site. Analytics stays off until you choose to allow it. You can change your choice anytime from Cookie settings.'}
           </p>
         </div>
         <div class="consent-actions">
-          <button class="button primary" id="accept-analytics" type="button">Accept analytics</button>
-          <button class="button" id="reject-analytics" type="button">Reject</button>
+          <button class="button primary" id="accept-analytics" type="button">{isFa?'اجازه می‌دهم':'Accept analytics'}</button>
+          <button class="button" id="reject-analytics" type="button">{isFa?'رد می‌کنم':'Reject'}</button>
         </div>
       </div>
     </div>

@@ -1,0 +1,14 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import PersianArticleLayout from '../../../layouts/PersianArticleLayout.astro';
+import { getPublishedPersianInsights } from '../../../utils/insights';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPersianInsights();
+  return posts.map(post=>({params:{slug:post.id},props:{post}}));
+}
+interface Props { post: CollectionEntry<'insightsFa'>; }
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<PersianArticleLayout post={post}><Content /></PersianArticleLayout>

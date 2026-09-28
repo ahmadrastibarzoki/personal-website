@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title='پروژه‌ها | احمد راستی برزکی';
+const description='پروژه‌های عمومی احمد راستی برزکی در یادگیری ماشین روی گراف، مهندسی تحلیل داده و یکپارچه‌سازی داده.';
+const projects=[
+  ['Graph ML · Python','Graph Anomaly Detection','بازسازی پژوهشی یک روش تشخیص ناهنجاری مبتنی بر graph autoencoder با GAT و MST-geodesic regularization.','/images/project-graph-anomaly-960.webp','https://github.com/ahmadrastibarzoki/graph-anomaly-detection'],
+  ['Analytics Engineering · Python','Retail Analytics Engineering','پروژه clean-room و قابل بازتولید برای تحلیل خرده‌فروشی با داده synthetic، validation، مدل‌سازی بُعدی، تست و CI.','/images/project-retail-analytics-960.webp','https://github.com/ahmadrastibarzoki/retail-analytics-engineering'],
+  ['Data Engineering · Python','Rahkaran ERP–MySQL Integration','پیاده‌سازی clean-room یک پایپ‌لاین synthetic برای یکپارچه‌سازی ERP با MySQL.','/images/project-erp-mysql-960.webp','https://github.com/ahmadrastibarzoki/rahkaran-erp-mysql-integration']
+];
+---
+<BaseLayout title={title} description={description} image="/images/project-retail-analytics.png" imageAlt="پروژه‌های احمد راستی برزکی" lang="fa">
+  <section class="page-hero"><div class="container"><p class="eyebrow">پروژه‌ها</p><h1>کار فنی عمومی و قابل بازتولید.</h1><p class="lead">پروژه‌هایی در پیاده‌سازی پژوهشی، مهندسی تحلیل و یکپارچه‌سازی داده‌های سازمانی.</p></div></section>
+  <section class="section"><div class="container grid">
+    {projects.map(([tag,name,desc,img,url])=><a class="card" href={url} target="_blank" rel="noreferrer"><img class="project-image" src={img} width="838" height="474" alt={name} loading="lazy" decoding="async" /><span class="tag">{tag}</span><h3>{name}</h3><p>{desc}</p></a>)}
+  </div></section>
+</BaseLayout>

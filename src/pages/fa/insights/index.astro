@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { estimateReadingMinutes, formatPersianInsightDate, getPublishedPersianInsights } from '../../../utils/insights';
+const title='یادداشت‌ها | احمد راستی برزکی';
+const description='یادداشت‌های فنی و پژوهشی احمد راستی برزکی درباره یادگیری ماشین روی گراف، تشخیص ناهنجاری، مهندسی تحلیل داده، سیستم‌های داده و هوش مصنوعی مسئولانه.';
+const posts=await getPublishedPersianInsights();
+const blogSchema={
+  '@type':'Blog','@id':'https://ahmadrastibarzoki.ir/fa/insights#blog',
+  url:'https://ahmadrastibarzoki.ir/fa/insights',name:'یادداشت‌های احمد راستی برزکی',
+  description,author:{'@id':'https://ahmadrastibarzoki.ir/#person'},inLanguage:'fa'
+};
+---
+<BaseLayout title={title} description={description} schema={blogSchema} image="/images/hero-presenting.png" imageAlt="یادداشت‌های احمد راستی برزکی" lang="fa">
+  <section class="page-hero insights-hero">
+    <div class="container">
+      <p class="eyebrow">یادداشت‌ها</p>
+      <h1>یادداشت‌های فنی، ایده‌های پژوهشی و تجربه‌های ساخت سیستم‌های واقعی.</h1>
+      <p class="lead">نوشته‌هایی درباره یادگیری ماشین روی گراف، تشخیص ناهنجاری، مهندسی داده و تحلیل، سیستم‌های سازمانی و هوش مصنوعی مسئولانه.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container insights-list">
+      {posts.map(post=>(
+        <article class="insight-card">
+          <div class="insight-card-meta">
+            <span class="tag">{post.data.category}</span>
+            <span><time datetime={post.data.datePublished.toISOString()}>{formatPersianInsightDate(post.data.datePublished)}</time>{' · '}{estimateReadingMinutes(post.body)} دقیقه مطالعه</span>
+          </div>
+          <h2><a href={`/fa/insights/${post.id}`}>{post.data.title}</a></h2>
+          <p>{post.data.description}</p>
+          <a class="inline-link" href={`/fa/insights/${post.id}`}>مطالعه مقاله ←</a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

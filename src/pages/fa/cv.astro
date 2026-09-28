@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title='رزومه | احمد راستی برزکی';
+const description='رزومه احمد راستی برزکی؛ مدیر فناوری، متخصص علم داده و پژوهشگر هوش مصنوعی و یادگیری ماشین.';
+---
+<BaseLayout title={title} description={description} image="/images/about-portrait.png" imageAlt="احمد راستی برزکی" ogType="profile" lang="fa">
+  <section class="page-hero cv-hero"><div class="container">
+    <p class="eyebrow">رزومه</p><h1>یک پروفایل حرفه‌ای منسجم و قابل استناد.</h1>
+    <p class="lead">مروری روشن بر تجربه حرفه‌ای، تحصیلات، پژوهش، تدریس و پروژه‌های فنی منتخب من.</p>
+    <div class="actions"><a class="button primary" href="/cv/Ahmad_Rasti_Barzoki_CV.pdf" download>دانلود رزومه انگلیسی</a><a class="button" href="mailto:ahmadrasti11@gmail.com">ارسال ایمیل</a></div>
+  </div></section>
+  <section class="section cv-page"><div class="container two-col cv-layout">
+    <aside class="profile-card cv-sidebar print-card">
+      <img class="profile-photo" src="/images/about-portrait-900.webp" srcset="/images/about-portrait-480.webp 480w, /images/about-portrait-900.webp 900w" sizes="(max-width: 920px) calc(100vw - 2rem), 300px" width="900" height="1125" alt="تصویر احمد راستی برزکی" loading="lazy" decoding="async" />
+      <div class="profile-body"><h3>احمد راستی برزکی</h3><p class="section-copy">مدیر فناوری · متخصص علم داده · پژوهشگر AI/ML</p>
+        <div class="mini-list">
+          <div><span>ایمیل</span><a class="inline-link" href="mailto:ahmadrasti11@gmail.com">ahmadrasti11@gmail.com</a></div>
+          <div><span>LinkedIn</span><a class="inline-link" href="https://www.linkedin.com/in/ahmad-rasti-barzoki" target="_blank" rel="noreferrer">پروفایل</a></div>
+          <div><span>GitHub</span><a class="inline-link" href="https://github.com/ahmadrastibarzoki" target="_blank" rel="noreferrer">Repositoryها</a></div>
+          <div><span>Scholar</span><a class="inline-link" href="https://scholar.google.com/citations?user=oDTmVngAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a></div>
+          <div><span>ORCID</span><a class="inline-link" href="https://orcid.org/0009-0002-7820-1497" target="_blank" rel="noreferrer">0009-0002-7820-1497</a></div>
+        </div>
+      </div>
+    </aside>
+    <div class="cv-content">
+      <section class="cv-section"><span class="meta">پروفایل</span><h2>خلاصه</h2><p class="prose">احمد راستی برزکی مدیر فناوری، متخصص علم داده و پژوهشگر هوش مصنوعی و یادگیری ماشین با پیش‌زمینه ریاضیات کاربردی، مهندسی تحلیل داده، سیستم‌های سازمانی و هوش مصنوعی کاربردی است. حوزه‌های فعالیت او شامل یادگیری ماشین روی گراف، تشخیص ناهنجاری، مهندسی داده، سیستم‌های تصمیم‌یار و هوش مصنوعی مولد مسئولانه است.</p></section>
+      <section class="cv-section"><span class="meta">تجربه</span><h2>تجربه حرفه‌ای</h2><div class="timeline">
+        <article class="timeline-item"><div class="timeline-head"><h3>مدیریت فناوری، داده و هوش مصنوعی — Gantoum / Bonzad</h3><span>۲۰۲۳ تا امروز</span></div><p>هدایت ابتکارهای فناوری، داده و هوش مصنوعی در تحلیل کسب‌وکار، یکپارچه‌سازی سیستم‌ها، اتوماسیون و تحول دیجیتال.</p></article>
+        <article class="timeline-item"><div class="timeline-head"><h3>مدرس شبکه‌های عصبی عمیق</h3><span>پاره‌وقت</span></div><p>طراحی و تدریس محتوای کاربردی درباره شبکه‌های عصبی و مفاهیم یادگیری عمیق.</p></article>
+      </div></section>
+      <section class="cv-section"><span class="meta">تحصیلات</span><h2>تحصیلات</h2><div class="timeline">
+        <article class="timeline-item"><div class="timeline-head"><h3>کارشناسی ارشد ریاضیات کاربردی — علم داده</h3><span>دانشگاه صنعتی اصفهان</span></div><p>معدل ۱۸٫۶۳ از ۲۰ · رتبه اول ورودی. تمرکز پژوهشی بر تشخیص ناهنجاری بدون نظارت با شبکه‌های عصبی گراف.</p></article>
+        <article class="timeline-item"><div class="timeline-head"><h3>کارشناسی ریاضیات</h3><span>مدرک دانشگاهی</span></div><p>پایه ریاضی برای ادامه فعالیت در علم داده، یادگیری ماشین و مدل‌سازی.</p></article>
+      </div></section>
+      <section class="cv-section"><span class="meta">پژوهش</span><h2>علایق پژوهشی</h2><div class="chip-wrap">
+        <span class="chip">Graph Machine Learning</span><span class="chip">Graph Neural Networks</span><span class="chip">تشخیص ناهنجاری</span><span class="chip">Representation Learning</span><span class="chip">Applied AI</span><span class="chip">AI for Healthcare</span><span class="chip">Time-Series</span><span class="chip">Responsible Generative AI</span><span class="chip">AI in Education</span>
+      </div></section>
+      <section class="cv-section"><span class="meta">تدریس</span><h2>سوابق تدریس و دستیاری آموزشی</h2><ul class="clean-list"><li>دستیار آموزشی ریاضی عمومی ۱ و ۲</li><li>دستیار آموزشی جبر</li><li>دستیار آموزشی معادلات دیفرانسیل</li><li>دستیار آموزشی مبانی ریاضی علم داده</li><li>دستیار آموزشی یادگیری عمیق</li><li>مدرس شبکه‌های عصبی عمیق</li></ul></section>
+      <section class="cv-section"><span class="meta">انتشارات</span><h2>مقاله منتخب</h2><div class="publication-inline"><img class="publication-inline-cover" src="/images/publication-egenai-dbr-480.webp" width="838" height="468" alt="کاور مقاله EGenAI-DBR" loading="lazy" decoding="async" /><div><h3>EGenAI-DBR: A Design-Based Framework for Responsible Generative AI Integration in Higher Education</h3><p>مقاله peer-reviewed درباره ادغام مسئولانه هوش مصنوعی مولد در آموزش عالی.</p></div></div></section>
+      <section class="cv-section"><span class="meta">پروژه‌ها</span><h2>پروژه‌های عمومی منتخب</h2><ul class="clean-list"><li>Graph Anomaly Detection</li><li>Retail Analytics Engineering</li><li>Rahkaran ERP–MySQL Integration</li></ul></section>
+      <section class="cv-section"><span class="meta">مهارت‌ها</span><h2>توانمندی‌های فنی</h2><div class="chip-wrap"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Machine Learning</span><span class="chip">Deep Learning</span><span class="chip">Analytics Engineering</span><span class="chip">Data Engineering</span><span class="chip">Power BI</span><span class="chip">Git & GitHub</span><span class="chip">ERP / Enterprise Systems</span><span class="chip">Process Automation</span></div></section>
+    </div>
+  </div></section>
+</BaseLayout>
