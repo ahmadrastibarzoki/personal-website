@@ -223,18 +223,77 @@ const structuredData = {
         <a class="brand" href={lang === 'fa' ? '/fa' : '/'} aria-label={lang === 'fa' ? 'صفحه اصلی احمد راستی برزکی' : 'Ahmad Rasti Barzoki home'}>
           <img src="/brand/arb-logo.png" alt="" width="44" height="44" />
         </a>
-        <nav aria-label={isFa ? 'ناوبری اصلی' : 'Primary navigation'}>
-          <a href={isFa ? '/fa' : '/'}>{isFa ? 'خانه' : 'Home'}</a>
-          {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+        <nav class="desktop-nav" aria-label={isFa ? 'ناوبری اصلی' : 'Primary navigation'}>
+          <a href={isFa ? '/fa' : '/'} aria-current={currentPath === (isFa ? '/fa' : '/') ? 'page' : undefined}>{isFa ? 'خانه' : 'Home'}</a>
+          {navItems.map(([label, href]) => <a href={href} aria-current={currentPath === href ? 'page' : undefined}>{label}</a>)}
         </nav>
         <div class="header-actions">
           {alternateURL && <a class="language-switch" href={alternateURL.pathname} hreflang={isFa?'en':'fa'} lang={isFa?'en':'fa'}>{isFa?'EN':'فا'}</a>}
           <button class="theme-toggle" id="theme-toggle" type="button" aria-label={isFa?'تغییر حالت رنگ':'Toggle color mode'}>
             <span class="theme-toggle-dark">🌙</span><span class="theme-toggle-light">☀️</span>
           </button>
+          <button
+            class="mobile-menu-toggle"
+            id="mobile-menu-toggle"
+            type="button"
+            aria-label={isFa ? 'باز کردن فهرست' : 'Open menu'}
+            aria-controls="mobile-nav-dialog"
+            aria-expanded="false"
+          >
+            <span class="mobile-menu-icon" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
         </div>
       </div>
     </header>
+
+    <dialog
+      class="mobile-nav-dialog"
+      id="mobile-nav-dialog"
+      aria-labelledby="mobile-nav-title"
+      dir={isFa ? 'rtl' : 'ltr'}
+    >
+      <div class="mobile-nav-panel">
+        <div class="mobile-nav-head">
+          <strong id="mobile-nav-title">{isFa ? 'فهرست' : 'Menu'}</strong>
+          <button
+            class="mobile-menu-close"
+            id="mobile-menu-close"
+            type="button"
+            aria-label={isFa ? 'بستن فهرست' : 'Close menu'}
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <nav class="mobile-drawer-nav" aria-label={isFa ? 'ناوبری موبایل' : 'Mobile navigation'}>
+          <a
+            href={isFa ? '/fa' : '/'}
+            aria-current={currentPath === (isFa ? '/fa' : '/') ? 'page' : undefined}
+          >
+            {isFa ? 'خانه' : 'Home'}
+          </a>
+          {navItems.map(([label, href]) => (
+            <a href={href} aria-current={currentPath === href ? 'page' : undefined}>{label}</a>
+          ))}
+        </nav>
+
+        <div class="mobile-nav-meta">
+          <span>{isFa ? 'احمد راستی برزکی' : 'Ahmad Rasti Barzoki'}</span>
+          {alternateURL && (
+            <a
+              class="mobile-nav-language"
+              href={alternateURL.pathname}
+              hreflang={isFa ? 'en' : 'fa'}
+              lang={isFa ? 'en' : 'fa'}
+            >
+              {isFa ? 'English' : 'فارسی'}
+            </a>
+          )}
+        </div>
+      </div>
+    </dialog>
 
     <main>
       <slot />
@@ -454,6 +513,49 @@ const structuredData = {
         if (eventName) {
           window.gtag('event', eventName, parameters);
         }
+      });
+    </script>
+    <script is:inline>
+      const mobileNavDialog = document.getElementById('mobile-nav-dialog');
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+      const setMobileMenuState = (open) => {
+        mobileMenuToggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.classList.toggle('mobile-nav-open', open);
+      };
+
+      const openMobileMenu = () => {
+        if (!(mobileNavDialog instanceof HTMLDialogElement) || mobileNavDialog.open) return;
+        mobileNavDialog.showModal();
+        setMobileMenuState(true);
+        mobileMenuClose?.focus();
+      };
+
+      const closeMobileMenu = () => {
+        if (!(mobileNavDialog instanceof HTMLDialogElement) || !mobileNavDialog.open) return;
+        mobileNavDialog.close();
+      };
+
+      mobileMenuToggle?.addEventListener('click', openMobileMenu);
+      mobileMenuClose?.addEventListener('click', closeMobileMenu);
+
+      mobileNavDialog?.addEventListener('click', (event) => {
+        if (event.target === mobileNavDialog) closeMobileMenu();
+      });
+
+      mobileNavDialog?.querySelectorAll('a[href]').forEach((link) => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      mobileNavDialog?.addEventListener('close', () => {
+        setMobileMenuState(false);
+        mobileMenuToggle?.focus();
+      });
+
+      const desktopNavQuery = window.matchMedia('(min-width: 901px)');
+      desktopNavQuery.addEventListener('change', (event) => {
+        if (event.matches) closeMobileMenu();
       });
     </script>
   </body>
