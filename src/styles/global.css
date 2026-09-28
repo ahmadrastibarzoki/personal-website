@@ -2750,3 +2750,194 @@ html[dir='rtl'] .fa-home-hero-v4 .fa-home-actions {
     padding-right: 0;
   }
 }
+
+
+/* Mobile hero full-image fix */
+
+/* Mobile only: show the FULL hero image first, then the text below it.
+   Desktop/tablet layouts remain unchanged. */
+@media (max-width: 900px) {
+  .en-home-hero-v4,
+  .fa-home-hero-v4 {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: hidden;
+  }
+
+  .en-home-hero-v4::before,
+  .fa-home-hero-v4::before {
+    display: none !important;
+  }
+
+  .en-home-hero-v4-bg,
+  .fa-home-hero-v4-bg {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
+  .en-home-hero-v4-bg {
+    transform: none !important;
+  }
+
+  .fa-home-hero-v4-bg {
+    transform: scaleX(-1) !important;
+    transform-origin: center center;
+  }
+
+  .en-home-hero-v4-inner,
+  .fa-home-hero-v4-inner {
+    position: relative !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2.25rem !important;
+    align-items: initial !important;
+  }
+
+  .en-home-hero-v4-copy,
+  .fa-home-hero-v4-copy {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .fa-home-hero-v4-copy {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    text-align: right !important;
+  }
+
+  .en-home-hero-v4 h1,
+  .fa-home-hero-v4 h1 {
+    white-space: normal !important;
+  }
+
+  .en-home-hero-v4 .en-home-actions,
+  .fa-home-hero-v4 .fa-home-actions {
+    margin-top: 1.25rem !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .en-home-hero-v4-inner,
+  .fa-home-hero-v4-inner {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.75rem !important;
+  }
+
+  .en-home-hero-v4 h1,
+  .fa-home-hero-v4 h1 {
+    font-size: clamp(2.35rem, 12vw, 3.5rem) !important;
+  }
+}
+
+
+/* FINAL MOBILE HERO READABILITY FIX */
+
+/* --------------------------------------------------------------------------
+   Mobile hero readability / spacing
+   - keeps desktop unchanged
+   - Persian: proper side padding, cleaner title spacing
+   - English light mode: dark readable text below the image
+--------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  /* Persian mobile spacing */
+  .fa-home-hero-v4-copy {
+    width: 100% !important;
+    max-width: 42rem !important;
+    margin-inline: auto !important;
+    padding-inline: 1.25rem !important;
+    box-sizing: border-box !important;
+    text-align: right !important;
+    direction: rtl;
+  }
+
+  .fa-home-hero-v4-copy h1 {
+    margin-inline: 0 !important;
+    padding-inline: 0 !important;
+    line-height: 1.15 !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+  .fa-home-hero-v4-copy p,
+  .fa-home-hero-v4-copy .fa-role,
+  .fa-home-hero-v4-copy .fa-home-intro,
+  .fa-home-hero-v4-copy .fa-name-note {
+    margin-inline: 0 !important;
+    padding-inline: 0 !important;
+  }
+
+  .fa-home-hero-v4 .fa-home-actions {
+    padding-inline: 0 !important;
+  }
+
+  /* English mobile spacing */
+  .en-home-hero-v4-copy {
+    width: 100% !important;
+    max-width: 42rem !important;
+    margin-inline: auto !important;
+    padding-inline: 1.25rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* English mobile light-mode colors */
+  html:not([data-theme="dark"]) .en-home-hero-v4,
+  html:not([data-theme="dark"]) .en-home-hero-v4-inner,
+  html:not([data-theme="dark"]) .en-home-hero-v4-copy {
+    background: #ffffff !important;
+  }
+
+  html:not([data-theme="dark"]) .en-home-hero-v4 h1,
+  html:not([data-theme="dark"]) .en-home-hero-v4 .en-role,
+  html:not([data-theme="dark"]) .en-home-hero-v4 .en-home-intro,
+  html:not([data-theme="dark"]) .en-home-hero-v4 .en-name-note,
+  html:not([data-theme="dark"]) .en-home-hero-v4 .en-credibility-strip,
+  html:not([data-theme="dark"]) .en-home-hero-v4 .en-credibility-strip strong,
+  html:not([data-theme="dark"]) .en-home-hero-v4 .en-credibility-strip span {
+    color: #0f172a !important;
+  }
+
+  html:not([data-theme="dark"]) .en-home-hero-v4 .en-kicker,
+  html:not([data-theme="dark"]) .en-home-hero-v4 .eyebrow {
+    color: #2563eb !important;
+  }
+
+  html:not([data-theme="dark"]) .en-home-hero-v4 .button:not(.primary) {
+    color: #0f172a !important;
+    border-color: rgba(15, 23, 42, .16) !important;
+    background: #ffffff !important;
+  }
+
+  html:not([data-theme="dark"]) .en-home-hero-v4 .en-credibility-strip {
+    border-top-color: #dbe4f0 !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 560px) {
+  .fa-home-hero-v4-copy,
+  .en-home-hero-v4-copy {
+    padding-inline: 1rem !important;
+  }
+
+  .fa-home-hero-v4 h1,
+  .en-home-hero-v4 h1 {
+    font-size: clamp(2.2rem, 11vw, 3.35rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  .fa-home-hero-v4 .fa-role,
+  .en-home-hero-v4 .en-role {
+    line-height: 1.6 !important;
+  }
+}
