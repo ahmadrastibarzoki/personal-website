@@ -9,7 +9,7 @@ const projects=[
 ];
 ---
 <BaseLayout title={title} description={description} image="/images/project-retail-analytics.png" imageAlt="پروژه‌های احمد راستی برزکی" lang="fa">
-  <section class="page-hero"><div class="container"><p class="eyebrow">پروژه‌ها</p><h1>کار فنی عمومی و قابل بازتولید.</h1><p class="lead">پروژه‌هایی در پیاده‌سازی پژوهشی، مهندسی تحلیل و یکپارچه‌سازی داده‌های سازمانی.</p></div></section>
+  <section class="page-hero"><div class="container"><p class="eyebrow">پروژه‌ها</p><h1>پروژه‌هایی از مسیر کاری و پژوهشی من</h1><p class="lead">نمونه‌هایی از کارهای عمومی من در یادگیری ماشین، مهندسی تحلیل داده و یکپارچه‌سازی سیستم‌های داده.</p></div></section>
   <section class="section"><div class="container grid">
     {projects.map(([tag,name,desc,img,url])=><a class="card" href={url} target="_blank" rel="noreferrer"><img class="project-image" src={img} width="838" height="474" alt={name} loading="lazy" decoding="async" /><span class="tag">{tag}</span><h3>{name}</h3><p>{desc}</p></a>)}
   </div></section>

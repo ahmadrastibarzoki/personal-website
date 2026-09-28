@@ -1,63 +1,157 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getPublishedPersianInsights } from '../../utils/insights';
-const title='احمد راستی برزکی | هوش مصنوعی، علم داده و پژوهش';
-const description='وب‌سایت شخصی احمد راستی برزکی؛ مدیر فناوری، متخصص علم داده و پژوهشگر هوش مصنوعی و یادگیری ماشین با تمرکز بر شبکه‌های عصبی گراف، تشخیص ناهنجاری، هوش مصنوعی کاربردی و مهندسی داده.';
-const latest=(await getPublishedPersianInsights()).slice(0,3);
-const websiteSchema={
-  '@type':'WebSite','@id':'https://ahmadrastibarzoki.ir/fa#website-fa',
-  url:'https://ahmadrastibarzoki.ir/fa',name:'احمد راستی برزکی',
-  alternateName:[
+
+const title = 'احمد راستی برزکی | علم داده، هوش مصنوعی و پژوهش';
+const description = 'وب‌سایت شخصی احمد راستی برزکی؛ مدیر فناوری، متخصص علم داده و پژوهشگر هوش مصنوعی و یادگیری ماشین با تمرکز بر شبکه‌های عصبی گراف، تشخیص ناهنجاری، مهندسی داده و هوش مصنوعی کاربردی.';
+
+const latestInsights = (await getPublishedPersianInsights()).slice(0, 3);
+
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': 'https://ahmadrastibarzoki.ir/fa#website-fa',
+  url: 'https://ahmadrastibarzoki.ir/fa',
+  name: 'احمد راستی برزکی',
+  alternateName: [
     'Ahmad Rasti Barzoki',
     'Ahmad Rasti',
     'Rasti Barzoki',
     'احمد راستی',
     'راستی برزکی'
   ],
-  creator:{'@id':'https://ahmadrastibarzoki.ir/#person'},inLanguage:'fa'
+  creator: {
+    '@id': 'https://ahmadrastibarzoki.ir/#person'
+  },
+  inLanguage: 'fa'
 };
 ---
-<BaseLayout title={title} description={description} schema={websiteSchema} image="/images/hero-presenting.png" imageAlt="احمد راستی برزکی در حال ارائه" lang="fa">
-  <section class="hero-media">
-    <img class="hero-image" src="/images/hero-presenting-1800.webp" srcset="/images/hero-presenting-720.webp 720w, /images/hero-presenting-1200.webp 1200w, /images/hero-presenting-1800.webp 1800w" sizes="100vw" width="1672" height="941" alt="احمد راستی برزکی در حال ارائه" fetchpriority="high" decoding="async" />
-    <div class="container hero-content">
-      <p class="eyebrow">هوش مصنوعی · علم داده · پژوهش · فناوری</p>
-      <h1>احمد راستی برزکی</h1>
-      <p class="hero-alias">
-        نام کوتاه و نام منتشرشده در برخی آثار: <strong>احمد راستی · Ahmad Rasti</strong>
-      </p>
-      <p class="lead">مدیر فناوری، متخصص علم داده و پژوهشگر هوش مصنوعی و یادگیری ماشین؛ با تمرکز بر یادگیری ماشین روی گراف، تشخیص ناهنجاری، هوش مصنوعی کاربردی و مهندسی داده.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="/fa/projects">مشاهده پروژه‌ها</a>
-        <a class="button on-dark" href="/fa/research">پروفایل پژوهشی</a>
-        <a class="button on-dark" href="/fa/cv">رزومه</a>
-        <a class="button on-dark" href="/fa/contact">تماس</a>
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={websiteSchema}
+  image="/images/fa-hero-final-wide.webp"
+  imageAlt="احمد راستی برزکی، متخصص علم داده و پژوهشگر هوش مصنوعی"
+  lang="fa"
+>
+  <section class="fa-home-hero-v4">
+    <img
+      class="fa-home-hero-v4-bg"
+      src="/images/fa-hero-final-wide.webp"
+      width="1916"
+      height="821"
+      alt=""
+      fetchpriority="high"
+      decoding="async"
+    />
+
+    <div class="container fa-home-hero-v4-inner">
+      <div class="fa-home-hero-v4-copy">
+        <p class="fa-kicker">علم داده · هوش مصنوعی · پژوهش · فناوری</p>
+
+        <h1>احمد راستی برزکی</h1>
+
+        <p class="fa-role">
+          مدیر فناوری، متخصص علم داده و پژوهشگر هوش مصنوعی
+        </p>
+
+        <p class="fa-home-intro">
+          روی پروژه‌هایی کار می‌کنم که بین پژوهش و اجرا قرار می‌گیرند؛ از پژوهش در یادگیری ماشین روی گراف و تشخیص ناهنجاری
+          تا طراحی راه‌حل‌های داده‌محور، مهندسی داده و به‌کارگیری عملی هوش مصنوعی در کسب‌وکار و آموزش.
+        </p>
+
+        <p class="fa-name-note">
+          در بعضی از آثار علمی با نام <span dir="ltr">Ahmad Rasti</span> منتشر شده‌ام.
+        </p>
+
+        <div class="fa-home-actions">
+          <a class="button primary" href="/fa/projects">مشاهده پروژه‌ها</a>
+          <a class="button" href="/fa/about">درباره من</a>
+          <a class="button subtle" href="/fa/cv">رزومه</a>
+        </div>
+
+        <div class="fa-credibility-strip" aria-label="خلاصه مسیر حرفه‌ای">
+          <div>
+            <strong>کارشناسی ارشد علم داده</strong>
+            <span>دانشگاه صنعتی اصفهان</span>
+          </div>
+          <div>
+            <strong>پژوهش در Graph ML</strong>
+            <span>شبکه‌های عصبی گراف و تشخیص ناهنجاری</span>
+          </div>
+          <div>
+            <strong>تجربه اجرایی</strong>
+            <span>داده، هوش مصنوعی و فناوری سازمانی</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <section class="section">
+
+  <section class="section fa-home-section">
     <div class="container">
-      <div class="section-head">
-        <div><p class="eyebrow">تمرکز</p><h2>پیوند پژوهش علمی با سیستم‌های واقعی.</h2></div>
-        <p class="section-copy">فعالیت من از پژوهش یادگیری ماشین تا تحلیل و مهندسی داده، سیستم‌های سازمانی و کاربرد مسئولانه هوش مصنوعی را پوشش می‌دهد. تمرکز اصلی‌ام روی راهکارهایی است که هم از نظر فنی قابل دفاع باشند و هم در عمل ارزش ایجاد کنند.</p>
+      <div class="fa-section-heading">
+        <p class="eyebrow">حوزه‌های کاری و پژوهشی</p>
+        <h2>روی چه موضوع‌هایی کار می‌کنم؟</h2>
+        <p>
+          تمرکز من روی مسائلی است که هم از نظر فنی جدی‌اند و هم در دنیای واقعی کاربرد دارند.
+        </p>
       </div>
+
       <div class="grid">
-        <article class="card"><span class="tag">پژوهش</span><h3>یادگیری ماشین روی گراف</h3><p>شبکه‌های عصبی گراف، یادگیری نمایش، خودرمزگذارهای گرافی و تشخیص ناهنجاری بدون نظارت.</p></article>
-        <article class="card"><span class="tag">هوش مصنوعی کاربردی</span><h3>سیستم‌های یادگیری ماشین</h3><p>مدل‌های هوش مصنوعی و تحلیل داده برای تصمیم‌گیری، پیش‌بینی و بهبود عملیات.</p></article>
-        <article class="card"><span class="tag">مهندسی</span><h3>داده و یکپارچه‌سازی سیستم‌ها</h3><p>پایپ‌لاین‌های قابل‌اعتماد، مهندسی تحلیل و الگوهای تمیز برای یکپارچه‌سازی سیستم‌های سازمانی.</p></article>
+        <article class="card">
+          <span class="tag">پژوهش</span>
+          <h3>یادگیری ماشین روی گراف</h3>
+          <p>
+            شبکه‌های عصبی گراف، یادگیری نمایش، خودرمزگذارهای گرافی
+            و تشخیص ناهنجاری بدون نظارت.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">هوش مصنوعی کاربردی</span>
+          <h3>مدل‌ها و سیستم‌های هوشمند</h3>
+          <p>
+            استفاده از یادگیری ماشین و هوش مصنوعی برای تصمیم‌گیری،
+            پیش‌بینی و حل مسائل واقعی.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">مهندسی داده</span>
+          <h3>داده و یکپارچه‌سازی سیستم‌ها</h3>
+          <p>
+            طراحی پایپ‌لاین‌های قابل‌اعتماد، مهندسی تحلیل و اتصال
+            سیستم‌های داده در محیط‌های سازمانی.
+          </p>
+        </article>
       </div>
     </div>
   </section>
-  <section class="section">
+
+  <section class="section fa-home-section">
     <div class="container">
-      <div class="section-head">
-        <div><p class="eyebrow">آخرین یادداشت‌ها</p><h2>روش‌ها، سیستم‌ها و هوش مصنوعی مسئولانه.</h2></div>
-        <p class="section-copy">نوشته‌هایی مبتنی بر پژوهش، پروژه‌های فنی عمومی و تجربه طراحی سیستم‌های داده و هوش مصنوعی.</p>
+      <div class="fa-section-heading">
+        <p class="eyebrow">تازه‌ترین نوشته‌ها</p>
+        <h2>از تجربه پروژه‌ها تا ایده‌های پژوهشی</h2>
+        <p>
+          درباره موضوع‌هایی می‌نویسم که در پژوهش، پروژه‌های فنی و کار حرفه‌ای با آن‌ها درگیر بوده‌ام.
+        </p>
       </div>
+
       <div class="grid">
-        {latest.map(post=><a class="card insight-home-card" href={`/fa/insights/${post.id}`}><span class="tag">{post.data.category}</span><h3>{post.data.title}</h3><p>{post.data.description}</p></a>)}
+        {latestInsights.map((post) => (
+          <a class="card insight-home-card" href={`/fa/insights/${post.id}`}>
+            <span class="tag">{post.data.category}</span>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+          </a>
+        ))}
       </div>
-      <div class="actions"><a class="button" href="/fa/insights">مشاهده همه یادداشت‌ها</a></div>
+
+      <div class="actions">
+        <a class="button" href="/fa/insights">مشاهده همه یادداشت‌ها</a>
+      </div>
     </div>
   </section>
 </BaseLayout>

@@ -14,7 +14,7 @@ const contacts=[
 ];
 ---
 <BaseLayout title={title} description={description} image="/images/about-portrait.png" imageAlt="احمد راستی برزکی" ogType="profile" lang="fa">
-  <section class="page-hero"><div class="container"><p class="eyebrow">تماس</p><h1>در ارتباط باشیم.</h1><p class="lead">برای همکاری پژوهشی، مشاوره، پروژه‌های فنی یا فرصت‌های حرفه‌ای می‌توانید از راه‌های زیر با من در ارتباط باشید.</p></div></section>
+  <section class="page-hero"><div class="container"><p class="eyebrow">تماس</p><h1>برای همکاری یا گفت‌وگو در تماس باشیم</h1><p class="lead">اگر درباره یک همکاری پژوهشی، پروژه فنی یا فرصت حرفه‌ای می‌خواهید صحبت کنیم، از راه‌های زیر می‌توانید با من در ارتباط باشید.</p></div></section>
   <section class="section"><div class="container"><div class="contact-grid enhanced-contact-grid">
     {contacts.map(([title,value,href,icon,note])=><a class="contact-item contact-item-rich" href={href} target={href.startsWith('http')?'_blank':undefined} rel={href.startsWith('http')?'noreferrer':undefined}><img class="contact-icon" src={icon} alt="" width="56" height="56"/><div><strong>{title}</strong><p>{value}</p><span class="contact-note">{note}</span></div></a>)}
   </div></div></section>

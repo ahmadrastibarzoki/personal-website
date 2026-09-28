@@ -33,48 +33,71 @@ const websiteSchema = {
   image="/images/hero-presenting.png"
   imageAlt="Ahmad Rasti Barzoki presenting on stage"
 >
-  <section class="hero-media">
+  <section class="en-home-hero-v4">
     <img
-      class="hero-image"
+      class="en-home-hero-v4-bg"
       src="/images/hero-presenting-1800.webp"
       srcset="/images/hero-presenting-720.webp 720w, /images/hero-presenting-1200.webp 1200w, /images/hero-presenting-1800.webp 1800w"
       sizes="100vw"
       width="1672"
       height="941"
-      alt="Ahmad Rasti Barzoki presenting on stage"
+      alt=""
       fetchpriority="high"
       decoding="async"
     />
-    <div class="container hero-content">
-      <p class="eyebrow">AI · Data Science · Research · Technology</p>
-      <h1>Ahmad Rasti Barzoki</h1>
-      <p class="hero-alias">
-        Also published as <strong>Ahmad Rasti</strong>.
-      </p>
-      <p class="lead">
-        Technology leader, Data Scientist and AI/ML researcher working across
-        Graph Machine Learning, Anomaly Detection, Applied AI and Data Engineering.
-      </p>
-      <div class="hero-actions">
-        <a class="button primary" href="/projects">View projects</a>
-        <a class="button on-dark" href="/research">Research profile</a>
-        <a class="button on-dark" href="/cv">View CV</a>
-        <a class="button on-dark" href="/contact">Contact</a>
+
+    <div class="container en-home-hero-v4-inner">
+      <div class="en-home-hero-v4-copy">
+        <p class="en-kicker">AI · DATA SCIENCE · RESEARCH · TECHNOLOGY</p>
+
+        <h1>Ahmad Rasti Barzoki</h1>
+
+        <p class="en-role">
+          Technology leader, data scientist, and AI/ML researcher.
+        </p>
+
+        <p class="en-home-intro">
+          I work across research and production, with a focus on graph machine learning,
+          anomaly detection, applied AI, data engineering, and the systems needed to turn
+          technical ideas into useful products and decisions.
+        </p>
+
+        <p class="en-name-note">
+          Also published as <strong>Ahmad Rasti</strong>.
+        </p>
+
+        <div class="en-home-actions">
+          <a class="button primary" href="/projects">View projects</a>
+          <a class="button" href="/research">Research profile</a>
+          <a class="button subtle" href="/cv">View CV</a>
+        </div>
+
+        <div class="en-credibility-strip" aria-label="Professional highlights">
+          <div>
+            <strong>M.Sc. in Data Science</strong>
+            <span>Isfahan University of Technology</span>
+          </div>
+          <div>
+            <strong>Graph ML research</strong>
+            <span>GNNs, representation learning, anomaly detection</span>
+          </div>
+          <div>
+            <strong>Industry experience</strong>
+            <span>Data, AI, analytics, and enterprise technology</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section en-home-section">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Focus</p>
-          <h2>Building at the intersection of research and real-world systems.</h2>
-        </div>
-        <p class="section-copy">
-          My work spans machine learning research, production analytics, data engineering,
-          enterprise systems and responsible applications of AI. I am especially interested
-          in methods that are technically rigorous and useful in practice.
+      <div class="en-section-heading">
+        <p class="eyebrow">Focus</p>
+        <h2>Research depth, production perspective.</h2>
+        <p>
+          My work sits between machine learning research and real-world data systems,
+          with an emphasis on methods that are technically sound and useful in practice.
         </p>
       </div>
 
@@ -98,15 +121,13 @@ const websiteSchema = {
     </div>
   </section>
 
-  <section class="section">
+  <section class="section en-home-section">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Selected work</p>
-          <h2>Open projects.</h2>
-        </div>
-        <p class="section-copy">
-          Public, reproducible projects that reflect my research and engineering interests.
+      <div class="en-section-heading">
+        <p class="eyebrow">Selected work</p>
+        <h2>Public projects, built to be inspected.</h2>
+        <p>
+          Reproducible technical work that reflects my research interests and engineering approach.
         </p>
       </div>
 
@@ -127,6 +148,7 @@ const websiteSchema = {
           <h3>Graph Anomaly Detection</h3>
           <p>Research implementation of graph autoencoder anomaly detection with GAT and MST-geodesic regularization.</p>
         </a>
+
         <a class="card" href="https://github.com/ahmadrastibarzoki/retail-analytics-engineering" target="_blank" rel="noreferrer">
           <img
             class="project-image"
@@ -143,6 +165,7 @@ const websiteSchema = {
           <h3>Retail Analytics Engineering</h3>
           <p>Clean-room analytics engineering project with synthetic data, validation, dimensional analysis, testing and CI.</p>
         </a>
+
         <a class="card" href="https://github.com/ahmadrastibarzoki/rahkaran-erp-mysql-integration" target="_blank" rel="noreferrer">
           <img
             class="project-image"
@@ -163,15 +186,13 @@ const websiteSchema = {
     </div>
   </section>
 
-  <section class="section">
+  <section class="section en-home-section">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Latest insights</p>
-          <h2>Notes on methods, systems and responsible AI.</h2>
-        </div>
-        <p class="section-copy">
-          Practical writing based on research, public technical work and the design choices behind real data and AI systems.
+      <div class="en-section-heading">
+        <p class="eyebrow">Latest insights</p>
+        <h2>Research notes and lessons from building real systems.</h2>
+        <p>
+          Writing on methods, trade-offs, experiments, and the decisions behind practical data and AI systems.
         </p>
       </div>
 

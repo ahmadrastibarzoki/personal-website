@@ -176,6 +176,16 @@ const structuredData = {
     <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
 
+    {isFa && (
+      <>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </>
+    )}
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -210,10 +220,11 @@ const structuredData = {
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href={isFa ? '/fa' : '/'} aria-label={isFa ? 'صفحه اصلی احمد راستی برزکی' : 'Ahmad Rasti Barzoki home'}>
-          <img src="/brand/arb-logo-96.webp" alt="" width="44" height="44" decoding="async" />
+        <a class="brand" href={lang === 'fa' ? '/fa' : '/'} aria-label={lang === 'fa' ? 'صفحه اصلی احمد راستی برزکی' : 'Ahmad Rasti Barzoki home'}>
+          <img src="/brand/arb-logo.png" alt="" width="44" height="44" />
         </a>
         <nav aria-label={isFa ? 'ناوبری اصلی' : 'Primary navigation'}>
+          <a href={isFa ? '/fa' : '/'}>{isFa ? 'خانه' : 'Home'}</a>
           {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
         </nav>
         <div class="header-actions">
