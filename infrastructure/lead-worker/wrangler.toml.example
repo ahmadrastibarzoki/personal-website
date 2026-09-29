@@ -1,0 +1,9 @@
+name = "ahmad-rasti-lead-form"
+main = "worker.js"
+compatibility_date = "2026-09-28"
+
+[vars]
+GITHUB_OWNER = "ahmadrastibarzoki"
+GITHUB_REPO = "website-leads-private"
+GITHUB_BRANCH = "main"
+ALLOWED_ORIGINS = "https://ahmadrastibarzoki.ir,http://localhost:4321"

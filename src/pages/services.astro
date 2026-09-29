@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+
+const title = 'Work with me | Ahmad Rasti Barzoki';
+const description = 'Work with Ahmad Rasti Barzoki on data analytics, data engineering, applied AI, machine learning, technology transformation, training and research collaboration.';
+
+const services = [
+  {
+    title: 'Data & Analytics Consulting',
+    summary: 'Turn scattered data and unclear reporting into decision-ready analytics.',
+    problems: 'Fragmented data, unclear KPIs, manual reporting, forecasting and analytical decision support.',
+    deliverables: 'Analytics design, KPI framework, forecasting approach, dashboards, data models and implementation roadmap.'
+  },
+  {
+    title: 'Data Engineering & System Integration',
+    summary: 'Build reliable data flows between operational systems and analytics tools.',
+    problems: 'Disconnected ERP/database/API sources, repetitive manual exports, unreliable pipelines and inconsistent reporting data.',
+    deliverables: 'ETL/ELT pipelines, validation rules, integration design, analytics-ready models and technical documentation.'
+  },
+  {
+    title: 'AI & Machine Learning Solutions',
+    summary: 'Evaluate where machine learning can create practical value and build focused solutions.',
+    problems: 'Forecasting, anomaly detection, prediction, classification, decision support and applied AI use cases.',
+    deliverables: 'Problem framing, feasibility assessment, prototype/PoC, model evaluation and implementation recommendations.'
+  },
+  {
+    title: 'Technology & Digital Transformation',
+    summary: 'Connect technology decisions to business processes, data and long-term operating needs.',
+    problems: 'Tool selection, fragmented systems, manual workflows, process automation and technology roadmap decisions.',
+    deliverables: 'Architecture recommendations, technology roadmap, system/process integration plan and vendor/project evaluation.'
+  },
+  {
+    title: 'Training & Workshops',
+    summary: 'Practical training for teams that need to use data and AI more effectively.',
+    problems: 'AI adoption, data literacy, practical GenAI workflows, Python/data analysis and applied machine learning.',
+    deliverables: 'Custom workshop plan, training sessions, exercises, examples and practical implementation guidance.'
+  },
+  {
+    title: 'Research Collaboration',
+    summary: 'Technical collaboration on data/AI research where rigorous implementation matters.',
+    problems: 'Research coding, experiment design, reproducibility, model evaluation and applied AI research.',
+    deliverables: 'Research implementation, experimental workflow, technical review, reproducibility support and mentoring.'
+  }
+];
+
+const serviceSchema = {
+  '@type': 'ItemList',
+  '@id': 'https://ahmadrastibarzoki.ir/services#services',
+  name: 'Professional services by Ahmad Rasti Barzoki',
+  itemListElement: services.map((service, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Service',
+      name: service.title,
+      description: service.summary,
+      provider: { '@id': 'https://ahmadrastibarzoki.ir/#person' },
+      areaServed: 'Worldwide'
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={serviceSchema}
+  image="/images/hero-presenting.png"
+  imageAlt="Ahmad Rasti Barzoki - data, AI and technology collaboration"
+>
+  <section class="page-hero services-hero">
+    <div class="container">
+      <p class="eyebrow">Work with me</p>
+      <h1>Data, AI, and technology work built around a real problem.</h1>
+      <p class="lead">
+        I work with organizations, teams and researchers on focused problems across data,
+        AI, analytics, engineering and technology. The goal is not to add another tool —
+        it is to create a useful, defensible outcome.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#project-inquiry">Discuss a project</a>
+        <a class="button" href="/projects">See selected work</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="services-section-heading">
+        <p class="eyebrow">Areas I can help with</p>
+        <h2>Focused collaboration, from diagnosis to implementation.</h2>
+        <p>
+          Engagements can range from a short technical consultation to a scoped implementation,
+          workshop or research collaboration.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        {services.map((service) => (
+          <article class="service-card">
+            <h3>{service.title}</h3>
+            <p class="service-summary">{service.summary}</p>
+            <div class="service-detail">
+              <strong>Typical problems</strong>
+              <p>{service.problems}</p>
+            </div>
+            <div class="service-detail">
+              <strong>Possible deliverables</strong>
+              <p>{service.deliverables}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section service-process-section">
+    <div class="container">
+      <div class="services-section-heading">
+        <p class="eyebrow">How I work</p>
+        <h2>Start with the problem, then choose the technology.</h2>
+      </div>
+      <div class="service-process-grid">
+        <article>
+          <span>01</span>
+          <h3>Clarify the problem</h3>
+          <p>Define the decision, bottleneck, research question or operational outcome that matters.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Scope a practical approach</h3>
+          <p>Review the available data, systems, constraints and the smallest useful path forward.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Build, validate, and hand over</h3>
+          <p>Deliver the agreed work with clear evaluation, documentation and next-step recommendations.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div id="project-inquiry" class="services-form-anchor"></div>
+  <section class="section">
+    <div class="container">
+      <LeadForm lang="en" />
+    </div>
+  </section>
+</BaseLayout>

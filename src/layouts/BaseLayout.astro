@@ -47,8 +47,8 @@ const alternateURL = resolvedAlt === null ? null : new URL(resolvedAlt, Astro.si
 const englishURL = isFa ? alternateURL : canonicalURL;
 const persianURL = isFa ? canonicalURL : alternateURL;
 const navItems = isFa
- ? [['درباره من','/fa/about'],['پژوهش','/fa/research'],['پروژه‌ها','/fa/projects'],['مقالات علمی','/fa/publications'],['یادداشت‌ها','/fa/insights'],['رزومه','/fa/cv'],['تماس','/fa/contact']]
- : [['About','/about'],['Research','/research'],['Projects','/projects'],['Publications','/publications'],['Insights','/insights'],['CV','/cv'],['Contact','/contact']];
+ ? [['درباره من','/fa/about'],['پژوهش','/fa/research'],['پروژه‌ها','/fa/projects'],['همکاری با من','/fa/services'],['مقالات علمی','/fa/publications'],['یادداشت‌ها','/fa/insights'],['رزومه','/fa/cv'],['تماس','/fa/contact']]
+ : [['About','/about'],['Research','/research'],['Projects','/projects'],['Work with me','/services'],['Publications','/publications'],['Insights','/insights'],['CV','/cv'],['Contact','/contact']];
 
 const personSchema = {
   '@type': 'Person',

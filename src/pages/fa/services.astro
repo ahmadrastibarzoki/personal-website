@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const title = 'همکاری با من | احمد راستی برزکی';
+const description = 'همکاری با احمد راستی برزکی در تحلیل داده، مهندسی داده، هوش مصنوعی کاربردی، یادگیری ماشین، تحول دیجیتال، آموزش و همکاری پژوهشی.';
+
+const services = [
+  {
+    title: 'مشاوره داده و تحلیل کسب‌وکار',
+    summary: 'تبدیل داده‌های پراکنده و گزارش‌های مبهم به تحلیل قابل‌استفاده برای تصمیم‌گیری.',
+    problems: 'KPIهای نامشخص، گزارش‌گیری دستی، پیش‌بینی، تحلیل فروش و مشتری و طراحی سیستم‌های تصمیم‌یار.',
+    deliverables: 'طراحی تحلیل، چارچوب KPI، مدل داده، رویکرد پیش‌بینی، داشبورد و نقشه اجرای راهکار.'
+  },
+  {
+    title: 'مهندسی داده و یکپارچه‌سازی سیستم‌ها',
+    summary: 'ساخت جریان داده قابل‌اعتماد بین سیستم‌های عملیاتی، پایگاه‌های داده و ابزارهای تحلیلی.',
+    problems: 'اتصال ERP، پایگاه داده و API، خروجی‌های دستی، پایپ‌لاین‌های ناپایدار و ناسازگاری داده‌های گزارش‌گیری.',
+    deliverables: 'ETL/ELT، قواعد اعتبارسنجی، طراحی یکپارچه‌سازی، مدل تحلیلی و مستندات فنی.'
+  },
+  {
+    title: 'راهکارهای هوش مصنوعی و یادگیری ماشین',
+    summary: 'بررسی اینکه یادگیری ماشین کجا واقعاً ارزش ایجاد می‌کند و ساخت راهکارهای متمرکز برای همان مسئله.',
+    problems: 'پیش‌بینی، تشخیص ناهنجاری، طبقه‌بندی، تصمیم‌یار و کاربردهای عملی هوش مصنوعی.',
+    deliverables: 'صورت‌بندی مسئله، ارزیابی امکان‌پذیری، نمونه اولیه یا PoC، ارزیابی مدل و پیشنهاد مسیر اجرا.'
+  },
+  {
+    title: 'فناوری و تحول دیجیتال',
+    summary: 'هم‌راستا کردن تصمیم‌های فناوری با فرایندهای کسب‌وکار، داده و نیازهای عملیاتی.',
+    problems: 'انتخاب ابزار، سیستم‌های پراکنده، فرایندهای دستی، اتوماسیون و تصمیم‌های معماری و نقشه راه فناوری.',
+    deliverables: 'پیشنهاد معماری، نقشه راه فناوری، برنامه یکپارچه‌سازی سیستم و ارزیابی پروژه یا تأمین‌کننده.'
+  },
+  {
+    title: 'آموزش و کارگاه‌های تخصصی',
+    summary: 'آموزش عملی برای تیم‌هایی که می‌خواهند از داده و هوش مصنوعی مؤثرتر استفاده کنند.',
+    problems: 'پذیرش AI در سازمان، سواد داده، استفاده عملی از GenAI، تحلیل داده با Python و یادگیری ماشین کاربردی.',
+    deliverables: 'برنامه آموزشی سفارشی، کارگاه، تمرین، مثال و راهنمای پیاده‌سازی در محیط واقعی.'
+  },
+  {
+    title: 'همکاری پژوهشی',
+    summary: 'همکاری فنی در پژوهش‌های داده و هوش مصنوعی که پیاده‌سازی دقیق و ارزیابی قابل‌دفاع اهمیت دارد.',
+    problems: 'کدنویسی پژوهشی، طراحی آزمایش، بازتولیدپذیری، ارزیابی مدل و پژوهش‌های هوش مصنوعی کاربردی.',
+    deliverables: 'پیاده‌سازی پژوهشی، طراحی جریان آزمایش، بازبینی فنی، پشتیبانی بازتولید و منتورینگ.'
+  }
+];
+
+const serviceSchema = {
+  '@type': 'ItemList',
+  '@id': 'https://ahmadrastibarzoki.ir/fa/services#services',
+  name: 'خدمات حرفه‌ای احمد راستی برزکی',
+  itemListElement: services.map((service, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Service',
+      name: service.title,
+      description: service.summary,
+      provider: { '@id': 'https://ahmadrastibarzoki.ir/#person' },
+      areaServed: 'Worldwide'
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={serviceSchema}
+  image="/images/fa-hero-final-wide.webp"
+  imageAlt="احمد راستی برزکی - همکاری در داده، هوش مصنوعی و فناوری"
+  lang="fa"
+>
+  <section class="page-hero services-hero">
+    <div class="container">
+      <p class="eyebrow">همکاری با من</p>
+      <h1>از تعریف مسئله تا ساخت یک راهکار قابل‌استفاده</h1>
+      <p class="lead">
+        با سازمان‌ها، تیم‌ها و پژوهشگران روی مسائل مشخص داده، هوش مصنوعی،
+        مهندسی و فناوری همکاری می‌کنم. نقطه شروع برای من مسئله واقعی است، نه صرفاً انتخاب یک ابزار.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#project-inquiry">درباره پروژه صحبت کنیم</a>
+        <a class="button" href="/fa/projects">مشاهده پروژه‌ها</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="services-section-heading">
+        <p class="eyebrow">حوزه‌های همکاری</p>
+        <h2>همکاری متمرکز؛ از بررسی مسئله تا اجرا</h2>
+        <p>
+          نوع همکاری می‌تواند از یک جلسه مشاوره فنی تا پروژه مشخص، کارگاه آموزشی
+          یا همکاری پژوهشی ادامه‌دار باشد.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        {services.map((service) => (
+          <article class="service-card">
+            <h3>{service.title}</h3>
+            <p class="service-summary">{service.summary}</p>
+            <div class="service-detail">
+              <strong>مسائل رایج</strong>
+              <p>{service.problems}</p>
+            </div>
+            <div class="service-detail">
+              <strong>خروجی‌های احتمالی</strong>
+              <p>{service.deliverables}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section service-process-section">
+    <div class="container">
+      <div class="services-section-heading">
+        <p class="eyebrow">شیوه همکاری</p>
+        <h2>اول مسئله را روشن می‌کنیم، بعد سراغ فناوری می‌رویم</h2>
+      </div>
+      <div class="service-process-grid">
+        <article>
+          <span>۰۱</span>
+          <h3>تعریف دقیق مسئله</h3>
+          <p>مشخص می‌کنیم کدام تصمیم، گلوگاه، سؤال پژوهشی یا نتیجه عملیاتی واقعاً اهمیت دارد.</p>
+        </article>
+        <article>
+          <span>۰۲</span>
+          <h3>طراحی مسیر عملی</h3>
+          <p>داده، سیستم‌ها، محدودیت‌ها و کوچک‌ترین مسیر مفید برای رسیدن به نتیجه را بررسی می‌کنیم.</p>
+        </article>
+        <article>
+          <span>۰۳</span>
+          <h3>ساخت، ارزیابی و تحویل</h3>
+          <p>خروجی توافق‌شده با ارزیابی روشن، مستندات و پیشنهاد گام بعدی تحویل می‌شود.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div id="project-inquiry" class="services-form-anchor"></div>
+  <section class="section">
+    <div class="container">
+      <LeadForm lang="fa" />
+    </div>
+  </section>
+</BaseLayout>

@@ -20,6 +20,8 @@ jobs:
 
       - name: Build and upload Astro site
         uses: withastro/action@v6
+        env:
+          PUBLIC_LEAD_FORM_ENDPOINT: ${{ vars.PUBLIC_LEAD_FORM_ENDPOINT }}
         
   deploy:
     needs: build

@@ -4,7 +4,7 @@ export const prerender = true;
 
 const staticPairs=[
   ['/','/fa'],['/about','/fa/about'],['/research','/fa/research'],['/projects','/fa/projects'],
-  ['/publications','/fa/publications'],['/cv','/fa/cv'],['/contact','/fa/contact'],['/insights','/fa/insights']
+  ['/publications','/fa/publications'],['/services','/fa/services'],['/cv','/fa/cv'],['/contact','/fa/contact'],['/insights','/fa/insights']
 ] as const;
 
 const esc=(v:string)=>v.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
