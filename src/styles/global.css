@@ -3642,3 +3642,110 @@ html[data-404-lang='fa'] body {
   }
 }
 
+/* TYPOGRAPHY SCALE REFINEMENT — 2026-09-29
+   Calmer heading scale across the site, with extra reduction for Persian. */
+
+h1 {
+  font-size: clamp(2.7rem, 6.2vw, 5.25rem);
+}
+
+h2 {
+  font-size: clamp(1.85rem, 4.2vw, 2.9rem);
+}
+
+.page-hero:not(.cv-hero) h1 {
+  font-size: clamp(2.45rem, 5.5vw, 4.35rem);
+}
+
+.en-home-hero-v4 h1 {
+  font-size: clamp(3.35rem, 6.1vw, 5.65rem);
+}
+
+.fa-home-hero-v4 h1 {
+  font-size: clamp(2.95rem, 5.2vw, 4.75rem);
+  line-height: 1.12;
+}
+
+.en-section-heading h2 {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+}
+
+.fa-section-heading h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.65rem);
+  line-height: 1.5;
+}
+
+.article-header h1 {
+  font-size: clamp(2.1rem, 4.6vw, 3.7rem);
+}
+
+.article-body h2 {
+  font-size: clamp(1.45rem, 2.6vw, 1.95rem);
+}
+
+.identity-panel h2 {
+  font-size: clamp(1.55rem, 2.6vw, 2.05rem);
+}
+
+.lead-form-intro h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+}
+
+.error-copy h1 {
+  font-size: clamp(2.05rem, 5vw, 4.15rem);
+}
+
+/* Persian titles need more breathing room and a slightly calmer scale. */
+html[dir='rtl'] .page-hero:not(.cv-hero) h1 {
+  font-size: clamp(2.05rem, 4.5vw, 3.55rem);
+  line-height: 1.48;
+}
+
+html[dir='rtl'] .article-header h1 {
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+  line-height: 1.5;
+}
+
+html[dir='rtl'] .article-body h2 {
+  font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+  line-height: 1.58;
+}
+
+html[dir='rtl'] .lead-form-intro h2 {
+  font-size: clamp(1.42rem, 2.3vw, 1.9rem);
+  line-height: 1.6;
+}
+
+/* Keep article diagrams/images inside the reading column on every screen. */
+.article-body img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 1.8rem auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+@media (max-width: 900px) {
+  .en-home-hero-v4 h1 {
+    font-size: clamp(2.45rem, 9.5vw, 3.75rem);
+  }
+
+  .fa-home-hero-v4 h1 {
+    font-size: clamp(2.15rem, 8.5vw, 3.35rem);
+    line-height: 1.22;
+  }
+
+  html[dir='rtl'] .page-hero:not(.cv-hero) h1 {
+    font-size: clamp(1.95rem, 8vw, 2.95rem);
+  }
+
+  .article-header h1 {
+    font-size: clamp(1.95rem, 8vw, 3rem);
+  }
+
+  html[dir='rtl'] .article-header h1 {
+    font-size: clamp(1.78rem, 7.4vw, 2.65rem);
+  }
+}
