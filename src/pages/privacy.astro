@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Privacy | Ahmad Rasti Barzoki';
+const description = 'Privacy notice for ahmadrastibarzoki.ir, including contact form data, analytics choices, storage and data requests.';
+
+const schema = {
+  '@type': 'WebPage',
+  '@id': 'https://ahmadrastibarzoki.ir/privacy#webpage',
+  url: 'https://ahmadrastibarzoki.ir/privacy',
+  name: 'Privacy Notice | Ahmad Rasti Barzoki',
+  description,
+  inLanguage: 'en'
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} alternatePath="/fa/privacy">
+  <section class="page-hero privacy-hero">
+    <div class="container">
+      <p class="eyebrow">Privacy</p>
+      <h1>Privacy notice</h1>
+      <p class="lead">This page explains what information this website collects, why it is used, and how you can ask about or remove information you have submitted.</p>
+      <p class="privacy-updated">Last updated: September 29, 2026</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container privacy-layout">
+      <aside class="privacy-summary" aria-label="Privacy summary">
+        <strong>At a glance</strong>
+        <p>I do not sell personal information.</p>
+        <p>Collaboration form data is used to review and respond to inquiries.</p>
+        <p>Google Analytics stays off unless you choose to allow analytics cookies.</p>
+        <a class="inline-link" href="mailto:contact@ahmadrastibarzoki.ir">contact@ahmadrastibarzoki.ir</a>
+      </aside>
+
+      <div class="privacy-content">
+        <section>
+          <h2>1. Information you choose to submit</h2>
+          <p>If you use the collaboration form, the website may collect the information you enter: your name, email address, organization (optional), area of interest, project stage, approximate timeline, and your message.</p>
+          <p>The form also records the form language, the page where the form was submitted, your consent to submit the inquiry, the submission time, and a randomly generated reference ID.</p>
+        </section>
+
+        <section>
+          <h2>2. How form information is used</h2>
+          <p>Form information is used to review your inquiry, understand the requested collaboration, and contact you about that inquiry. It is not intended for unrelated marketing.</p>
+        </section>
+
+        <section>
+          <h2>3. Where collaboration inquiries are processed and stored</h2>
+          <p>Form submissions are sent over HTTPS to a Cloudflare Worker. The Worker validates the submission and stores the inquiry in a private GitHub repository used for lead and inquiry management.</p>
+          <p>The lead dataset itself does not include your IP address. Cloudflare may process technical request metadata as part of operating, securing, and observing the Worker service.</p>
+        </section>
+
+        <section>
+          <h2>4. Analytics and local storage</h2>
+          <p>This website uses Google Analytics only after you choose <strong>Accept analytics</strong>. If you do not accept, the Google Analytics tag is not loaded by this site.</p>
+          <p>Your analytics choice is stored locally in your browser so the site can remember it. The site also stores your light/dark theme preference locally. You can reopen the analytics choice at any time through <strong>Cookie settings</strong> in the footer.</p>
+        </section>
+
+        <section>
+          <h2>5. Service providers</h2>
+          <p>This website relies on third-party infrastructure to operate. Depending on how you use the site, information may be processed by services such as Cloudflare, GitHub, and Google Analytics (only when analytics consent is granted).</p>
+        </section>
+
+        <section>
+          <h2>6. Retention</h2>
+          <p>Collaboration inquiries are kept only for as long as reasonably needed to respond to the request, maintain relevant professional records, and operate the inquiry system. Test or obsolete records may be deleted earlier.</p>
+        </section>
+
+        <section>
+          <h2>7. Your requests</h2>
+          <p>You can contact me to ask about information you submitted through this website, or to request correction or deletion where appropriate. Please include enough information to identify the relevant submission.</p>
+          <p>Email: <a class="inline-link" href="mailto:contact@ahmadrastibarzoki.ir">contact@ahmadrastibarzoki.ir</a></p>
+        </section>
+
+        <section>
+          <h2>8. Changes to this notice</h2>
+          <p>This notice may be updated when the website, form workflow, analytics setup, or supporting services change. The latest update date appears at the top of this page.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

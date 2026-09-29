@@ -133,9 +133,19 @@ const timelineOptions = isFa
       <label class="lead-form-consent">
         <input name="consent" type="checkbox" value="yes" required />
         <span>
-          {isFa
-            ? 'موافقم اطلاعاتی که در این فرم وارد می‌کنم برای بررسی درخواست و تماس با من استفاده شود.'
-            : 'I agree that the information I submit may be used to review my inquiry and contact me about it.'}
+          {isFa ? (
+            <>
+              موافقم اطلاعاتی که در این فرم وارد می‌کنم برای بررسی درخواست و تماس با من استفاده شود.
+              {' '}
+              <a class="inline-link" href="/fa/privacy">حریم خصوصی</a>
+            </>
+          ) : (
+            <>
+              I agree that the information I submit may be used to review my inquiry and contact me about it.
+              {' '}
+              <a class="inline-link" href="/privacy">Privacy notice</a>
+            </>
+          )}
         </span>
       </label>
 
