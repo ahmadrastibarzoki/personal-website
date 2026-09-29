@@ -65,11 +65,6 @@ const timelineOptions = isFa
           ? 'چند نکته کوتاه کافی است. اطلاعات این فرم برای بررسی درخواست و پاسخ‌دادن به شما استفاده می‌شود.'
           : 'A short brief is enough. The information you submit is used to review your inquiry and respond to you.'}
       </p>
-      <p class="lead-form-privacy">
-        {isFa
-          ? 'اطلاعات فرم به‌صورت عمومی منتشر نمی‌شود و در مخزن خصوصی مخصوص درخواست‌های همکاری نگهداری می‌شود.'
-          : 'Form submissions are not published publicly and are stored in a private repository used for collaboration inquiries.'}
-      </p>
     </div>
 
     <form
@@ -217,12 +212,18 @@ const timelineOptions = isFa
         if (!response.ok) throw new Error(result?.error || 'Submission failed');
 
         form.reset();
-        const reference = result?.leadId ? ` (${result.leadId})` : '';
+        const reference = result?.leadId
+          ? String(result.leadId).slice(0, 8).toUpperCase()
+          : '';
 
         setStatus(
           lang === 'fa'
-            ? `درخواست شما ثبت شد${reference}. در اولین فرصت بررسی می‌کنم و از طریق ایمیل با شما در تماس خواهم بود.`
-            : `Your inquiry has been received${reference}. I’ll review it and follow up by email.`,
+            ? (reference
+                ? `درخواست شما با موفقیت ثبت شد. کد پیگیری: ${reference}`
+                : 'درخواست شما با موفقیت ثبت شد.')
+            : (reference
+                ? `Your inquiry was submitted successfully. Reference: ${reference}`
+                : 'Your inquiry was submitted successfully.'),
           'success'
         );
 
