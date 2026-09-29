@@ -1,0 +1,167 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en" dir="ltr" data-404-lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0b1120" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <script is:inline>
+      const isPersian404 = window.location.pathname === '/fa' || window.location.pathname.startsWith('/fa/');
+      document.documentElement.dataset['404Lang'] = isPersian404 ? 'fa' : 'en';
+      document.documentElement.lang = isPersian404 ? 'fa' : 'en';
+      document.documentElement.dir = isPersian404 ? 'rtl' : 'ltr';
+
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+      document.title = isPersian404
+        ? 'صفحه پیدا نشد | احمد راستی برزکی'
+        : 'Page not found | Ahmad Rasti Barzoki';
+    </script>
+
+    <title>Page not found | Ahmad Rasti Barzoki</title>
+  </head>
+
+  <body class="error-page">
+    <header class="error-header">
+      <div class="container error-header-inner">
+        <a class="brand" id="error-home-logo" href="/" aria-label="Ahmad Rasti Barzoki home">
+          <img src="/brand/arb-logo-96.webp" alt="" width="44" height="44" />
+        </a>
+
+        <button class="theme-toggle" id="error-theme-toggle" type="button" aria-label="Toggle color mode">
+          <span class="theme-toggle-dark">🌙</span>
+          <span class="theme-toggle-light">☀️</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="error-main">
+      <section class="container error-shell">
+        <div class="error-code" aria-hidden="true">404</div>
+
+        <div class="error-copy error-copy-en">
+          <p class="eyebrow">Page not found</p>
+          <h1>This page seems to have moved or never existed.</h1>
+          <p>
+            The link may be outdated, or the address may have been typed incorrectly.
+            You can continue from one of the main sections below.
+          </p>
+
+          <div class="error-actions">
+            <a class="button primary" href="/">Back to home</a>
+            <a class="button" href="/services">Work with me</a>
+            <a class="button" href="/contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="error-copy error-copy-fa" lang="fa" dir="rtl">
+          <p class="eyebrow">صفحه پیدا نشد</p>
+          <h1>این صفحه جابه‌جا شده یا دیگر وجود ندارد.</h1>
+          <p>
+            ممکن است لینک قدیمی باشد یا نشانی صفحه اشتباه وارد شده باشد.
+            می‌توانید از بخش‌های اصلی سایت ادامه دهید.
+          </p>
+
+          <div class="error-actions">
+            <a class="button primary" href="/fa">بازگشت به خانه</a>
+            <a class="button" href="/fa/services">همکاری با من</a>
+            <a class="button" href="/fa/contact">تماس</a>
+          </div>
+        </div>
+
+        <div class="error-divider"></div>
+
+        <div class="error-help error-help-en">
+          <span>Looking for something specific?</span>
+          <a class="inline-link" href="/projects">Projects</a>
+          <a class="inline-link" href="/research">Research</a>
+          <a class="inline-link" href="/insights">Insights</a>
+        </div>
+
+        <div class="error-help error-help-fa" lang="fa" dir="rtl">
+          <span>دنبال بخش خاصی هستید؟</span>
+          <a class="inline-link" href="/fa/projects">پروژه‌ها</a>
+          <a class="inline-link" href="/fa/research">پژوهش</a>
+          <a class="inline-link" href="/fa/insights">یادداشت‌ها</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="error-footer">
+      <div class="container error-footer-inner">
+        <span class="error-footer-en">© {new Date().getFullYear()} Ahmad Rasti Barzoki</span>
+        <span class="error-footer-fa" lang="fa" dir="rtl">© {new Date().getFullYear()} احمد راستی برزکی</span>
+      </div>
+    </footer>
+
+    <script is:inline>
+      const isFa = document.documentElement.dataset['404Lang'] === 'fa';
+      const logo = document.getElementById('error-home-logo');
+      const toggle = document.getElementById('error-theme-toggle');
+
+      if (logo) {
+        logo.setAttribute('href', isFa ? '/fa' : '/');
+        logo.setAttribute('aria-label', isFa ? 'صفحه اصلی احمد راستی برزکی' : 'Ahmad Rasti Barzoki home');
+      }
+
+      if (toggle) {
+        toggle.setAttribute('aria-label', isFa ? 'تغییر حالت رنگ' : 'Toggle color mode');
+        toggle.addEventListener('click', () => {
+          const root = document.documentElement;
+          const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          root.dataset.theme = next;
+          localStorage.setItem('theme', next);
+        });
+      }
+
+      // Optional 404 analytics event, only if the visitor has already consented.
+      let analyticsConsent = null;
+      try {
+        analyticsConsent = localStorage.getItem('analytics_consent_v1');
+      } catch {}
+
+      if (analyticsConsent === 'granted') {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-9WR3LHVXHC';
+        document.head.appendChild(script);
+
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-9WR3LHVXHC');
+        window.gtag('event', 'page_not_found', {
+          page_path: window.location.pathname,
+          page_language: isFa ? 'fa' : 'en'
+        });
+      }
+    </script>
+  </body>
+</html>
