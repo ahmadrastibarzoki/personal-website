@@ -7,3 +7,4 @@ GITHUB_OWNER = "ahmadrastibarzoki"
 GITHUB_REPO = "website-leads-private"
 GITHUB_BRANCH = "main"
 ALLOWED_ORIGINS = "https://ahmadrastibarzoki.ir,http://localhost:4321"
+\n[[send_email]]\nname = "EMAIL"\n

@@ -37,6 +37,65 @@ const safeText = (value, max) => String(value ?? '').trim().slice(0, max);
 const validEmail = (value) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= 160;
 
+const serviceLabels = {
+  data_analytics: 'Data & Analytics',
+  data_engineering: 'Data Engineering & System Integration',
+  ai_ml: 'AI & Machine Learning',
+  technology_transformation: 'Technology & Digital Transformation',
+  training: 'Training & Workshops',
+  research_collaboration: 'Research Collaboration',
+  other: 'Other'
+};
+
+const sendLeadNotification = async (env, lead) => {
+  if (!env.EMAIL || typeof env.EMAIL.send !== 'function') {
+    console.warn('Lead notification skipped: EMAIL binding unavailable.');
+    return false;
+  }
+
+  const reference = lead.id.slice(0, 8).toUpperCase();
+  const service = serviceLabels[lead.service] || lead.service || 'Website inquiry';
+  const text = [
+    'New collaboration inquiry from ahmadrastibarzoki.ir',
+    '',
+    `Reference: ${reference}`,
+    `Submitted: ${lead.submitted_at}`,
+    `Language: ${lead.language}`,
+    '',
+    `Name: ${lead.name}`,
+    `Email: ${lead.email}`,
+    `Organization: ${lead.organization || '—'}`,
+    `Service: ${service}`,
+    `Stage: ${lead.stage}`,
+    `Timeline: ${lead.timeline}`,
+    '',
+    'Message:',
+    lead.message,
+    '',
+    `Page: ${lead.page_path || '—'}`
+  ].join('\n');
+
+  try {
+    await env.EMAIL.send({
+      from: { email: 'contact@ahmadrastibarzoki.ir', name: 'Ahmad Rasti Website' },
+      to: 'ahmadrasti11@gmail.com',
+      replyTo: { email: lead.email, name: lead.name },
+      subject: `New website inquiry — ${service} — ${reference}`,
+      text
+    });
+    console.log('Lead notification email sent', reference);
+    return true;
+  } catch (error) {
+    console.error(
+      'Lead notification email failed',
+      reference,
+      error?.code || '',
+      error?.message || String(error)
+    );
+    return false;
+  }
+};
+
 export default {
   async fetch(request, env) {
     const allowedOrigins = parseAllowedOrigins(env.ALLOWED_ORIGINS);
@@ -140,6 +199,9 @@ export default {
       console.error('GitHub storage error', githubResponse.status, detail);
       return json({ error: 'Could not store the inquiry.' }, 502, cors);
     }
+
+    // Best-effort notification: mail failure must never lose a stored lead.
+    await sendLeadNotification(env, lead);
 
     return json({ ok: true, leadId: lead.id }, 201, cors);
   }
