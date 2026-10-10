@@ -11,6 +11,17 @@ const projects=[
 <BaseLayout title={title} description={description} image="/images/project-retail-analytics.png" imageAlt="پروژه‌های احمد راستی برزکی" lang="fa">
   <section class="page-hero"><div class="container"><p class="eyebrow">پروژه‌ها</p><h1>پروژه‌هایی از مسیر کاری و پژوهشی من</h1><p class="lead">نمونه‌هایی از کارهای عمومی من در یادگیری ماشین، مهندسی تحلیل داده و یکپارچه‌سازی سیستم‌های داده.</p></div></section>
   <section class="section"><div class="container grid">
+      <a class="card" href="https://github.com/ahmadrastibarzoki/ChatHandoffKit" target="_blank" rel="noopener noreferrer" aria-label="مخزن متن‌باز ChatHandoffKit">
+        <div style="min-height:180px;display:flex;flex-direction:column;justify-content:center;gap:.5rem;padding:1.5rem;border-radius:1rem;background:linear-gradient(135deg,#08182f,#102f49);color:#f8fafc" dir="ltr">
+          <span style="color:#8ddcdb;font-size:.8rem;letter-spacing:.11em">OPEN SOURCE · PYTHON</span>
+          <strong style="font-size:clamp(1.4rem,2.5vw,2rem);line-height:1.15">ChatHandoffKit</strong>
+          <span style="color:#d1e6f2">Persistent Project Memory for AI Conversations</span>
+          <span style="color:#8ddcdb;font-size:.85rem">Markdown → Checkpoint → Git / Google Drive</span>
+        </div>
+        <span class="tag">Python · ابزار توسعه · AI Workflow</span>
+        <h3 dir="ltr">ChatHandoffKit</h3>
+        <p>ابزار متن‌باز برای نگهداری و انتقال مستندات پروژه بین گفت‌وگوهای هوش مصنوعی، همراه با ثبت نسخه در Git. اتصال اختیاری Google Drive در نسخه ۰.۲ آزمایشی است و هنوز با حساب واقعی آزموده نشده است.</p>
+      </a>
     {projects.map(([tag,name,desc,img,url])=><a class="card" href={url} target="_blank" rel="noreferrer"><img class="project-image" src={img} width="838" height="474" alt={name} loading="lazy" decoding="async" /><span class="tag">{tag}</span><h3>{name}</h3><p>{desc}</p></a>)}
   </div></section>
 </BaseLayout>
