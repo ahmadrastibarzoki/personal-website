@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc">
+<title id="title">SEO and GEO: search visibility foundations</title>
+<desc id="desc">An original light-toned editorial illustration of a readable content page connected to conventional search and AI-generated answers, supported by crawlability, structure and measurement.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f1e5"/><stop offset="1" stop-color="#d5e3d2"/></linearGradient>
+<linearGradient id="card" x2="1" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#eef4e9"/></linearGradient>
+<filter id="shadow"><feDropShadow dx="0" dy="17" stdDeviation="23" flood-opacity=".15" flood-color="#355443"/></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<circle cx="1450" cy="120" r="300" fill="#aec4a7" opacity=".36"/>
+<circle cx="170" cy="790" r="270" fill="#c2d9b4" opacity=".30"/>
+<path d="M90 170 C350 40 650 260 840 80 M1010 810 C1180 690 1390 760 1510 620" fill="none" stroke="#b0c7af" stroke-width="3" opacity=".55"/>
+<text x="100" y="112" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="700" fill="#56745f" letter-spacing="5">INSIGHTS  /  SEARCH ENGINEERING</text>
+<text x="100" y="193" font-family="Arial,Helvetica,sans-serif" font-size="62" font-weight="800" fill="#203d35">SEO &amp; GEO for AI Search</text>
+<text x="100" y="241" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#587267">Content people trust. Pages search systems can understand.</text>
+<g filter="url(#shadow)">
+<rect x="125" y="336" rx="24" width="470" height="348" fill="url(#card)" stroke="#cbd8c8" stroke-width="2"/>
+<rect x="125" y="336" rx="24" width="470" height="52" fill="#315d4a"/>
+<circle cx="158" cy="361" r="8" fill="#d4e4d7"/><circle cx="183" cy="361" r="8" fill="#d4e4d7"/><circle cx="208" cy="361" r="8" fill="#d4e4d7"/>
+<rect x="168" y="427" width="206" height="22" rx="10" fill="#8fae91"/>
+<rect x="168" y="469" width="350" height="12" rx="6" fill="#bed0bd"/><rect x="168" y="493" width="318" height="12" rx="6" fill="#bed0bd"/><rect x="168" y="517" width="340" height="12" rx="6" fill="#bed0bd"/>
+<rect x="168" y="556" width="160" height="74" rx="13" fill="#e0eadc"/>
+<path d="M188 608l28-27 22 14 23-21 48 34" stroke="#67957c" stroke-width="7" fill="none" stroke-linecap="round"/>
+<rect x="356" y="559" width="163" height="12" rx="6" fill="#a6beaa"/><rect x="356" y="584" width="140" height="12" rx="6" fill="#cbd8c8"/><rect x="356" y="610" width="115" height="12" rx="6" fill="#cbd8c8"/>
+<rect x="708" y="343" rx="23" width="745" height="132" fill="#fff" stroke="#c1d2c4" stroke-width="2"/>
+<rect x="744" y="377" width="64" height="64" rx="18" fill="#e2ede3"/>
+<circle cx="771" cy="400" r="14" stroke="#436952" stroke-width="5" fill="none"/><path d="m783 412 15 16" stroke="#436952" stroke-width="5" stroke-linecap="round"/>
+<text x="843" y="392" fill="#2b5140" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="27">Search results</text>
+<rect x="845" y="412" width="310" height="10" rx="5" fill="#bfd0bd"/><rect x="845" y="433" width="250" height="10" rx="5" fill="#e0e8dc"/>
+<rect x="708" y="518" rx="23" width="745" height="166" fill="#fff" stroke="#c1d2c4" stroke-width="2"/>
+<rect x="747" y="561" width="69" height="69" rx="20" fill="#e8eed8"/>
+<path d="M781 569l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#84975d"/>
+<text x="843" y="570" fill="#2b5140" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="27">AI-generated answers</text>
+<rect x="843" y="592" width="393" height="10" rx="5" fill="#bfd0bd"/><rect x="843" y="614" width="360" height="10" rx="5" fill="#e0e8dc"/><rect x="843" y="636" width="288" height="10" rx="5" fill="#e0e8dc"/>
+</g>
+<path d="M603 490h78c19 0 19-80 46-80" stroke="#7caa8e" stroke-width="6" fill="none"/><path d="m715 401 15 8-17 7" fill="none" stroke="#7caa8e" stroke-width="6" stroke-linecap="round"/>
+<path d="M603 560h79c26 0 16 35 45 35" stroke="#7caa8e" stroke-width="6" fill="none"/><path d="m715 587 15 8-16 8" fill="none" stroke="#7caa8e" stroke-width="6" stroke-linecap="round"/>
+<g font-family="Arial,Helvetica,sans-serif" text-anchor="middle">
+<rect x="120" y="736" width="410" height="90" rx="20" fill="#dcebd7" stroke="#b5cdb7"/><text x="325" y="790" fill="#3c674f" font-size="28" font-weight="700">Crawlability</text>
+<rect x="593" y="736" width="410" height="90" rx="20" fill="#dcebd7" stroke="#b5cdb7"/><text x="798" y="790" fill="#3c674f" font-size="28" font-weight="700">Useful structure</text>
+<rect x="1067" y="736" width="410" height="90" rx="20" fill="#dcebd7" stroke="#b5cdb7"/><text x="1272" y="790" fill="#3c674f" font-size="28" font-weight="700">Real measurement</text>
+</g></svg>
