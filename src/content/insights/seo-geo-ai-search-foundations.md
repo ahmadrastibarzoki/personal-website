@@ -3,7 +3,7 @@ title: "SEO and GEO for AI Search: Technical Foundations and Measurement"
 description: "How technical SEO, clear content, appropriate structured data, and careful measurement can support visibility in conventional and AI-powered search."
 summary: "SEO still matters in AI search. A practical approach starts with crawlable pages, useful original content, accurate structured data and careful measurement—not speculative tricks or promises of AI citations."
 category: "SEO, GEO & AI Search"
-datePublished: 2026-11-01
+datePublished: 2026-10-28
 dateModified: 2026-11-01
 keywords:
   - "SEO"
