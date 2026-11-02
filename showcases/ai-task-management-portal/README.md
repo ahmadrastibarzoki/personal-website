@@ -17,6 +17,18 @@ python -m unittest discover -s showcases/ai-task-management-portal/tests -v
 
 Run from the repository root. `demo.py` prints a synthetic approval **preview** whose `write_enabled` flag is always `false`. No approve/reject execution function exists.
 
+### Batch preview (new read-only educational extension)
+
+The optional `batch_preview.py` checks **multiple fictional approval/rejection proposals** before showing them. An invalid item denies the entire preview output; duplicate task IDs and malformed request objects are rejected.
+
+```bash
+python showcases/ai-task-management-portal/batch_preview.py
+```
+
+Every batch and item remains `PREVIEW_ONLY` with `write_enabled=false`; no action is executed or persisted. The original single-task demo remains unchanged.
+
+See [batch preview usage, tests and limitations](BATCH_PREVIEW.md). This is not a transactional writer, real authorization system, production workflow or security audit.
+
 ### The example workflow
 
 ```text
