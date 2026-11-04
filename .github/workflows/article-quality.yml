@@ -1,0 +1,40 @@
+name: Bilingual article quality gate
+
+on:
+  pull_request:
+    paths:
+      - "src/content/insights/**"
+      - "src/content/insights-fa/**"
+      - "public/images/**"
+      - ".github/workflows/article-quality.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src/content/insights/**"
+      - "src/content/insights-fa/**"
+      - "public/images/**"
+      - ".github/workflows/article-quality.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Verify November 4 bilingual article and image
+        run: |
+          test -f dist/insights/from-ai-prototype-to-usable-product/index.html
+          test -f dist/fa/insights/from-ai-prototype-to-usable-product/index.html
+          test -f dist/images/ai-prototype-to-usable-product-ux.svg
+          grep -q 'hreflang="fa"' dist/insights/from-ai-prototype-to-usable-product/index.html
+          grep -q 'hreflang="en"' dist/fa/insights/from-ai-prototype-to-usable-product/index.html
+          grep -q 'from-ai-prototype-to-usable-product' dist/sitemap.xml
+          grep -q 'from-ai-prototype-to-usable-product' dist/rss.xml
