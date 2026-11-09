@@ -1,0 +1,47 @@
+name: Data validation article and example tests
+on:
+  pull_request:
+    paths:
+      - "src/content/insights/practical-data-validation-ai-ready-pipelines.md"
+      - "src/content/insights-fa/practical-data-validation-ai-ready-pipelines.md"
+      - "public/images/ai-ready-data-validation-gates.svg"
+      - "showcases/data-validation/**"
+      - ".github/workflows/data-validation-article.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src/content/insights/practical-data-validation-ai-ready-pipelines.md"
+      - "src/content/insights-fa/practical-data-validation-ai-ready-pipelines.md"
+      - "public/images/ai-ready-data-validation-gates.svg"
+      - "showcases/data-validation/**"
+      - ".github/workflows/data-validation-article.yml"
+permissions:
+  contents: read
+jobs:
+  validation-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run synthetic example tests
+        run: python -m unittest discover -s showcases/data-validation/tests -v
+      - name: Run synthetic example
+        run: python showcases/data-validation/demo.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Verify bilingual routes and discovery metadata
+        run: |
+          test -s dist/insights/practical-data-validation-ai-ready-pipelines/index.html
+          test -s dist/fa/insights/practical-data-validation-ai-ready-pipelines/index.html
+          test -s dist/images/ai-ready-data-validation-gates.svg
+          grep -q 'hreflang="fa"' dist/insights/practical-data-validation-ai-ready-pipelines/index.html
+          grep -q 'hreflang="en"' dist/fa/insights/practical-data-validation-ai-ready-pipelines/index.html
+          grep -q 'BlogPosting' dist/insights/practical-data-validation-ai-ready-pipelines/index.html
+          grep -q 'practical-data-validation-ai-ready-pipelines' dist/sitemap.xml
+          grep -q 'practical-data-validation-ai-ready-pipelines' dist/rss.xml
