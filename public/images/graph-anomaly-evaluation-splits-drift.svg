@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Graph anomaly detection: evaluation before deployment</title>
+<desc id="desc">Original conceptual illustration of graph nodes and a three-stage assessment: chronological data splits, rare-event evaluation and monitoring graph drift. All values and nodes are illustrative.</desc>
+<defs>
+  <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0a1b2d"/><stop offset="1" stop-color="#193a4a"/></linearGradient>
+  <linearGradient id="bar" x2="1"><stop stop-color="#56d1bd"/><stop offset="1" stop-color="#7baef2"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="17" flood-color="#030c18" flood-opacity=".35"/></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<g opacity=".13" stroke="#d5f0f0" stroke-width="1"><path d="M0 150H1600M0 300H1600M0 450H1600M0 600H1600M0 750H1600"/><path d="M200 0V900M400 0V900M600 0V900M800 0V900M1000 0V900M1200 0V900M1400 0V900"/></g>
+<text x="92" y="104" font-family="Arial,Helvetica,sans-serif" font-size="26" letter-spacing="4" font-weight="bold" fill="#73d7c5">GRAPH MACHINE LEARNING · FIELD GUIDE</text>
+<text x="92" y="190" font-family="Arial,Helvetica,sans-serif" font-size="63" font-weight="bold" fill="#ffffff">Graph Anomaly Detection</text>
+<text x="94" y="247" font-family="Arial,Helvetica,sans-serif" font-size="32" fill="#d0e2e8">The evaluation protocol matters as much as the model.</text>
+<g stroke="#6c9ab5" stroke-width="4" opacity=".75" fill="none"><path d="M1185 130L1260 90L1340 153L1440 113L1502 191L1410 240L1340 153L1260 240L1185 130L1260 90"/><path d="M1260 240L1302 300L1410 240L1492 305"/></g>
+<g fill="#8fd0df"><circle cx="1185" cy="130" r="13"/><circle cx="1260" cy="90" r="14"/><circle cx="1340" cy="153" r="14"/><circle cx="1440" cy="113" r="15"/><circle cx="1260" cy="240" r="13"/><circle cx="1302" cy="300" r="10"/><circle cx="1410" cy="240" r="13"/><circle cx="1492" cy="305" r="10"/></g>
+<circle cx="1502" cy="191" r="22" fill="#f3b66d" stroke="#ffdfaf" stroke-width="6"/>
+<rect x="82" y="342" width="1436" height="432" rx="30" fill="#f8fbfc" filter="url(#shadow)"/>
+<g font-family="Arial,Helvetica,sans-serif">
+  <text x="128" y="405" font-size="22" font-weight="bold" fill="#277d78">01 · SPLIT BY AVAILABILITY</text>
+  <text x="128" y="463" font-size="26" font-weight="bold" fill="#193447">Do not train on tomorrow's graph.</text>
+  <rect x="128" y="528" width="350" height="54" rx="12" fill="#e5ebee"/>
+  <rect x="128" y="528" width="191" height="54" rx="12" fill="#44ae9e"/>
+  <rect x="326" y="528" width="71" height="54" rx="9" fill="#f0be74"/>
+  <rect x="404" y="528" width="74" height="54" rx="9" fill="#4b7dab"/>
+  <text x="147" y="622" font-size="18" fill="#3b5e65">Train</text><text x="334" y="622" font-size="18" fill="#3b5e65">Val</text><text x="413" y="622" font-size="18" fill="#3b5e65">Test</text>
+  <text x="128" y="691" font-size="22" fill="#536a78">Keep cutoff times and graph</text>
+  <text x="128" y="722" font-size="22" fill="#536a78">visibility explicit.</text>
+  <path d="M550 380V736" stroke="#d9e5e7" stroke-width="2"/>
+  <text x="596" y="405" font-size="22" font-weight="bold" fill="#277d78">02 · EVALUATE RARE EVENTS</text>
+  <text x="596" y="463" font-size="26" font-weight="bold" fill="#193447">Rank alerts, not just scores.</text>
+  <rect x="598" y="529" width="320" height="10" rx="5" fill="#d7e8eb"/>
+  <rect x="598" y="529" width="106" height="10" rx="5" fill="#44ae9e"/>
+  <text x="597" y="583" font-size="45" font-weight="bold" fill="#183a49">Precision@K</text>
+  <text x="597" y="627" font-size="25" fill="#4e6878">Average precision · Recall@K</text>
+  <text x="597" y="691" font-size="22" fill="#536a78">Report class prevalence and</text>
+  <text x="597" y="722" font-size="22" fill="#536a78">review capacity.</text>
+  <path d="M1032 380V736" stroke="#d9e5e7" stroke-width="2"/>
+  <text x="1070" y="405" font-size="22" font-weight="bold" fill="#277d78">03 · MONITOR DRIFT</text>
+  <text x="1070" y="463" font-size="26" font-weight="bold" fill="#193447">Measure what can change.</text>
+  <g fill="none" stroke="#56869c" stroke-width="4">
+    <path d="M1085 593L1140 555L1192 580L1240 530L1291 558L1373 502" />
+    <path d="M1085 606L1140 618L1192 614L1240 624L1291 614L1373 628" opacity=".35"/>
+  </g>
+  <g fill="#52b8aa"><circle cx="1085" cy="593" r="9"/><circle cx="1140" cy="555" r="9"/><circle cx="1192" cy="580" r="9"/><circle cx="1240" cy="530" r="9"/><circle cx="1291" cy="558" r="9"/></g>
+  <circle cx="1373" cy="502" r="15" fill="#f1b869"/>
+  <text x="1070" y="691" font-size="22" fill="#536a78">Nodes · edges · features</text>
+  <text x="1070" y="722" font-size="22" fill="#536a78">Labels arrive later.</text>
+</g>
+<text x="91" y="848" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#bcd1d8">Conceptual, synthetic illustration · No benchmark results or production measurements</text>
+</svg>
