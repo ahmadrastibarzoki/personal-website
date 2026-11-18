@@ -38,3 +38,15 @@ jobs:
           grep -q 'hreflang="en"' dist/fa/insights/from-ai-prototype-to-usable-product/index.html
           grep -q 'from-ai-prototype-to-usable-product' dist/sitemap.xml
           grep -q 'from-ai-prototype-to-usable-product' dist/rss.xml
+      - name: Verify November 18 HITL bilingual publication
+        run: |
+          SLUG=human-in-the-loop-ai-workflows-approval-audit-failure-recovery
+          test -f "dist/insights/$SLUG/index.html"
+          test -f "dist/fa/insights/$SLUG/index.html"
+          test -f dist/images/human-in-the-loop-ai-approval-audit-recovery.svg
+          grep -q 'hreflang="fa"' "dist/insights/$SLUG/index.html"
+          grep -q 'hreflang="en"' "dist/fa/insights/$SLUG/index.html"
+          grep -q 'BlogPosting' "dist/insights/$SLUG/index.html"
+          grep -q 'BreadcrumbList' "dist/fa/insights/$SLUG/index.html"
+          grep -q "$SLUG" dist/sitemap.xml
+          grep -q "$SLUG" dist/rss.xml
