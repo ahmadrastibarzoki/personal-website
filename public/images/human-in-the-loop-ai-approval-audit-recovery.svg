@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Human-in-the-loop AI: from recommendation to authorized and recoverable action</title>
+<desc id="desc">Original conceptual four-stage architecture diagram with an AI proposal, policy validation, authorized human review, a constrained executor and two outcome paths for an audit receipt or an unknown outcome requiring reconciliation. No real data or production metrics.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071728"/><stop offset=".57" stop-color="#122d44"/><stop offset="1" stop-color="#152b3b"/></linearGradient>
+  <linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#68c9d5"/><stop offset=".5" stop-color="#a4d6db"/><stop offset="1" stop-color="#f1bf73"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-40%" width="140%" height="180%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#040e18" flood-opacity=".35"/></filter>
+  <pattern id="grid" width="78" height="78" patternUnits="userSpaceOnUse"><path d="M78 0H0V78" fill="none" stroke="#5e8daa" stroke-opacity=".08" stroke-width="1"/></pattern>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#grid)"/>
+<circle cx="1415" cy="90" r="320" fill="#4cc8c9" opacity=".045"/>
+<circle cx="125" cy="740" r="260" fill="#9e85d8" opacity=".05"/>
+<g font-family="Arial, Helvetica, sans-serif">
+  <text x="90" y="102" font-size="25" font-weight="700" letter-spacing="3.2" fill="#68d0d7">AI WORKFLOW ENGINEERING</text>
+  <text x="90" y="188" font-size="62" font-weight="700" fill="#f5f9fc">An approval is not execution.</text>
+  <text x="93" y="241" font-size="30" fill="#c4d6e2">Bind the decision. Check the policy. Verify the outcome.</text>
+  <path d="M95 318H1505" stroke="url(#line)" stroke-width="4" opacity=".64" />
+  <g filter="url(#shadow)">
+    <rect x="70" y="355" width="338" height="265" rx="25" fill="#f7fbfc"/>
+    <rect x="445" y="355" width="338" height="265" rx="25" fill="#f7fbfc"/>
+    <rect x="820" y="355" width="338" height="265" rx="25" fill="#f7fbfc"/>
+    <rect x="1195" y="355" width="338" height="265" rx="25" fill="#f7fbfc"/>
+  </g>
+  <g font-size="19" font-weight="700">
+    <rect x="92" y="380" width="72" height="45" rx="11" fill="#ddf5f5"/><text x="110" y="410" fill="#196d77">01</text>
+    <rect x="467" y="380" width="72" height="45" rx="11" fill="#e5edf9"/><text x="485" y="410" fill="#315e90">02</text>
+    <rect x="842" y="380" width="72" height="45" rx="11" fill="#fff2d9"/><text x="860" y="410" fill="#94611f">03</text>
+    <rect x="1217" y="380" width="72" height="45" rx="11" fill="#dff6eb"/><text x="1235" y="410" fill="#1f7758">04</text>
+  </g>
+  <g font-size="31" font-weight="700" fill="#163049">
+    <text x="92" y="475">AI proposal</text>
+    <text x="467" y="475">Policy checks</text>
+    <text x="842" y="475">Human review</text>
+    <text x="1217" y="475">Action executor</text>
+  </g>
+  <g font-size="21" fill="#506675">
+    <text x="92" y="519">What and why?</text>
+    <text x="92" y="552">Evidence + target version</text>
+    <text x="467" y="519">Who may act?</text>
+    <text x="467" y="552">Identity + role + state</text>
+    <text x="842" y="519">Approve or reject?</text>
+    <text x="842" y="552">Scope + expiry</text>
+    <text x="1217" y="519">Revalidate before write</text>
+    <text x="1217" y="552">Idempotency + receipt</text>
+  </g>
+  <g stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M414 484H437" stroke="#77cbd2"/>
+    <path d="M789 484H812" stroke="#77cbd2"/>
+    <path d="M1164 484H1187" stroke="#e4ad67"/>
+  </g>
+  <g fill="#77cbd2"><path d="M429 474L441 484L429 494"/><path d="M804 474L816 484L804 494"/></g>
+  <path d="M1179 474L1191 484L1179 494" fill="#e4ad67"/>
+  <g>
+    <rect x="92" y="579" width="294" height="17" rx="8" fill="#cae5e6"/>
+    <rect x="92" y="579" width="184" height="17" rx="8" fill="#42b9c0"/>
+    <rect x="467" y="579" width="294" height="17" rx="8" fill="#dbe5f4"/>
+    <rect x="467" y="579" width="205" height="17" rx="8" fill="#77a4dc"/>
+    <rect x="842" y="579" width="294" height="17" rx="8" fill="#f7e4bf"/>
+    <rect x="842" y="579" width="166" height="17" rx="8" fill="#edb963"/>
+    <rect x="1217" y="579" width="294" height="17" rx="8" fill="#d4ece1"/>
+    <rect x="1217" y="579" width="188" height="17" rx="8" fill="#5eb995"/>
+  </g>
+  <path d="M1365 624V659H718" fill="none" stroke="#7fbfa3" stroke-width="4" stroke-dasharray="10 10"/>
+  <path d="M726 649L710 659L726 669" fill="none" stroke="#7fbfa3" stroke-width="4" stroke-linecap="round"/>
+  <rect x="91" y="683" width="685" height="125" rx="22" fill="#153c44" stroke="#4dc5bb" stroke-width="2"/>
+  <rect x="814" y="683" width="695" height="125" rx="22" fill="#49382b" stroke="#e8ac65" stroke-width="2"/>
+  <circle cx="135" cy="725" r="17" fill="#70d1c7"/>
+  <path d="M127 724l6 6 11-12" fill="none" stroke="#143c3a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="860" cy="725" r="17" fill="#f3c985"/>
+  <path d="M860 714v15M860 735v1" stroke="#6a4b25" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#f1f8fa">
+    <text x="171" y="733" font-size="25" font-weight="700">CONFIRMED OUTCOME</text>
+    <text x="896" y="733" font-size="25" font-weight="700">UNKNOWN OUTCOME</text>
+  </g>
+  <g font-size="21" fill="#c8d8dc">
+    <text x="119" y="775">Store receipt, decision and audit record.</text>
+    <text x="842" y="775">Reconcile target state before any retry.</text>
+  </g>
+  <text x="95" y="862" font-size="19" fill="#afcbd7">Original conceptual illustration · Synthetic workflow · No production claims or private business records</text>
+</g>
+</svg>
