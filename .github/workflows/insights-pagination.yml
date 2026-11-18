@@ -1,0 +1,91 @@
+name: Insights archive pagination
+
+on:
+  pull_request:
+    paths:
+      - "src/pages/insights/**"
+      - "src/pages/fa/insights/**"
+      - "src/components/InsightsArchive.astro"
+      - "src/utils/insights.ts"
+      - "src/styles/global.css"
+      - ".github/workflows/insights-pagination.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src/pages/insights/**"
+      - "src/pages/fa/insights/**"
+      - "src/components/InsightsArchive.astro"
+      - "src/utils/insights.ts"
+      - "src/styles/global.css"
+      - ".github/workflows/insights-pagination.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  pagination-build-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Verify seven articles per page in both languages
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { existsSync, readFileSync, readdirSync } from 'node:fs';
+
+          function published(dir) {
+            return readdirSync(dir)
+              .filter((name) => name.endsWith('.md'))
+              .filter((name) => !/^draft:\s*true\s*$/m.test(readFileSync(`${dir}/${name}`, 'utf8')))
+              .map((name) => name.replace(/\.md$/, ''));
+          }
+
+          for (const { source, base, lang } of [
+            { source: 'src/content/insights', base: '/insights', lang: 'en' },
+            { source: 'src/content/insights-fa', base: '/fa/insights', lang: 'fa' }
+          ]) {
+            const slugs = published(source);
+            const pages = Math.max(1, Math.ceil(slugs.length / 7));
+            let allCardLinks = [];
+
+            for (let number = 1; number <= pages; number++) {
+              const route = number === 1 ? base : `${base}/page/${number}`;
+              const path = `dist${route}/index.html`;
+              assert(existsSync(path), `Missing archive page ${path}`);
+              const html = readFileSync(path, 'utf8');
+              const count = (html.match(/class="insight-card"/g) || []).length;
+              const expected = Math.min(7, slugs.length - (number - 1) * 7);
+              assert.equal(count, expected, `Wrong card count for ${route}`);
+              assert(html.includes(`hreflang="${lang === 'en' ? 'fa' : 'en'}"`),
+                `Missing alternate language for ${route}`);
+              assert(html.includes(`rel="canonical"`), `Missing canonical for ${route}`);
+              const cardLinks = [...html.matchAll(/<h2>\s*<a href="([^"]+)"/g)].map((match) => match[1]);
+              assert.equal(cardLinks.length, expected, `Wrong heading link count for ${route}`);
+              allCardLinks.push(...cardLinks);
+              for (const link of cardLinks) {
+                assert(link.startsWith(`${base}/`), `Wrong locale link ${link}`);
+              }
+              if (pages > 1) {
+                assert(html.includes('aria-label="') && html.includes('aria-current="page"'),
+                  `Missing accessible pagination for ${route}`);
+              }
+            }
+
+            assert.equal(new Set(allCardLinks).size, slugs.length,
+              `Duplicate or missing card links in ${base}`);
+            assert.deepEqual(
+              new Set(allCardLinks),
+              new Set(slugs.map((slug) => `${base}/${slug}`)),
+              `Archive index does not cover every published article in ${source}`
+            );
+            assert(!existsSync(`dist${base}/page/1/index.html`),
+              `Page 1 alias unexpectedly exists for ${base}`);
+            console.log(`${lang}: ${slugs.length} articles across ${pages} pages (max 7 per page)`);
+          }
+          NODE

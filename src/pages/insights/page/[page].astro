@@ -1,0 +1,20 @@
+---
+import InsightsArchive from '../../../components/InsightsArchive.astro';
+import { getInsightPageCount, getPublishedInsights } from '../../../utils/insights';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedInsights();
+  const count = getInsightPageCount(posts.length);
+  return Array.from({ length: count - 1 }, (_, index) => {
+    const pageNumber = index + 2;
+    return {
+      params: { page: String(pageNumber) },
+      props: { pageNumber }
+    };
+  });
+}
+
+interface Props { pageNumber: number; }
+const { pageNumber } = Astro.props;
+---
+<InsightsArchive language="en" pageNumber={pageNumber} />

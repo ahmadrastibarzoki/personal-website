@@ -1,4 +1,10 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+export const INSIGHTS_PAGE_SIZE = 7;
+
+export function getInsightPageCount(publishedCount: number): number {
+  return Math.max(1, Math.ceil(publishedCount / INSIGHTS_PAGE_SIZE));
+}
+
 export type InsightEntry = CollectionEntry<'insights'>;
 export type PersianInsightEntry = CollectionEntry<'insightsFa'>;
 
