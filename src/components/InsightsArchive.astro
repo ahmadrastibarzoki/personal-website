@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  INSIGHTS_PAGE_SIZE,
+  estimateReadingMinutes,
+  estimateReadingTime,
+  formatInsightDate,
+  formatPersianInsightDate,
+  getInsightPageCount,
+  getPublishedInsights,
+  getPublishedPersianInsights
+} from '../utils/insights';
+
+interface Props {
+  language: 'en' | 'fa';
+  pageNumber: number;
+}
+
+const { language, pageNumber } = Astro.props;
+const isFa = language === 'fa';
+const allPosts = isFa ? await getPublishedPersianInsights() : await getPublishedInsights();
+const totalPages = getInsightPageCount(allPosts.length);
+
+if (!Number.isInteger(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
+  throw new Error(`Invalid insights page: ${pageNumber}`);
+}
+if (!Astro.site) {
+  throw new Error('Astro site URL is required for structured data.');
+}
+
+const firstIndex = (pageNumber - 1) * INSIGHTS_PAGE_SIZE;
+const cards = allPosts.slice(firstIndex, firstIndex + INSIGHTS_PAGE_SIZE);
+const firstShown = allPosts.length === 0 ? 0 : firstIndex + 1;
+const lastShown = firstIndex + cards.length;
+const prefix = isFa ? '/fa/insights' : '/insights';
+const hrefForPage = (number: number) => number === 1 ? prefix : `${prefix}/page/${number}`;
+const pagePath = hrefForPage(pageNumber);
+const numbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
+const title = isFa
+  ? `یادداشت‌ها${pageNumber > 1 ? ` – صفحه ${pageNumber}` : ''} | احمد راستی برزکی`
+  : `Insights${pageNumber > 1 ? ` – Page ${pageNumber}` : ''} | Ahmad Rasti Barzoki`;
+const baseDescription = isFa
+  ? 'یادداشت‌های فنی و پژوهشی احمد راستی برزکی درباره یادگیری ماشین روی گراف، تشخیص ناهنجاری، مهندسی تحلیل داده، سیستم‌های داده و هوش مصنوعی مسئولانه.'
+  : 'Technical and research insights by Ahmad Rasti Barzoki on graph machine learning, anomaly detection, analytics engineering, data systems and responsible AI.';
+const description = pageNumber === 1
+  ? baseDescription
+  : isFa
+    ? `صفحه ${pageNumber} از ${totalPages} یادداشت‌های فنی و پژوهشی احمد راستی برزکی. نوشته‌های قدیمی‌تر درباره هوش مصنوعی، یادگیری ماشین و مهندسی داده.`
+    : `Page ${pageNumber} of ${totalPages}: earlier research notes and technical articles by Ahmad Rasti Barzoki on AI, machine learning and data engineering.`;
+
+const blogSchema = {
+  '@type': 'Blog',
+  '@id': new URL(`${prefix}#blog`, Astro.site).href,
+  url: new URL(prefix, Astro.site).href,
+  name: isFa ? 'یادداشت‌های احمد راستی برزکی' : 'Insights by Ahmad Rasti Barzoki',
+  description: baseDescription,
+  author: { '@id': new URL('/#person', Astro.site).href },
+  inLanguage: language
+};
+const listSchema = {
+  '@type': 'ItemList',
+  '@id': new URL(`${pagePath}#articles`, Astro.site).href,
+  url: new URL(pagePath, Astro.site).href,
+  numberOfItems: cards.length,
+  itemListElement: cards.map((post, index) => ({
+    '@type': 'ListItem',
+    position: firstIndex + index + 1,
+    name: post.data.title,
+    url: new URL(`${prefix}/${post.id}`, Astro.site).href
+  }))
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={[blogSchema, listSchema]}
+  image="/images/hero-presenting.png"
+  imageAlt={isFa ? 'یادداشت‌های احمد راستی برزکی' : 'Insights by Ahmad Rasti Barzoki on AI, data science and research'}
+  lang={language}
+>
+  <section class="page-hero insights-hero">
+    <div class="container">
+      <p class="eyebrow">{isFa ? 'یادداشت‌ها' : 'Insights'}</p>
+      <h1>
+        {isFa
+          ? 'یادداشت‌های فنی، ایده‌های پژوهشی و تجربه‌های ساخت سیستم‌های واقعی.'
+          : 'Research notes, technical decisions, and lessons from real systems.'}
+      </h1>
+      <p class="lead">
+        {isFa
+          ? 'نوشته‌هایی درباره یادگیری ماشین روی گراف، تشخیص ناهنجاری، مهندسی داده و تحلیل، سیستم‌های سازمانی و هوش مصنوعی مسئولانه.'
+          : 'Long-form writing on graph machine learning, anomaly detection, analytics engineering, data systems and responsible AI — focused on methods, trade-offs and practical reasoning.'}
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="articles">
+    <div class="container">
+      <p class="insights-count" aria-live="off">
+        {isFa
+          ? `نمایش مقاله‌های ${firstShown} تا ${lastShown} از ${allPosts.length}`
+          : `Showing ${firstShown}–${lastShown} of ${allPosts.length} articles`}
+      </p>
+      <div class="insights-list">
+        {cards.map((post) => (
+          <article class="insight-card">
+            <div class="insight-card-meta">
+              <span class="tag">{post.data.category}</span>
+              <span>
+                <time datetime={post.data.datePublished.toISOString()}>
+                  {isFa
+                    ? formatPersianInsightDate(post.data.datePublished)
+                    : formatInsightDate(post.data.datePublished)}
+                </time>
+                {' · '}
+                {isFa ? `${estimateReadingMinutes(post.body)} دقیقه مطالعه` : estimateReadingTime(post.body)}
+              </span>
+            </div>
+            <h2>
+              <a href={`${prefix}/${post.id}`}>{post.data.title}</a>
+            </h2>
+            <p>{post.data.description}</p>
+            <a class="inline-link" href={`${prefix}/${post.id}`}>
+              {isFa ? 'مطالعه مقاله ←' : 'Read article →'}
+            </a>
+          </article>
+        ))}
+      </div>
+
+      {totalPages > 1 && (
+        <nav class="insights-pagination" aria-label={isFa ? 'صفحه‌بندی یادداشت‌ها' : 'Insights pagination'}>
+          {pageNumber > 1
+            ? <a class="insights-page-action" href={hrefForPage(pageNumber - 1)} rel="prev">
+                {isFa ? '← قبلی' : '← Previous'}
+              </a>
+            : <span class="insights-page-action is-disabled" aria-disabled="true">
+                {isFa ? '← قبلی' : '← Previous'}
+              </span>}
+          <div class="insights-page-numbers">
+            {numbers.map((number) => (
+              <a
+                class={number === pageNumber ? 'insights-page-number is-current' : 'insights-page-number'}
+                href={hrefForPage(number)}
+                aria-label={isFa ? `صفحه ${number}` : `Page ${number}`}
+                aria-current={number === pageNumber ? 'page' : undefined}
+              >
+                {number}
+              </a>
+            ))}
+          </div>
+          {pageNumber < totalPages
+            ? <a class="insights-page-action" href={hrefForPage(pageNumber + 1)} rel="next">
+                {isFa ? 'بعدی →' : 'Next →'}
+              </a>
+            : <span class="insights-page-action is-disabled" aria-disabled="true">
+                {isFa ? 'بعدی →' : 'Next →'}
+              </span>}
+        </nav>
+      )}
+    </div>
+  </section>
+</BaseLayout>
