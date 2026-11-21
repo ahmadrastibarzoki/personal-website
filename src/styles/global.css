@@ -3798,6 +3798,8 @@ html[dir='rtl'] .lead-form-intro h2 {
 
 .insights-page-action {
   min-width: 104px;
+  gap: .45rem;
+  direction: ltr;
 }
 
 .insights-page-number:hover,
