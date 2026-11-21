@@ -133,10 +133,30 @@ const listSchema = {
         <nav class="insights-pagination" aria-label={isFa ? 'صفحه‌بندی یادداشت‌ها' : 'Insights pagination'}>
           {pageNumber > 1
             ? <a class="insights-page-action" href={hrefForPage(pageNumber - 1)} rel="prev">
-                {isFa ? '← قبلی' : '← Previous'}
+                {isFa ? (
+                  <>
+                    <span dir="rtl">قبلی</span>
+                    <span aria-hidden="true">→</span>
+                  </>
+                ) : (
+                  <>
+                    <span aria-hidden="true">←</span>
+                    <span>Previous</span>
+                  </>
+                )}
               </a>
             : <span class="insights-page-action is-disabled" aria-disabled="true">
-                {isFa ? '← قبلی' : '← Previous'}
+                {isFa ? (
+                  <>
+                    <span dir="rtl">قبلی</span>
+                    <span aria-hidden="true">→</span>
+                  </>
+                ) : (
+                  <>
+                    <span aria-hidden="true">←</span>
+                    <span>Previous</span>
+                  </>
+                )}
               </span>}
           <div class="insights-page-numbers">
             {numbers.map((number) => (
@@ -152,10 +172,30 @@ const listSchema = {
           </div>
           {pageNumber < totalPages
             ? <a class="insights-page-action" href={hrefForPage(pageNumber + 1)} rel="next">
-                {isFa ? 'بعدی →' : 'Next →'}
+                {isFa ? (
+                  <>
+                    <span aria-hidden="true">←</span>
+                    <span dir="rtl">بعدی</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Next</span>
+                    <span aria-hidden="true">→</span>
+                  </>
+                )}
               </a>
             : <span class="insights-page-action is-disabled" aria-disabled="true">
-                {isFa ? 'بعدی →' : 'Next →'}
+                {isFa ? (
+                  <>
+                    <span aria-hidden="true">←</span>
+                    <span dir="rtl">بعدی</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Next</span>
+                    <span aria-hidden="true">→</span>
+                  </>
+                )}
               </span>}
         </nav>
       )}
