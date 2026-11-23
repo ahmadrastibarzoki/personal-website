@@ -50,3 +50,17 @@ jobs:
           grep -q 'BreadcrumbList' "dist/fa/insights/$SLUG/index.html"
           grep -q "$SLUG" dist/sitemap.xml
           grep -q "$SLUG" dist/rss.xml
+
+      - name: Verify November 23 portable project-memory guide
+        run: |
+          SLUG=portable-ai-project-memory-checkpoint-resume-guide
+          test -f "dist/insights/$SLUG/index.html"
+          test -f "dist/fa/insights/$SLUG/index.html"
+          test -f dist/images/portable-ai-project-memory-workflow.svg
+          grep -q 'hreflang="fa"' "dist/insights/$SLUG/index.html"
+          grep -q 'hreflang="en"' "dist/fa/insights/$SLUG/index.html"
+          grep -q 'BlogPosting' "dist/insights/$SLUG/index.html"
+          grep -q 'BreadcrumbList' "dist/fa/insights/$SLUG/index.html"
+          grep -q 'chathandoffkit-persistent-ai-project-memory' "dist/insights/$SLUG/index.html"
+          grep -q "$SLUG" dist/sitemap.xml
+          grep -q "$SLUG" dist/rss.xml
