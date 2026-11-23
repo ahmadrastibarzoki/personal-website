@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Portable AI project memory: review, checkpoint, version, resume</title>
+<desc id="desc">Original conceptual four-stage diagram. A human reviews verified project facts, captures a Markdown checkpoint, optionally adds Git history, and supplies a bounded handoff to the next AI conversation. The tool does not auto-extract chat histories.</desc>
+<defs>
+  <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#071726"/>
+    <stop offset=".55" stop-color="#102c43"/>
+    <stop offset="1" stop-color="#163147"/>
+  </linearGradient>
+  <linearGradient id="thread" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#57d3d1"/><stop offset=".5" stop-color="#98c9d7"/><stop offset="1" stop-color="#e8bd86"/>
+  </linearGradient>
+  <pattern id="dots" width="42" height="42" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.1" fill="#c5deea" opacity=".15"/>
+  </pattern>
+  <filter id="softShadow" x="-15%" y="-30%" width="135%" height="170%">
+    <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#05111c" flood-opacity=".36"/>
+  </filter>
+</defs>
+<rect width="1600" height="900" fill="url(#background)"/>
+<rect width="1600" height="900" fill="url(#dots)"/>
+<circle cx="1400" cy="15" r="350" fill="#54bbb5" opacity=".045"/>
+<circle cx="100" cy="880" r="250" fill="#70a6c5" opacity=".065"/>
+<g font-family="Arial, Helvetica, sans-serif">
+  <text x="88" y="104" fill="#69d5d1" font-size="25" font-weight="700" letter-spacing="4">AI PROJECT MEMORY</text>
+  <text x="87" y="190" fill="#f2f8fb" font-size="63" font-weight="700">Don't restart. Resume with context.</text>
+  <text x="89" y="245" fill="#c0d3df" font-size="28">A reviewed checkpoint is more useful than an unfiltered chat transcript.</text>
+  <path d="M87 302H1514" stroke="url(#thread)" stroke-width="3" opacity=".58"/>
+  <g filter="url(#softShadow)">
+    <rect x="76" y="357" width="326" height="271" rx="22" fill="#f5fbfc"/>
+    <rect x="450" y="357" width="326" height="271" rx="22" fill="#f5fbfc"/>
+    <rect x="824" y="357" width="326" height="271" rx="22" fill="#f5fbfc"/>
+    <rect x="1198" y="357" width="326" height="271" rx="22" fill="#f5fbfc"/>
+  </g>
+  <g font-size="22" font-weight="700">
+    <rect x="101" y="383" width="66" height="43" rx="12" fill="#d9f5f3"/><text x="118" y="412" fill="#18756f">01</text>
+    <rect x="475" y="383" width="66" height="43" rx="12" fill="#e3edf8"/><text x="492" y="412" fill="#345e90">02</text>
+    <rect x="849" y="383" width="66" height="43" rx="12" fill="#e8effa"/><text x="866" y="412" fill="#315c8e">03</text>
+    <rect x="1223" y="383" width="66" height="43" rx="12" fill="#fff0da"/><text x="1240" y="412" fill="#946022">04</text>
+  </g>
+  <g font-size="35" font-weight="700" fill="#14334c">
+    <text x="101" y="485">Review</text>
+    <text x="475" y="485">Checkpoint</text>
+    <text x="849" y="485">Version</text>
+    <text x="1223" y="485">Resume</text>
+  </g>
+  <g font-size="22" fill="#536c7d">
+    <text x="101" y="531">Verified state</text>
+    <text x="101" y="563">Decisions + next step</text>
+    <text x="475" y="531">Portable Markdown</text>
+    <text x="475" y="563">Dated project notes</text>
+    <text x="849" y="531">Optional Git history</text>
+    <text x="849" y="563">Explicit push only</text>
+    <text x="1223" y="531">Bounded handoff</text>
+    <text x="1223" y="563">Next AI conversation</text>
+  </g>
+  <g stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M405 487H445" stroke="#74c9ce"/>
+    <path d="M779 487H819" stroke="#74c9ce"/>
+    <path d="M1153 487H1193" stroke="#edbc80"/>
+  </g>
+  <g fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M433 476l12 11-12 11" stroke="#74c9ce"/>
+    <path d="M807 476l12 11-12 11" stroke="#74c9ce"/>
+    <path d="M1181 476l12 11-12 11" stroke="#edbc80"/>
+  </g>
+  <g>
+    <rect x="101" y="591" width="275" height="9" rx="4" fill="#d8ecec"/>
+    <rect x="101" y="591" width="177" height="9" rx="4" fill="#48bcb9"/>
+    <rect x="475" y="591" width="275" height="9" rx="4" fill="#ddeaf7"/>
+    <rect x="475" y="591" width="200" height="9" rx="4" fill="#6fa5d3"/>
+    <rect x="849" y="591" width="275" height="9" rx="4" fill="#ddeaf7"/>
+    <rect x="849" y="591" width="176" height="9" rx="4" fill="#6fa5d3"/>
+    <rect x="1223" y="591" width="275" height="9" rx="4" fill="#f1e5d3"/>
+    <rect x="1223" y="591" width="211" height="9" rx="4" fill="#deb273"/>
+  </g>
+  <rect x="83" y="683" width="1434" height="128" rx="24" fill="#102f3f" stroke="#456b7c" stroke-width="2"/>
+  <circle cx="125" cy="729" r="17" fill="#71cec1"/>
+  <path d="M117 729l6 6 11-13" fill="none" stroke="#143b3c" stroke-width="4" stroke-linecap="round"/>
+  <text x="158" y="738" font-size="28" fill="#f1f8fa" font-weight="700">Project context stays inspectable.</text>
+  <text x="115" y="781" font-size="23" fill="#b9d1dc">Human-reviewed facts  &#8226;  Open decisions  &#8226;  No automatic chat extraction  &#8226;  No production claims</text>
+  <text x="86" y="864" font-size="20" fill="#a9c4d3">Original editorial diagram  /  Synthetic workflow  /  ChatHandoffKit is an early-stage open-source CLI</text>
+</g>
+</svg>
