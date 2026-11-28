@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">AI search visibility: four separate layers of evidence</title><desc id="desc">Original editorial diagram with four separate cards: eligibility, visibility, traffic, and business outcomes. Google impressions, Bing citations, and sampled links are not interchangeable. No measured data or universal GEO score is shown.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#081827"/><stop offset="1" stop-color="#17394c"/></linearGradient><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#9fc5d4" stroke-opacity=".07"/></pattern><filter id="shadow" x="-10%" y="-20%" width="120%" height="150%"><feDropShadow dx="0" dy="10" stdDeviation="11" flood-color="#020e17" flood-opacity=".35"/></filter></defs>
+<rect width="1600" height="900" fill="url(#bg)"/><rect width="1600" height="900" fill="url(#grid)"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="84" y="100" font-size="25" letter-spacing="3.3" font-weight="700" fill="#76d4cb">AI SEARCH · MEASUREMENT</text>
+<text x="82" y="188" font-size="64" font-weight="700" fill="#f3f8fa">Measure evidence. Not a GEO score.</text>
+<text x="85" y="243" font-size="29" fill="#bfdae3">Four distinct measurement layers — not a connected user funnel.</text>
+<path d="M85 290H1515" stroke="#80c4cb" stroke-opacity=".5" stroke-width="2"/>
+<g filter="url(#shadow)" fill="#f6fafb"><rect x="76" y="338" width="342" height="338" rx="22"/><rect x="444" y="338" width="342" height="338" rx="22"/><rect x="812" y="338" width="342" height="338" rx="22"/><rect x="1180" y="338" width="342" height="338" rx="22"/></g>
+<g fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M108 386h48v52h-48zM119 411l8 8 17-19" stroke="#297f7e"/><path d="M475 411q25-31 50 0q-25 31-50 0z" stroke="#386baf"/><circle cx="500" cy="411" r="7" stroke="#386baf"/><path d="M847 394h45v38h-45zM854 415h30m-10-10 10 10-10 10" stroke="#398b78"/><path d="M1211 412l13 13 26-31" stroke="#a57632"/></g>
+<g font-size="18" font-weight="700" letter-spacing="1.1"><text x="108" y="471" fill="#297f7e">01 / READINESS</text><text x="476" y="471" fill="#386baf">02 / EXPOSURE</text><text x="844" y="471" fill="#398b78">03 / BEHAVIOR</text><text x="1212" y="471" fill="#9b6927">04 / VALUE</text></g>
+<g font-size="32" fill="#16364b" font-weight="700"><text x="108" y="520">Eligibility</text><text x="476" y="520">Visibility</text><text x="844" y="520">Traffic</text><text x="1212" y="520">Outcomes</text></g>
+<g font-size="22" fill="#506776"><text x="108" y="564">Crawl and index checks</text><text x="108" y="600">Access requirements</text><text x="476" y="564">Google impressions</text><text x="476" y="600">Bing citations</text><text x="476" y="636">Sampled answer links</text><text x="844" y="564">Attributable sessions</text><text x="844" y="600">Landing pages</text><text x="1212" y="564">Defined key events</text><text x="1212" y="600">Qualified inquiries</text></g>
+<rect x="84" y="725" width="1432" height="104" rx="18" fill="#183d4b" stroke="#537d87" stroke-width="1.5"/>
+<text x="114" y="765" fill="#eaf7f7" font-size="28" font-weight="700">Keep units, scope, dates and missing-data flags visible.</text>
+<text x="114" y="800" fill="#b9d1da" font-size="22">Impressions ≠ citations ≠ visits ≠ business value. No universal cross-engine score.</text>
+<text x="84" y="873" font-size="19" fill="#a9c5d2">Original conceptual illustration · Not observed performance data · November 2026</text>
+</g></svg>
