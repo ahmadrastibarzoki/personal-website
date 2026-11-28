@@ -64,3 +64,21 @@ jobs:
           grep -q 'chathandoffkit-persistent-ai-project-memory' "dist/insights/$SLUG/index.html"
           grep -q "$SLUG" dist/sitemap.xml
           grep -q "$SLUG" dist/rss.xml
+
+      - name: Verify November 28 AI search visibility measurement guide
+        run: |
+          SLUG=measuring-ai-search-visibility-without-inventing-a-geo-score
+          test -f "dist/insights/$SLUG/index.html"
+          test -f "dist/fa/insights/$SLUG/index.html"
+          test -f dist/images/ai-search-visibility-evidence.svg
+          grep -q 'hreflang="fa"' "dist/insights/$SLUG/index.html"
+          grep -q 'hreflang="en"' "dist/fa/insights/$SLUG/index.html"
+          grep -q 'rel="canonical"' "dist/insights/$SLUG/index.html"
+          grep -q 'rel="canonical"' "dist/fa/insights/$SLUG/index.html"
+          grep -q 'BlogPosting' "dist/insights/$SLUG/index.html"
+          grep -q 'BlogPosting' "dist/fa/insights/$SLUG/index.html"
+          grep -q 'BreadcrumbList' "dist/fa/insights/$SLUG/index.html"
+          grep -q 'seo-geo-ai-search-foundations' "dist/insights/$SLUG/index.html"
+          grep -q 'seo-geo-ai-search-foundations' "dist/fa/insights/$SLUG/index.html"
+          grep -q "$SLUG" dist/sitemap.xml
+          grep -q "$SLUG" dist/rss.xml
